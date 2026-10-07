@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #1b4332;
+  --color-forest-2: #12301f;
+  --color-leaf: #2d6a4f;
+  --color-sky: #2d6a8b;
+  --color-sky-2: #1d4d68;
+  --color-ochre: #a0522d;
+  --color-gold: #f2c14e;
+  --color-moss: #8b7355;
+  --color-snow: #f8faf9;
+  --color-mist: #eef4f0;
+  --color-ink: #0d1b12;
+  --color-alert: #c0392b;
+  --color-wa: #1f9d55;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  background: var(--color-snow);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Patrón andino: rombos escalonados (chakana) */
+.pattern-andino {
+  background-image:
+    linear-gradient(45deg, transparent 46%, #fff 47%, #fff 53%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, #fff 47%, #fff 53%, transparent 54%);
+  background-size: 56px 56px;
+}
+
+/* Único momento de movimiento: el hero entra una sola vez */
+@keyframes subir {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.hero-in > * { animation: subir 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero-in > *:nth-child(2) { animation-delay: 0.1s; }
+.hero-in > *:nth-child(3) { animation-delay: 0.2s; }
+.hero-in > *:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes pulso {
+  0% { box-shadow: 0 0 0 0 rgba(217, 48, 37, 0.7); }
+  100% { box-shadow: 0 0 0 26px rgba(217, 48, 37, 0); }
+}
+.sirena { animation: pulso 1.8s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
