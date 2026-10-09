@@ -24,7 +24,7 @@ export function construirIndice(): ItemBusqueda[] {
       const c = (g.cantonSlug && getCanton(g.cantonSlug)) || loja;
       return {
         id: `guia-${g.slug}`, nombre: g.titulo, tipo: "guias", descripcion: `${g.duracion} · ${g.nivel}`,
-        href: `/descubre-loja/${g.slug}`, emoji: "📖", lat: c.lat, lng: c.lng,
+        href: `/descubre-loja/${g.slug}`, emoji: "🧭", lat: c.lat, lng: c.lng,
       };
     }),
   ];

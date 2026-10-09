@@ -7,11 +7,11 @@ import type { ItemBusqueda, TipoBusqueda } from "@/types";
 
 const norm = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-const FILTROS: { id: TipoBusqueda; label: string }[] = [
-  { id: "cantones", label: "16 Cantones" },
-  { id: "atractivos", label: "Lugares Turísticos" },
-  { id: "hoteles", label: "Hospedaje" },
-  { id: "guias", label: "Rutas e Itinerarios" },
+const FILTROS: { id: TipoBusqueda; label: string; icon?: string }[] = [
+  { id: "cantones", label: "16 Cantones", icon: "🏛️" },
+  { id: "atractivos", label: "Lugares Turísticos", icon: "🏞️" },
+  { id: "hoteles", label: "Hospedaje", icon: "🏨" },
+  { id: "guias", label: "Rutas e Itinerarios", icon: "🧭" },
 ];
 
 type Resultado = ItemBusqueda & { km: number | null };
@@ -99,13 +99,14 @@ export default function Buscador({ items }: { items: ItemBusqueda[] }) {
               aria-pressed={isSelected}
               onClick={() => setTipo(isSelected ? null : f.id)}
               style={{ fontFamily: "var(--font-label)" }}
-              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all ${
+              className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all inline-flex items-center gap-1.5 ${
                 isSelected
                   ? "bg-[#2C5E43] text-white shadow-xs"
                   : "bg-[#FAFAF8] text-[#47554E] hover:bg-[#EEF0EA] border border-[#E8EAE3]"
               }`}
             >
-              {f.label}
+              {f.icon && <span>{f.icon}</span>}
+              <span>{f.label}</span>
             </button>
           );
         })}
@@ -161,6 +162,11 @@ export default function Buscador({ items }: { items: ItemBusqueda[] }) {
                         <p className="font-semibold text-xs sm:text-sm text-[#17201B] truncate group-hover:text-[#2C5E43]">
                           {r.nombre}
                         </p>
+                        {r.tipo === "hoteles" && (
+                          <span className="text-[9.5px] font-medium text-[#2C5E43] shrink-0 bg-[#EBF3ED] border border-[#2C5E43]/20 px-1.5 py-0.5 rounded-full">
+                            Puesto libre / Aliados
+                          </span>
+                        )}
                         {r.km !== null && (
                           <span className="text-[10px] font-mono font-medium text-[#2C5E43] shrink-0 bg-[#EBF3ED] px-1.5 py-0.5 rounded">
                             {formatearDistancia(r.km)}

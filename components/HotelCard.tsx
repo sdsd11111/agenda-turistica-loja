@@ -22,12 +22,14 @@ export default function HotelCard({ hotel }: { hotel: Hospedaje }) {
         <span
           style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
           className={`absolute left-3 top-3 rounded-full backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-wider border shadow-sm ${
-            hotel.verificado
+            hotel.demo
+              ? "bg-white/95 text-[#2C5E43] border-[#2C5E43]/30"
+              : hotel.verificado
               ? "bg-[#EBF3ED]/95 text-[#2C5E43] border-[#2C5E43]/25"
               : "bg-white/90 text-[#9A6200] border-[#9A6200]/25"
           }`}
         >
-          {hotel.verificado ? "✅ Verificado" : "⏳ En proceso"}
+          {hotel.demo ? "📍 Cupo disponible · Afíliate" : hotel.verificado ? "✅ Verificado" : "⏳ En proceso"}
         </span>
         {/* Precio flotante */}
         <div className="absolute bottom-3 right-3 rounded-2xl bg-black/50 backdrop-blur-md border border-white/20 px-3 py-1.5 text-white text-center">

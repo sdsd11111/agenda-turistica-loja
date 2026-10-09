@@ -12,12 +12,19 @@ export default function Footer() {
       <div className="mx-auto w-[min(1180px,100%-40px)]">
         <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
-            <p
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em" }}
-              className="text-2xl sm:text-3xl text-white"
-            >
-              agenda<span className="text-[#5A9E78]">turistica</span>loja.com
-            </p>
+            <div className="flex items-center gap-2.5 mb-3">
+              <img
+                src="/brandmark.svg"
+                alt="Agenda Turística Loja"
+                className="size-9 object-contain"
+              />
+              <p
+                style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em" }}
+                className="text-2xl sm:text-3xl text-white"
+              >
+                agenda<span className="text-[#5A9E78]">turistica</span>loja.com
+              </p>
+            </div>
             <p
               style={{ fontFamily: "var(--font-body)" }}
               className="mt-3 max-w-[44ch] text-sm sm:text-base text-[#B2BEB5] leading-relaxed"

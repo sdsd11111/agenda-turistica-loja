@@ -32,26 +32,33 @@ export default function Nav() {
     >
       <div className="mx-auto flex h-[68px] w-[min(1180px,100%-40px)] items-center justify-between gap-8">
 
-        {/* ── LOGOTIPO ── */}
-        <Link href="/" aria-label="Inicio — Descubre Loja" className="flex items-center gap-2 shrink-0 group">
-          {/* Ícono de hoja / marca */}
-          <div className={[
-            "h-8 w-8 rounded-xl flex items-center justify-center text-sm font-bold transition-all duration-300",
-            scrolled ? "bg-[#2C5E43] text-white" : "bg-white/15 backdrop-blur-sm text-white border border-white/25",
-          ].join(" ")}>
-            🌿
+        {/* ── LOGOTIPO OFICIAL ── */}
+        <Link href="/" aria-label="Inicio — Agenda Turística Loja" className="flex items-center gap-2.5 shrink-0 group">
+          {/* Símbolo / Brandmark oficial */}
+          <div className="relative size-9 shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+            <img
+              src="/brandmark.svg"
+              alt="Símbolo Agenda Turística Loja"
+              className="size-9 object-contain drop-shadow-sm"
+            />
           </div>
           <div className="flex items-baseline gap-[1px]">
-            <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.05rem" }}
-              className={scrolled ? "text-[#17201B]" : "text-white"}>
+            <span
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.1rem" }}
+              className={scrolled ? "text-[#17201B]" : "text-white drop-shadow-xs"}
+            >
               agenda
             </span>
-            <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.05rem" }}
-              className={scrolled ? "text-[#2C5E43]" : "text-[#7ECB9A]"}>
+            <span
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.1rem" }}
+              className={scrolled ? "text-[#2C5E43]" : "text-[#7ECB9A] drop-shadow-xs"}
+            >
               turistica
             </span>
-            <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.05rem" }}
-              className={scrolled ? "text-[#17201B]" : "text-white"}>
+            <span
+              style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.1rem" }}
+              className={scrolled ? "text-[#17201B]" : "text-white drop-shadow-xs"}
+            >
               loja
             </span>
           </div>

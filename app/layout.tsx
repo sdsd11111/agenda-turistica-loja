@@ -51,10 +51,17 @@ export const metadata: Metadata = {
     "agenda turistica loja",
   ],
   icons: {
-    icon: "/icon.svg",
-    shortcut: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "es_EC",
@@ -62,6 +69,20 @@ export const metadata: Metadata = {
     siteName: SITE.nombre,
     title: "Lugares Turísticos y Qué Hacer en Loja: 16 Cantones y Agenda 2026",
     description: "Guía oficial de turismo de la provincia de Loja, Ecuador. Bosque de Puyango, Vilcabamba, Podocarpus, hoteles y agenda 2026.",
+    images: [
+      {
+        url: "/logo-horizontal-1200x375.png",
+        width: 1200,
+        height: 375,
+        alt: "Agenda Turística Loja",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lugares Turísticos y Qué Hacer en Loja: 16 Cantones y Agenda 2026",
+    description: "Guía oficial de turismo de la provincia de Loja, Ecuador. 16 cantones, naturaleza, hoteles y agenda en vivo.",
+    images: ["/logo-horizontal-1200x375.png"],
   },
   alternates: { canonical: "/" },
 };
