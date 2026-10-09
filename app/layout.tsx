@@ -33,21 +33,36 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Qué Hacer en Loja: 16 Cantones, Lugares Turísticos y Agenda 2026 | Descubre Loja",
-    template: "%s | Descubre Loja",
+    default: "Lugares Turísticos y Qué Hacer en Loja: 16 Cantones y Agenda 2026",
+    template: "%s | Agenda Turística Loja",
   },
   description:
-    "Guía oficial de turismo de la provincia de Loja, Ecuador. Descubre qué hacer en Vilcabamba, los Guayacanes de Zapotillo, Bosque de Puyango, lugares turísticos de los 16 cantones y agenda de eventos 2026.",
+    "Guía oficial de turismo de la provincia de Loja, Ecuador. Descubre qué hacer en Loja, Bosque Petrificado de Puyango, Vilcabamba, Parque Podocarpus, hoteles directos y eventos de los 16 cantones.",
   keywords: [
-    "que hacer en loja",
     "lugares turisticos de loja",
+    "que hacer en loja",
     "turismo loja ecuador",
-    "vilcabamba loja",
-    "guayacanes zapotillo",
     "bosque petrificado puyango",
+    "vilcabamba loja",
+    "hoteles en loja",
+    "hoteles en vilcabamba",
+    "guayacanes zapotillo",
+    "virgen del cisne",
     "agenda turistica loja",
-    "eventos loja hoy",
   ],
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_EC",
+    url: SITE.url,
+    siteName: SITE.nombre,
+    title: "Lugares Turísticos y Qué Hacer en Loja: 16 Cantones y Agenda 2026",
+    description: "Guía oficial de turismo de la provincia de Loja, Ecuador. Bosque de Puyango, Vilcabamba, Podocarpus, hoteles y agenda 2026.",
+  },
   alternates: { canonical: "/" },
 };
 

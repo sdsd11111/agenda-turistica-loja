@@ -3,8 +3,15 @@ import AuxilioLocator from "@/components/AuxilioLocator";
 import { SERVICIOS } from "@/lib/data/servicios";
 
 export const metadata: Metadata = {
-  title: "Auxilio en ruta: grúas, talleres y estaciones de servicio en Loja",
-  description: "Directorio de auxilio mecánico en carretera para la provincia de Loja: talleres, grúas, rent a car y estaciones de servicio.",
+  title: "Auxilio Mecánico en Carretera Loja: Grúas, Talleres y Gasolineras 24/7",
+  description: "Directorio de auxilio en carretera en la provincia de Loja, Ecuador: talleres mecánicos, servicio de grúas, vulcanizadoras y estaciones de servicio cerca de ti.",
+  keywords: [
+    "auxilio mecanico loja",
+    "grua loja ecuador",
+    "taller mecanico loja",
+    "auxilio en carretera loja",
+    "mecanico a domicilio loja",
+  ],
   alternates: { canonical: "/auxilio-en-ruta" },
 };
 

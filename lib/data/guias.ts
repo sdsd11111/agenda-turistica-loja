@@ -142,6 +142,70 @@ export const GUIAS: Guia[] = [
         "Revisa llantas, frenos, aceite y combustible, lleva herramientas básicas y guarda los contactos de talleres y grúas de tu ruta." ] },
     ],
   },
+  {
+    slug: "bosque-petrificado-puyango-guia",
+    titulo: "Bosque Petrificado de Puyango: Guía de visita, fósiles y cómo llegar",
+    resumen: "Uno de los yacimientos de madera petrificada más grandes del planeta, compartido entre Loja y El Oro. Todo para planificar tu visita.",
+    categoria: "Naturaleza", duracion: "1 día completo", nivel: "Fácil", cantonSlug: "puyango", fecha: "2026-10-09",
+    imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    gradient: "linear-gradient(135deg,#5c4033,#8B5A2B 50%,#2d6a4f)",
+    keywords: ["bosque petrificado puyango", "puyango loja", "fosiles puyango ecuador", "turismo puyango", "como llegar bosque petrificado puyango"],
+    secciones: [
+      {
+        titulo: "Un museo natural al aire libre",
+        parrafos: [
+          "El Bosque Petrificado de Puyango alberga una de las colecciones de troncos y árboles petrificados marinos y terrestres más imponentes de Sudamérica, con más de 100 millones de años de antigüedad.",
+          "El área protegida cuenta con senderos autoguiados y acompañamiento de guardaparques locales que explican los procesos geológicos que transformaron la madera en roca viva.",
+        ],
+      },
+      {
+        titulo: "Cómo llegar y mejores horarios",
+        parrafos: [
+          "Se accede desde Alamor (cabecera cantonal de Puyango) o desde la vía Arenillas-Alamor. El trayecto ofrece miradores sobre el valle del río Puyango.",
+          "Se recomienda visitar en horas de la mañana para evitar el calor fuerte del mediodía y llevar abundante agua, sombrero y calzado cómodo para caminata.",
+        ],
+      },
+      {
+        titulo: "Recomendaciones prácticas",
+        parrafos: [
+          "La entrada tiene un costo simbólico regulado por el consorcio de administración. Está prohibido retirar cualquier fragmento de roca o fósil del área protegida.",
+          "Combina la visita almorzando en Alamor o descansando en los hostales y fincas turísticas del cantón Puyango.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "romeria-virgen-del-cisne-loja",
+    titulo: "Romería de la Virgen del Cisne: Fechas, rutas y guía para el peregrino",
+    resumen: "La manifestación de fe y turismo religioso más grande del sur de Ecuador. Tramos, fechas de agosto y consejos de viaje.",
+    categoria: "Cultura", duracion: "3 días / Romería", nivel: "Moderado", cantonSlug: "loja", fecha: "2026-10-09",
+    imagen: "https://images.unsplash.com/photo-1548625361-16a70e704a43?auto=format&fit=crop&w=800&q=80",
+    gradient: "linear-gradient(135deg,#1B365D,#4A69BD 50%,#F6B93B)",
+    keywords: ["virgen del cisne", "romeria virgen del cisne loja", "santuario el cisne", "fechas romeria loja", "turismo religioso ecuador"],
+    secciones: [
+      {
+        titulo: "La peregrinación más convocante del Austro",
+        parrafos: [
+          "Cada mes de agosto, cientos de miles de devotos y visitantes acompañan a 'La Churona' en su tradicional caminata de más de 70 kilómetros desde el Santuario Nacional de El Cisne hasta la Catedral de Loja.",
+          "El recorrido se divide históricamente en tres etapas principales: El Cisne a San Pedro de la Bendita, luego a Catamayo, y finalmente el ascenso a Loja el 20 de agosto.",
+        ],
+      },
+      {
+        titulo: "Logística y hospedaje con tiempo",
+        parrafos: [
+          "Durante los días de romería y las festividades septembrinas de Loja, la ocupación hotelera en Loja, Catamayo y El Cisne llega a su capacidad máxima.",
+          "Es fundamental asegurar tu hospedaje con semanas de antelación. Revisa nuestro catálogo provincial de hoteles para contactar de manera directa con los anfitriones.",
+        ],
+      },
+      {
+        titulo: "Consejos para caminar la romería",
+        parrafos: [
+          "Usa zapatos deportivos con amortiguación ya usados (no nuevos), medias gruesas de algodón, protector solar, gorra y abrigo para la noche.",
+          "Encuentra puntos de hidratación y asistencia médica de la Cruz Roja y auxilio vial a lo largo de toda la vía durante las jornadas oficiales.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const getGuia = (slug: string) => GUIAS.find((g) => g.slug === slug);

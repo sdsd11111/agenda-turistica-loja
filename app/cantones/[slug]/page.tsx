@@ -19,10 +19,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const c = getCanton(slug);
   if (!c) return {};
+  const keywords = [
+    `turismo en ${c.nombre.toLowerCase()}`,
+    `que hacer en ${c.nombre.toLowerCase()}`,
+    `lugares turisticos de ${c.nombre.toLowerCase()}`,
+    `hoteles en ${c.nombre.toLowerCase()}`,
+    `${c.nombre.toLowerCase()} loja`,
+  ];
+  if (c.atractivo) keywords.push(c.atractivo.toLowerCase());
   return {
-    title: `Turismo en ${c.nombre}, Loja`,
-    description: c.descripcion,
+    title: `Turismo en ${c.nombre}: Qué Hacer, Atractivos y Hospedaje`,
+    description: `Guía turística de ${c.nombre}, provincia de Loja. ${c.descripcion} Descubre sus atractivos turísticos, clima, cabecera cantonal y hospedaje directo.`,
+    keywords,
     alternates: { canonical: `/cantones/${c.slug}` },
+    openGraph: {
+      title: `Turismo en ${c.nombre}, Loja: Qué Hacer y Atractivos`,
+      description: c.descripcion,
+      images: c.imagen ? [{ url: c.imagen }] : undefined,
+    },
   };
 }
 

@@ -6,11 +6,25 @@ import { CANTONES } from "@/lib/data/cantones";
 
 const DESTACADOS = [
   {
+    label: "Bosque Puyango",
+    desc: "Troncos fosilizados de 100M años",
+    href: "/descubre-loja/bosque-petrificado-puyango-guia",
+    tag: "Paleontología",
+    icon: "🪵",
+  },
+  {
     label: "Vilcabamba",
     desc: "Valle de la Longevidad & café",
-    href: "/cantones/loja",
+    href: "/descubre-loja/ruta-del-cafe-vilcabamba",
     tag: "Naturaleza",
     icon: "🌿",
+  },
+  {
+    label: "Santuario El Cisne",
+    desc: "Basílica neogótica & Romería",
+    href: "/descubre-loja/romeria-virgen-del-cisne-loja",
+    tag: "Patrimonio",
+    icon: "⛪",
   },
   {
     label: "Guayacanes (Zapotillo)",
@@ -20,25 +34,11 @@ const DESTACADOS = [
     icon: "🌼",
   },
   {
-    label: "Bosque Puyango",
-    desc: "Troncos fosilizados de 100M años",
-    href: "/cantones/puyango",
-    tag: "Paleontología",
-    icon: "🪵",
-  },
-  {
     label: "Saraguro Kichwa",
     desc: "Cultura andina & medicina viva",
-    href: "/cantones/saraguro",
+    href: "/descubre-loja/saraguro-turismo-cultural-kichwa",
     tag: "Intercultural",
     icon: "🧶",
-  },
-  {
-    label: "Santuario El Cisne",
-    desc: "Basílica neogótica & devoción",
-    href: "/cantones/loja",
-    tag: "Patrimonio",
-    icon: "⛪",
   },
   {
     label: "Catamayo Valle",
@@ -139,13 +139,13 @@ export default function SeccionDecision() {
               style={{ fontFamily: "var(--font-display)", fontWeight: 700, letterSpacing: "-0.025em" }}
               className="text-3xl sm:text-4xl text-[#17201B]"
             >
-              Lugares Turísticos y Rutas por Cantón
+              Lugares Turísticos Más Visitados y Rutas de Loja
             </h2>
             <p
               style={{ fontFamily: "var(--font-body)" }}
               className="mt-2 text-sm sm:text-base text-[#47554E] leading-relaxed"
             >
-              Explora el inventario de atractivos naturales y culturales de los 16 cantones o genera un itinerario a tu medida con nuestro Asesor IA.
+              Desde el Bosque Petrificado de Puyango y Vilcabamba hasta el Parque Podocarpus. Explora los 16 cantones o genera un itinerario de 2 a 3 días con nuestro Asesor IA.
             </p>
           </div>
 
@@ -184,13 +184,13 @@ export default function SeccionDecision() {
                         style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.02em", color: "#FFFFFF" }}
                         className="text-2xl sm:text-3xl !text-white leading-tight drop-shadow-md"
                       >
-                        ¿Qué visitar en Loja?
+                        Lugares Turísticos de Loja
                       </h3>
                       <p
                         style={{ fontFamily: "var(--font-body)", color: "#E2E8F0" }}
                         className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-1 font-medium"
                       >
-                        Vilcabamba, Podocarpus, Guayacanes, Saraguro y El Cisne.
+                        Bosque Puyango, Vilcabamba, Podocarpus, Guayacanes y El Cisne.
                       </p>
                     </div>
 
@@ -207,7 +207,7 @@ export default function SeccionDecision() {
 
                   {/* Pills de atractivos en vidrio */}
                   <div className="mt-4 pt-4 border-t border-white/20 flex flex-wrap items-center gap-2">
-                    {["🌿 Vilcabamba", "🌲 Podocarpus", "🌼 Guayacanes", "🧶 Saraguro", "⛪ El Cisne"].map((tag) => (
+                    {["🪵 Bosque Puyango", "🌿 Vilcabamba", "🌲 Podocarpus", "⛪ El Cisne", "🌼 Guayacanes"].map((tag) => (
                       <button
                         key={tag}
                         type="button"
@@ -257,13 +257,13 @@ export default function SeccionDecision() {
                         style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.02em", color: "#FFFFFF" }}
                         className="text-2xl sm:text-3xl !text-white leading-tight drop-shadow-md"
                       >
-                        Itinerarios a Medida
+                        Qué Hacer en Loja: Rutas e Itinerarios
                       </h3>
                       <p
                         style={{ fontFamily: "var(--font-body)", color: "#E2E8F0" }}
                         className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-1 font-medium"
                       >
-                        Distancias, clima y recomendaciones en tiempo real con IA.
+                        Rutas de 2 a 3 días con distancias, clima y recomendaciones en tiempo real.
                       </p>
                     </div>
 

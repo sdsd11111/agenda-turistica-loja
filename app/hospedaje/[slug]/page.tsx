@@ -18,10 +18,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const h = getHospedaje(slug);
   if (!h) return {};
+  const cNombre = cantonNombre(h.cantonSlug);
   return {
-    title: `${h.nombre}, ${h.tipo.toLowerCase()} en ${cantonNombre(h.cantonSlug)}`,
-    description: h.descripcion,
+    title: `${h.nombre}: ${h.tipo} en ${cNombre}, Loja (Contacto Directo)`,
+    description: `${h.descripcion} Reserva directo por WhatsApp sin comisiones. Tarifas desde $${h.desde} en ${cNombre}, provincia de Loja.`,
+    keywords: [
+      `${h.nombre.toLowerCase()}`,
+      `hoteles en ${cNombre.toLowerCase()}`,
+      `hospedaje en ${cNombre.toLowerCase()}`,
+      `${h.tipo.toLowerCase()} en ${cNombre.toLowerCase()}`,
+      "hospedaje loja contacto directo",
+    ],
     alternates: { canonical: `/hospedaje/${h.slug}` },
+    openGraph: {
+      title: `${h.nombre} — Hospedaje en ${cNombre}`,
+      description: h.descripcion,
+      images: h.imagen ? [{ url: h.imagen }] : undefined,
+    },
   };
 }
 

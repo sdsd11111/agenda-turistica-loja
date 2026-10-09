@@ -4,8 +4,16 @@ import PageHero from "@/components/PageHero";
 import { HOSPEDAJES } from "@/lib/data/hospedaje";
 
 export const metadata: Metadata = {
-  title: "Hospedaje en la provincia de Loja",
-  description: "Hoteles, hostales, hosterías y casas rurales en la provincia de Loja. Contacta directo por WhatsApp, sin comisiones.",
+  title: "Hoteles en Loja y Vilcabamba: Hosterías y Hospedaje Directo sin Comisiones",
+  description: "Encuentra hoteles en Loja, hosterías en Vilcabamba y hospedaje en los 16 cantones de la provincia. Contacto directo por WhatsApp al mejor precio y sin comisiones.",
+  keywords: [
+    "hoteles en loja",
+    "hoteles en vilcabamba",
+    "hospedaje en loja ecuador",
+    "hosterias en loja",
+    "donde alojarse en vilcabamba",
+    "hotel loja centro",
+  ],
   alternates: { canonical: "/hospedaje" },
 };
 
@@ -13,9 +21,9 @@ export default function HospedajePage() {
   return (
     <>
       <PageHero
-        title="Hospedaje en Loja"
-        badge="🏨 Donde quedarte · Sin comisiones"
-        lead="Hoteles, hosterías y casas rurales. Escribe directo al establecimiento: sin intermediarios y sin comisiones de reserva."
+        title="Hoteles en Loja y Vilcabamba"
+        badge="🏨 Directorio de Hospedaje · Sin comisiones"
+        lead="Hoteles en el centro de Loja, hosterías en Vilcabamba y hospedaje en los 16 cantones. Contacto directo por WhatsApp al mejor precio y sin comisiones."
         imagen="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80"
       />
 
@@ -45,6 +53,37 @@ export default function HospedajePage() {
           </p>
         </div>
       </section>
+
+      {/* Contenido estructurado Server-Side para crawlers y LLMs */}
+      <div
+        style={{
+          position: "absolute",
+          left: "-10000px",
+          top: "auto",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+        }}
+        aria-hidden="true"
+      >
+        <h2>Directorio Completo de Hoteles y Hospedaje en Loja</h2>
+        <p>
+          Catálogo verificado de hoteles, hosterías y hostales en la provincia de Loja con reserva directa por WhatsApp:
+        </p>
+        <ul>
+          {HOSPEDAJES.map((h) => (
+            <li key={h.slug}>
+              <h3>{h.nombre}</h3>
+              <p>Tipo: {h.tipo}</p>
+              <p>Cantón: {h.cantonSlug}</p>
+              <p>Zona: {h.zona}</p>
+              <p>Tarifa desde: ${h.desde} USD por noche</p>
+              <p>Descripción: {h.descripcion}</p>
+              <p>Servicios: {h.servicios.join(", ")}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 }

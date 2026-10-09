@@ -3,8 +3,15 @@ import PageHero from "@/components/PageHero";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "Para negocios: afilia tu hotel o servicio turístico",
-  description: "Membresías GuIAloja para hoteles, hosterías, haciendas y servicios de ruta en la provincia de Loja. Contacto directo por WhatsApp, sin comisiones.",
+  title: "Para Negocios Turísticos: Afilia tu Hotel, Hostería o Tour en Loja",
+  description: "Aparece en el directorio turístico oficial de los 16 cantones de Loja. Recibe reservas y turistas directo en tu WhatsApp sin comisiones por intermediarios.",
+  keywords: [
+    "publicidad turistica loja",
+    "promocionar hotel en loja",
+    "directorio de hoteles loja",
+    "negocios turisticos ecuador",
+    "afiliarse guia loja",
+  ],
   alternates: { canonical: "/para-negocios" },
 };
 

@@ -3,8 +3,14 @@ import PageHero from "@/components/PageHero";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "Convenio para GAD municipales",
-  description: "Convenio cantonal para GAD de la provincia de Loja: sección propia en el portal turístico y difusión de su patrimonio.",
+  title: "Convenios Turísticos para Gobiernos Cantonales y GAD de Loja",
+  description: "Propuesta de digitalización y promoción del patrimonio cultural, festividades y rutas turísticas para los 16 GAD cantonales de la provincia de Loja.",
+  keywords: [
+    "gad municipales loja",
+    "turismo cantones loja",
+    "convenio turistico cantonal",
+    "promocion turistica municipios loja",
+  ],
   alternates: { canonical: "/municipios" },
 };
 

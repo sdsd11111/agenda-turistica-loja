@@ -5,8 +5,16 @@ import { ATRACTIVOS } from "@/lib/data/atractivos";
 import { cantonNombre } from "@/lib/data/cantones";
 
 export const metadata: Metadata = {
-  title: "Atractivos turísticos de la provincia de Loja",
-  description: "Naturaleza, patrimonio y cultura en la provincia de Loja: Podocarpus, Vilcabamba, el centro histórico de Loja, Saraguro y más.",
+  title: "Lugares Turísticos de Loja: 16 Cantones, Bosque Puyango, Vilcabamba y Podocarpus",
+  description: "Descubre los mejores lugares turísticos de Loja, Ecuador: el Bosque Petrificado de Puyango, Vilcabamba, Parque Nacional Podocarpus, Florecimiento de Guayacanes y atractivos en 16 cantones.",
+  keywords: [
+    "lugares turisticos de loja",
+    "que hacer en loja ecuador",
+    "bosque petrificado puyango",
+    "vilcabamba loja",
+    "parque nacional podocarpus",
+    "atractivos turisticos de loja",
+  ],
   alternates: { canonical: "/atractivos" },
 };
 
@@ -14,9 +22,9 @@ export default function AtractivosPage() {
   return (
     <>
       <PageHero
-        title="Atractivos Turísticos de Loja"
-        lead="Bosque de niebla, senderos milenarios, patrimonio vivo y arquitectura neogótica. Conoce los tesoros de la provincia del sur."
-        badge="🗺️ Directorio Provincial · Loja"
+        title="Lugares Turísticos de Loja"
+        lead="Desde el Bosque Petrificado de Puyango y Vilcabamba hasta el Parque Podocarpus. Naturaleza, senderos milenarios y patrimonio de los 16 cantones de Loja."
+        badge="🗺️ Atractivos Turísticos de Loja · Ecuador"
         imagen="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
       />
 
@@ -29,13 +37,13 @@ export default function AtractivosPage() {
                 style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
                 className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
               >
-                {ATRACTIVOS.length} atractivos disponibles
+                {ATRACTIVOS.length} atractivos disponibles en la provincia
               </span>
               <h2
                 style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
                 className="text-2xl sm:text-3xl text-[#17201B]"
               >
-                Elige tu destino en Loja
+                ¿Qué lugares turísticos visitar en Loja?
               </h2>
             </div>
           </div>

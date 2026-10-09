@@ -3,8 +3,14 @@ import ContactoForm from "@/components/ContactoForm";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Contacto y sugerencias · GuIAloja",
-  description: "Recomienda un lugar, reporta información incorrecta o solicita la afiliación de tu negocio en agendaturisticaloja.com.",
+  title: "Contacto, Sugerencias y Registro de Negocios Turísticos en Loja",
+  description: "Contáctanos para afiliar tu hotel, hostería o servicio turístico, recomendar atractivos de la provincia de Loja o solicitar información de la agenda.",
+  keywords: [
+    "contacto turismo loja",
+    "registrar hotel en loja",
+    "afiliar negocio turistico loja",
+    "directorio turistico loja",
+  ],
   alternates: { canonical: "/contacto" },
 };
 

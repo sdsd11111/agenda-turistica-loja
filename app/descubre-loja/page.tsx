@@ -4,8 +4,16 @@ import PageHero from "@/components/PageHero";
 import { GUIAS } from "@/lib/data/guias";
 
 export const metadata: Metadata = {
-  title: "Guías para descubrir Loja",
-  description: "Guías editoriales de la provincia de Loja: qué hacer en Loja, Vilcabamba, Saraguro, Podocarpus, cómo llegar y auxilio en carretera.",
+  title: "Guías de Viaje de Loja: Rutas, Qué Hacer, Bosque Puyango y Vilcabamba",
+  description: "Guías turísticas completas y rutas de viaje en la provincia de Loja, Ecuador: itinerarios de 3 días, qué hacer en Vilcabamba, Saraguro, Parque Podocarpus y cómo llegar.",
+  keywords: [
+    "que hacer en loja ecuador",
+    "guias turisticas loja",
+    "rutas loja ecuador",
+    "que hacer en vilcabamba",
+    "bosque petrificado puyango guia",
+    "itinerario loja",
+  ],
   alternates: { canonical: "/descubre-loja" },
 };
 
@@ -13,9 +21,9 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        title="Descubre Loja"
-        badge="📖 Guías de viaje · Ecuador"
-        lead="Rutas, itinerarios y consejos prácticos para planear tu viaje a la provincia. Escrito por viajeros y locales."
+        title="Guías de Viaje y Qué Hacer en Loja"
+        badge="📖 Rutas e Itinerarios · Provincia de Loja"
+        lead="Itinerarios de 3 días, guía del Bosque Petrificado de Puyango, Romería de El Cisne, Vilcabamba y rutas por el Parque Podocarpus."
         imagen="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80"
       />
 

@@ -4,15 +4,28 @@ import PageHero from "@/components/PageHero";
 import { CANTONES } from "@/lib/data/cantones";
 
 export const metadata: Metadata = {
-  title: "Los 16 cantones de la provincia de Loja",
-  description: "Conoce los 16 cantones de la provincia de Loja, Ecuador: Loja, Saraguro, Catamayo, Macará, Calvas, Célica y más.",
+  title: "Los 16 Cantones de Loja: Guía Turística Completa, Rutas y Atractivos",
+  description: "Explora los 16 cantones de la provincia de Loja, Ecuador: atractivos turísticos, clima, gastronomía y hospedaje en Saraguro, Calvas, Puyango, Zapotillo, Macará y más.",
+  keywords: [
+    "cantones de loja",
+    "16 cantones de loja",
+    "turismo provincia de loja",
+    "saraguro loja",
+    "calvas cariamanga",
+    "puyango loja",
+    "zapotillo guayacanes",
+  ],
   alternates: { canonical: "/cantones" },
 };
 
 export default function CantonesPage() {
   return (
     <>
-      <PageHero title="Los 16 cantones de Loja" lead="Cada cantón tiene su paisaje, su gente y sus sabores. Elige uno y empieza a planear." />
+      <PageHero
+        title="Los 16 Cantones de Loja"
+        lead="Guía de turismo de la provincia de Loja: atractivos, rutas, gastronomía y hospedaje en Saraguro, Puyango, Calvas, Zapotillo, Macará y más."
+        badge="🗺️ Turismo en los 16 Cantones de Loja"
+      />
       <section className="py-16">
         <div className="mx-auto grid w-[min(1180px,100%-40px)] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CANTONES.map((c) => (

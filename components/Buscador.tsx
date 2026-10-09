@@ -71,7 +71,7 @@ export default function Buscador({ items }: { items: ItemBusqueda[] }) {
           type="search"
           autoComplete="off"
           aria-label="Buscar en la provincia de Loja, Ecuador"
-          placeholder="Busca qué hacer en Loja, Vilcabamba, Guayacanes, cascadas u hoteles..."
+          placeholder="Busca lugares turísticos: Bosque Puyango, Vilcabamba, Podocarpus, hoteles..."
           style={{ fontFamily: "var(--font-body)" }}
           className="min-w-0 flex-1 bg-transparent py-2 text-sm sm:text-base text-[#17201B] placeholder:text-[#78887F] focus:outline-none"
           value={q}
