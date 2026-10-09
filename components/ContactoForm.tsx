@@ -15,37 +15,81 @@ export default function ContactoForm() {
   const [motivo, setMotivo] = useState(MOTIVOS[0]);
   const [nombre, setNombre] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [sent, setSent] = useState(false);
 
   function enviar(e: React.FormEvent) {
     e.preventDefault();
     const texto = `Hola, soy ${nombre.trim() || "un visitante"}. Motivo: ${motivo}.\n${mensaje.trim()}\n(Enviado desde agendaturisticaloja.com)`;
     window.open(waLink(texto), "_blank", "noopener,noreferrer");
+    setSent(true);
+    setTimeout(() => setSent(false), 4000);
   }
 
-  const campo = "w-full rounded-xl border border-ink/15 bg-white px-4 py-3 text-base focus:border-forest";
+  const inputClass =
+    "w-full rounded-2xl border border-[#E8EAE3] bg-[#FAFAF8] px-4 py-3 text-[#17201B] text-sm placeholder:text-[#9AA49E] focus:border-[#2C5E43] focus:bg-white focus:ring-2 focus:ring-[#2C5E43]/10 outline-none transition-all duration-200";
 
   return (
-    <form onSubmit={enviar} className="grid gap-4 rounded-[24px] border border-ink/10 bg-white p-6 shadow-[0_10px_30px_-12px_rgba(13,27,18,.25)]">
-      <label className="grid gap-1.5 text-sm font-medium">
-        Motivo
-        <select value={motivo} onChange={(e) => setMotivo(e.target.value)} className={campo}>
+    <form
+      onSubmit={enviar}
+      className="grid gap-5 rounded-3xl border border-[#E8EAE3] bg-white p-8 shadow-[0_16px_50px_-12px_rgba(13,27,18,0.12)]"
+    >
+      {/* Motivo */}
+      <label className="grid gap-1.5">
+        <span style={{ fontFamily: "var(--font-label)", fontWeight: 700 }} className="text-xs uppercase tracking-wider text-[#2C5E43]">
+          Motivo
+        </span>
+        <select value={motivo} onChange={(e) => setMotivo(e.target.value)} className={inputClass}>
           {MOTIVOS.map((m) => (
             <option key={m}>{m}</option>
           ))}
         </select>
       </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        Tu nombre
-        <input value={nombre} onChange={(e) => setNombre(e.target.value)} autoComplete="name" className={campo} />
+
+      {/* Nombre */}
+      <label className="grid gap-1.5">
+        <span style={{ fontFamily: "var(--font-label)", fontWeight: 700 }} className="text-xs uppercase tracking-wider text-[#2C5E43]">
+          Tu nombre
+        </span>
+        <input
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          placeholder="¿Cómo te llamas?"
+          autoComplete="name"
+          className={inputClass}
+        />
       </label>
-      <label className="grid gap-1.5 text-sm font-medium">
-        Tu mensaje
-        <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} required rows={5} className={campo} />
+
+      {/* Mensaje */}
+      <label className="grid gap-1.5">
+        <span style={{ fontFamily: "var(--font-label)", fontWeight: 700 }} className="text-xs uppercase tracking-wider text-[#2C5E43]">
+          Tu mensaje
+        </span>
+        <textarea
+          value={mensaje}
+          onChange={(e) => setMensaje(e.target.value)}
+          required
+          rows={5}
+          placeholder="Cuéntanos con detalle..."
+          className={`${inputClass} resize-none`}
+        />
       </label>
-      <button type="submit" className="min-h-12 rounded-full bg-wa px-6 font-semibold text-white hover:bg-[#178246]">
-        💬 Enviar por WhatsApp
+
+      {/* Submit */}
+      <button
+        type="submit"
+        style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+        className={`relative overflow-hidden min-h-13 rounded-full px-6 text-sm text-white transition-all duration-300 ${
+          sent
+            ? "bg-[#2C5E43] shadow-[0_0_20px_rgba(44,94,67,0.4)]"
+            : "bg-[#25D366] hover:bg-[#1db954] shadow-[0_4px_20px_rgba(37,211,102,0.35)] hover:shadow-[0_8px_30px_rgba(37,211,102,0.5)]"
+        }`}
+      >
+        {sent ? "✅ Abriendo WhatsApp..." : "💬 Enviar por WhatsApp"}
       </button>
-      <p className="text-sm text-ink/60">Se abrirá WhatsApp con tu mensaje listo para enviar al equipo de GuIAloja.</p>
+
+      <p style={{ fontFamily: "var(--font-body)" }} className="text-xs text-[#64746B] text-center">
+        Se abrirá WhatsApp con tu mensaje listo para enviar al equipo de GuIAloja.
+      </p>
     </form>
   );
 }

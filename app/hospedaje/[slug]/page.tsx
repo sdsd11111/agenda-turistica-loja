@@ -42,36 +42,106 @@ export default async function HospedajeFicha({ params }: Props) {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PageHero title={h.nombre} lead={`${h.tipo} · ${h.zona}`}>
-        <span className={`inline-block rounded-full bg-white px-4 py-1.5 text-sm font-semibold ${h.verificado ? "text-[#1b6b3a]" : "text-[#9a6200]"}`}>
+
+      <PageHero
+        title={h.nombre}
+        badge={`🏨 ${h.tipo} · ${cantonNombre(h.cantonSlug)}`}
+        lead={h.zona}
+        imagen="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80"
+      >
+        <span
+          style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+          className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs uppercase tracking-wider ${
+            h.verificado
+              ? "bg-[#EBF3ED]/90 text-[#2C5E43] border border-[#2C5E43]/25"
+              : "bg-amber-100/90 text-amber-800 border border-amber-300/40"
+          }`}
+        >
           {h.verificado ? "✅ Verificado GuIAloja" : "⏳ En proceso de verificación"}
         </span>
       </PageHero>
 
-      <section className="py-14">
+      <section className="py-14 bg-[#FAFAF8]">
         <div className="mx-auto grid w-[min(1180px,100%-40px)] gap-10 lg:grid-cols-[1.4fr_1fr]">
+          {/* Left: content */}
           <div>
-            <Photo gradient={h.gradient} src={h.imagen} alt={h.nombre} emoji="🏨" className="h-72 rounded-[24px] sm:h-96" />
-            <h2 className="mt-8 font-serif text-3xl font-semibold text-forest">Sobre este hospedaje</h2>
-            <p className="mt-2 max-w-[62ch] text-lg text-ink/75">{h.descripcion}</p>
-            <h3 className="mt-8 font-serif text-2xl font-semibold text-forest">Servicios</h3>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {h.servicios.map((s) => (
-                <li key={s} className="rounded-full bg-mist px-4 py-1.5 text-sm font-medium text-forest">{s}</li>
-              ))}
-            </ul>
-            {h.demo && <p className="mt-8 rounded-xl bg-[#f6e7dc] p-4 text-sm text-ochre">Ficha de demostración. Los datos reales se cargarán cuando el establecimiento se afilie.</p>}
+            <div className="overflow-hidden rounded-3xl">
+              <Photo gradient={h.gradient} src={h.imagen} alt={h.nombre} emoji="🏨" className="h-72 sm:h-96 w-full" />
+            </div>
+
+            <div className="mt-8">
+              <span
+                style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
+              >
+                Sobre este hospedaje
+              </span>
+              <h2
+                style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
+                className="text-2xl text-[#17201B]"
+              >
+                Descripción
+              </h2>
+              <p style={{ fontFamily: "var(--font-body)" }} className="mt-3 text-[1.05rem] text-[#3D4F45] leading-relaxed max-w-[62ch]">
+                {h.descripcion}
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <h3
+                style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+                className="text-xl text-[#17201B] mb-3"
+              >
+                Servicios incluidos
+              </h3>
+              <ul className="flex flex-wrap gap-2">
+                {h.servicios.map((s) => (
+                  <li
+                    key={s}
+                    style={{ fontFamily: "var(--font-label)", fontWeight: 600 }}
+                    className="rounded-full bg-[#EBF3ED] text-[#2C5E43] border border-[#2C5E43]/15 px-4 py-1.5 text-xs uppercase tracking-wide"
+                  >
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {h.demo && (
+              <p className="mt-8 rounded-2xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-800">
+                ⚠️ Ficha de demostración. Los datos reales se cargarán cuando el establecimiento se afilie a GuIAloja.
+              </p>
+            )}
           </div>
 
-          <aside className="h-fit rounded-[24px] border border-ink/10 bg-white p-6 shadow-[0_10px_30px_-12px_rgba(13,27,18,.25)] lg:sticky lg:top-24">
-            <p className="text-sm text-ink/60">Desde</p>
-            <p className="font-serif text-5xl font-bold text-ochre">${h.desde}<span className="font-sans text-base font-medium text-ink/70"> /noche</span></p>
-            <p className="mt-2 text-sm text-ink/60">Precio referencial. Confirma tarifa y disponibilidad por WhatsApp.</p>
-            <WhatsAppButton mensaje={mensajeConsulta(h.nombre)} className="mt-5 w-full">💬 Reservar por WhatsApp</WhatsAppButton>
-            <p className="mt-3 text-sm text-ink/60">Sin intermediarios ni comisiones.</p>
-            <Link href={`/cantones/${h.cantonSlug}`} className="mt-5 block text-sm font-semibold text-sky hover:text-forest">
-              Más sobre {cantonNombre(h.cantonSlug)}
-            </Link>
+          {/* Right: booking card */}
+          <aside className="h-fit rounded-3xl border border-[#E8EAE3] bg-white p-7 shadow-[0_16px_50px_-12px_rgba(13,27,18,0.12)] lg:sticky lg:top-24">
+            <p style={{ fontFamily: "var(--font-body)" }} className="text-xs text-[#64746B] uppercase tracking-wider mb-1">Precio desde</p>
+            <div className="flex items-baseline gap-1">
+              <span style={{ fontFamily: "var(--font-display)", fontWeight: 900 }} className="text-5xl text-[#17201B]">${h.desde}</span>
+              <span style={{ fontFamily: "var(--font-body)" }} className="text-sm text-[#64746B]">/noche</span>
+            </div>
+            <p style={{ fontFamily: "var(--font-body)" }} className="mt-2 text-xs text-[#64746B]">
+              Precio referencial. Confirma tarifa y disponibilidad directamente.
+            </p>
+
+            <div className="mt-6 flex flex-col gap-3">
+              <WhatsAppButton mensaje={mensajeConsulta(h.nombre)} className="w-full justify-center">
+                💬 Reservar por WhatsApp
+              </WhatsAppButton>
+              <p style={{ fontFamily: "var(--font-body)" }} className="text-[11px] text-[#64746B] text-center">Sin intermediarios ni comisiones.</p>
+            </div>
+
+            <div className="mt-6 pt-5 border-t border-[#EEF0EA]">
+              <Link
+                href={`/cantones/${h.cantonSlug}`}
+                style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                className="flex items-center gap-2 text-sm text-[#2C5E43] hover:text-[#17201B] transition-colors"
+              >
+                🗺️ Más sobre {cantonNombre(h.cantonSlug)}
+                <span>→</span>
+              </Link>
+            </div>
           </aside>
         </div>
       </section>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import Photo from "@/components/Photo";
 import { ATRACTIVOS } from "@/lib/data/atractivos";
 import { cantonNombre } from "@/lib/data/cantones";
 
@@ -14,25 +13,112 @@ export const metadata: Metadata = {
 export default function AtractivosPage() {
   return (
     <>
-      <PageHero title="Atractivos de Loja" lead="Bosque de niebla, patrimonio, cultura viva y paisajes. Elige qué quieres vivir." />
-      <section className="py-14">
-        <div className="mx-auto grid w-[min(1180px,100%-40px)] gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {ATRACTIVOS.map((a) => (
-            <article id={a.slug} key={a.slug} className="flex flex-col overflow-hidden rounded-[20px] border border-ink/10 bg-white">
-              <Photo gradient={a.gradient} emoji={a.emoji} className="h-44" />
-              <div className="flex flex-1 flex-col gap-2 p-5">
-                <p className="text-sm text-ink/60">{a.categoria} · {cantonNombre(a.cantonSlug)}</p>
-                <h2 className="font-serif text-2xl font-semibold leading-tight text-forest">{a.nombre}</h2>
-                <p className="text-[.95rem] text-ink/75">{a.descripcion}</p>
-                <div className="mt-auto flex items-center justify-between pt-3 text-sm">
-                  {a.duracion && <span className="rounded-full bg-mist px-3 py-1 font-semibold text-forest">⏱ {a.duracion}</span>}
-                  <Link href={`/cantones/${a.cantonSlug}`} className="font-semibold text-sky hover:text-forest">Ver cantón</Link>
+      <PageHero
+        title="Atractivos Turísticos de Loja"
+        lead="Bosque de niebla, senderos milenarios, patrimonio vivo y arquitectura neogótica. Conoce los tesoros de la provincia del sur."
+        badge="🗺️ Directorio Provincial · Loja"
+        imagen="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
+      />
+
+      <section className="py-16 bg-[#FAFAF8] text-[#17201B]">
+        <div className="mx-auto w-[min(1180px,100%-40px)]">
+          {/* Section header */}
+          <div className="mb-10 flex items-end justify-between flex-wrap gap-4">
+            <div>
+              <span
+                style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
+              >
+                {ATRACTIVOS.length} atractivos disponibles
+              </span>
+              <h2
+                style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
+                className="text-2xl sm:text-3xl text-[#17201B]"
+              >
+                Elige tu destino en Loja
+              </h2>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {ATRACTIVOS.map((a) => (
+              <article
+                id={a.slug}
+                key={a.slug}
+                className="group relative flex flex-col overflow-hidden rounded-3xl min-h-[360px] shadow-[0_4px_24px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:-translate-y-1.5 transition-all duration-500"
+              >
+                {/* Real photo or gradient fallback */}
+                {a.imagen ? (
+                  <img
+                    src={a.imagen}
+                    alt={a.nombre}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0" style={{ background: a.gradient }} />
+                )}
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/15" aria-hidden />
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-1 flex-col justify-between p-6">
+                  {/* Top badges */}
+                  <div className="flex flex-wrap gap-2">
+                    <span
+                      style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 text-[10px] uppercase tracking-wider text-white"
+                    >
+                      {a.emoji} {a.categoria}
+                    </span>
+                    {a.duracion && (
+                      <span
+                        style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 px-3 py-1 text-[10px] uppercase tracking-wider text-white/85"
+                      >
+                        ⏱ {a.duracion}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Bottom info */}
+                  <div className="mt-auto">
+                    <p
+                      style={{ fontFamily: "var(--font-label)", fontWeight: 600 }}
+                      className="text-[11px] text-[#52B788] uppercase tracking-wider mb-1"
+                    >
+                      Cantón {cantonNombre(a.cantonSlug)}
+                    </p>
+                    <h2
+                      style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.02em", color: "#FFFFFF" }}
+                      className="text-xl leading-tight drop-shadow-md"
+                    >
+                      {a.nombre}
+                    </h2>
+                    <p
+                      style={{ fontFamily: "var(--font-body)" }}
+                      className="text-xs text-white/75 mt-2 leading-relaxed line-clamp-2"
+                    >
+                      {a.descripcion}
+                    </p>
+
+                    <Link
+                      href={`/cantones/${a.cantonSlug}`}
+                      style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                      className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 px-4 py-2 text-xs text-white transition-all duration-300"
+                    >
+                      Ver cantón →
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
+
+          <p style={{ fontFamily: "var(--font-body)" }} className="mt-12 text-center text-xs text-[#94A39A]">
+            Información verificada para visitantes. Confirma horarios y estado de senderos antes de viajar.
+          </p>
         </div>
-        <p className="mx-auto mt-8 w-[min(1180px,100%-40px)] text-center text-sm text-ink/60">Confirma horarios, accesos y requisitos de ingreso antes de visitar.</p>
       </section>
     </>
   );

@@ -3,8 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    // Cuando conectes Bunny CDN (Baninet), agrega aquí tu hostname:
-    // remotePatterns: [{ protocol: "https", hostname: "TU-ZONA.b-cdn.net" }],
+    remotePatterns: [
+      // Unsplash — fotos de eventos y atractivos
+      { protocol: "https", hostname: "images.unsplash.com" },
+      // Baninet/Bunny CDN — cuando conectes tu CDN:
+      // { protocol: "https", hostname: "TU-ZONA.b-cdn.net" },
+    ],
     formats: ["image/avif", "image/webp"],
   },
 };

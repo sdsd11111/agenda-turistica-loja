@@ -7,6 +7,7 @@ export const GUIAS: Guia[] = [
     titulo: "Ruta del café en Vilcabamba",
     resumen: "Fincas entre montañas, tazas recién preparadas y un valle donde el ritmo baja solo.",
     categoria: "Rutas", duracion: "2 días", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#8B7355,#A0522D 45%,#2d6a4f)",
     keywords: ["ruta del café vilcabamba", "café en loja", "qué hacer en vilcabamba"],
     secciones: [
@@ -25,6 +26,7 @@ export const GUIAS: Guia[] = [
     titulo: "Saraguro: turismo cultural kichwa",
     resumen: "Un pueblo que conserva su vestimenta, sus textiles y su gastronomía, y la comparte con orgullo.",
     categoria: "Cultura", duracion: "1 día", nivel: "Fácil", cantonSlug: "saraguro", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#A0522D,#1B4332 60%,#2D6A8B)",
     keywords: ["turismo en saraguro", "cultura kichwa saraguro", "qué hacer en saraguro"],
     secciones: [
@@ -43,6 +45,7 @@ export const GUIAS: Guia[] = [
     titulo: "Parque Podocarpus: senderismo en el bosque de niebla",
     resumen: "Caminatas por bosque cargado de niebla, con una biodiversidad que sorprende en cada sendero.",
     categoria: "Naturaleza", duracion: "1 día", nivel: "Moderado", cantonSlug: "loja", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#a9d6e5,#2D6A8B 40%,#12301f)",
     keywords: ["parque podocarpus", "senderismo loja", "bosque de niebla ecuador"],
     secciones: [
@@ -61,6 +64,7 @@ export const GUIAS: Guia[] = [
     titulo: "Qué hacer en Loja en 3 días",
     resumen: "Ciudad, naturaleza y un valle de descanso: una ruta realista para un fin de semana largo.",
     categoria: "Itinerarios", duracion: "3 días", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#1B4332,#8B7355 60%,#f2c14e)",
     keywords: ["qué hacer en loja ecuador", "itinerario loja 3 días", "descubre loja"],
     secciones: [
@@ -77,6 +81,7 @@ export const GUIAS: Guia[] = [
     titulo: "Cómo llegar a Loja: aeropuerto, bus y carro",
     resumen: "Las formas de llegar a la provincia y lo que conviene saber antes de salir.",
     categoria: "Logística", duracion: "Lectura de 5 min", nivel: "Fácil", cantonSlug: "catamayo", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#2D6A8B,#a9d6e5 60%,#1B4332)",
     keywords: ["cómo llegar a loja", "aeropuerto catamayo", "bus a loja"],
     secciones: [
@@ -93,6 +98,7 @@ export const GUIAS: Guia[] = [
     titulo: "Hoteles en Vilcabamba: cómo elegir",
     resumen: "Hosterías, casas rurales y hostales: qué mirar antes de escribir para reservar.",
     categoria: "Hospedaje", duracion: "Lectura de 4 min", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#f2c14e,#2d6a4f 55%,#12301f)",
     keywords: ["hoteles en vilcabamba", "hospedaje vilcabamba", "hosterías vilcabamba"],
     secciones: [
@@ -109,6 +115,7 @@ export const GUIAS: Guia[] = [
     titulo: "Qué hacer en Macará y la frontera",
     resumen: "Una escala distinta en el sur: clima seco, ambiente fronterizo y paso hacia Perú.",
     categoria: "Cantones", duracion: "Medio día", nivel: "Fácil", cantonSlug: "macara", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#A0522D,#2D6A8B)",
     keywords: ["qué hacer en macará", "frontera ecuador perú macará", "turismo macará"],
     secciones: [
@@ -123,6 +130,7 @@ export const GUIAS: Guia[] = [
     titulo: "Qué hacer si se te daña el carro en la vía",
     resumen: "Pasos de seguridad y cómo encontrar talleres y grúas en la provincia de Loja.",
     categoria: "Auxilio en ruta", duracion: "Lectura de 4 min", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
+    imagen: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80",
     gradient: "linear-gradient(135deg,#5c1010,#C0392B 60%,#2a0808)",
     keywords: ["auxilio mecánico en carretera loja", "grúa loja", "taller mecánico loja"],
     secciones: [

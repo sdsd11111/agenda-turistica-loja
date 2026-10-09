@@ -5,6 +5,8 @@ export type Canton = {
   descripcion: string;
   emoji: string;
   gradient: string;
+  imagen?: string;
+  atractivo?: string; // nombre del lugar turístico principal
   lat: number;
   lng: number;
   destacado?: boolean;
@@ -30,7 +32,7 @@ export type Hospedaje = {
   destacado?: boolean;
 };
 
-export type CategoriaAtractivo = "Naturaleza" | "Cultura" | "Patrimonio" | "Religioso" | "Parque";
+export type CategoriaAtractivo = "Naturaleza" | "Cultura" | "Patrimonio" | "Religioso" | "Parque" | "Aventura";
 
 export type Atractivo = {
   slug: string;
@@ -40,6 +42,7 @@ export type Atractivo = {
   descripcion: string;
   emoji: string;
   gradient: string;
+  imagen?: string;
   lat: number;
   lng: number;
   duracion?: string;
@@ -70,6 +73,7 @@ export type Guia = {
   duracion: string;
   nivel: "Fácil" | "Moderado";
   gradient: string;
+  imagen?: string;
   cantonSlug?: string;
   fecha: string;
   secciones: GuiaSeccion[];
@@ -87,4 +91,30 @@ export type ItemBusqueda = {
   emoji: string;
   lat: number;
   lng: number;
+};
+
+export type Evento = {
+  slug: string;
+  titulo: string;
+  fecha: string;
+  fechaTexto: string;
+  hora?: string;
+  cantonSlug: string;
+  cantonNombre: string;
+  lugar: string;
+  categoria: "Cultural" | "Gastronómico" | "Feria" | "Música" | "Tradición";
+  descripcion: string;
+  esHoy?: boolean;
+  esFinDeSemana?: boolean;
+  imagen?: string;
+  urlExterna?: string;
+};
+
+export type FundadorAliado = {
+  nombre: string;
+  tipo: "Municipio Fundador" | "GAD Cantonal" | "Operador Turístico";
+  siglas?: string;
+  logoTexto: string;
+  canton?: string;
+  web?: string;
 };
