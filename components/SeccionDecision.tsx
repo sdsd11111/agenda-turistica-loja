@@ -8,21 +8,21 @@ const DESTACADOS = [
   {
     label: "Bosque Puyango",
     desc: "Troncos fosilizados de 100M años",
-    href: "/descubre-loja/bosque-petrificado-puyango-guia",
+    href: "/guias/bosque-petrificado-puyango-guia",
     tag: "Paleontología",
     icon: "🪵",
   },
   {
     label: "Vilcabamba",
     desc: "Valle de la Longevidad & café",
-    href: "/descubre-loja/ruta-del-cafe-vilcabamba",
+    href: "/guias/ruta-del-cafe-vilcabamba",
     tag: "Naturaleza",
     icon: "🌿",
   },
   {
     label: "Santuario El Cisne",
     desc: "Basílica neogótica & Romería",
-    href: "/descubre-loja/romeria-virgen-del-cisne-loja",
+    href: "/guias/romeria-virgen-del-cisne-loja",
     tag: "Patrimonio",
     icon: "⛪",
   },
@@ -36,7 +36,7 @@ const DESTACADOS = [
   {
     label: "Saraguro Kichwa",
     desc: "Cultura andina & medicina viva",
-    href: "/descubre-loja/saraguro-turismo-cultural-kichwa",
+    href: "/guias/saraguro-turismo-cultural-kichwa",
     tag: "Intercultural",
     icon: "🧶",
   },
@@ -127,8 +127,8 @@ export default function SeccionDecision() {
   return (
     <>
       <section className="pt-28 pb-20 bg-[#FAFAF8] text-[#17201B]" id="seccion-decision">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
-          <div className="max-w-xl mb-12">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
+          <div className="max-w-2xl mb-12">
             <span
               style={{ fontFamily: "var(--font-label)", fontWeight: 600, fontSize: "0.72rem", letterSpacing: "0.1em" }}
               className="uppercase text-[#2C5E43] font-semibold block mb-2"
@@ -149,7 +149,7 @@ export default function SeccionDecision() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
             {/* ── CARD 1: ¿QUÉ VISITAR? (Glassmorphism con imagen de fondo) ── */}
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)]">
               {/* Imagen de fondo con zoom sutil en hover */}
@@ -174,21 +174,21 @@ export default function SeccionDecision() {
 
               {/* Bottom Glass Card Container con contraste optimizado */}
               <div className="relative z-10 mt-auto">
-                <div className="p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-black/75 backdrop-blur-2xl border border-white/30 shadow-2xl text-white">
-                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/75 backdrop-blur-2xl border border-white/30 shadow-2xl text-white">
+                  <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-4">
                     <div className="min-w-0">
-                      <p className="text-xs uppercase tracking-widest text-[#52B788] font-bold mb-1 drop-shadow-xs">
+                      <p className="text-[11px] uppercase tracking-widest text-[#52B788] font-bold mb-1 drop-shadow-xs">
                         Atractivos Insignia
                       </p>
                       <h3
                         style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.02em", color: "#FFFFFF" }}
-                        className="text-2xl sm:text-3xl !text-white leading-tight drop-shadow-md"
+                        className="text-xl sm:text-2xl !text-white leading-tight drop-shadow-md"
                       >
                         Lugares Turísticos de Loja
                       </h3>
                       <p
                         style={{ fontFamily: "var(--font-body)", color: "#E2E8F0" }}
-                        className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-1 font-medium"
+                        className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-2 font-normal"
                       >
                         Bosque Puyango, Vilcabamba, Podocarpus, Guayacanes y El Cisne.
                       </p>
@@ -198,7 +198,7 @@ export default function SeccionDecision() {
                       type="button"
                       onClick={abrirLugares}
                       style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                      className="px-6 py-3.5 rounded-2xl bg-white text-[#17201B] hover:bg-[#52B788] hover:text-white transition-all text-xs uppercase tracking-wider shrink-0 shadow-lg flex items-center justify-center gap-2 font-bold cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
+                      className="px-5 py-3 rounded-xl bg-white text-[#17201B] hover:bg-[#52B788] hover:text-white transition-all text-xs uppercase tracking-wider shrink-0 shadow-lg flex items-center justify-center gap-2 font-bold cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
                     >
                       <span>Ver Atractivos</span>
                       <span className="text-sm">↗</span>
@@ -206,14 +206,14 @@ export default function SeccionDecision() {
                   </div>
 
                   {/* Pills de atractivos en vidrio */}
-                  <div className="mt-4 pt-4 border-t border-white/20 flex flex-wrap items-center gap-2">
-                    {["🪵 Bosque Puyango", "🌿 Vilcabamba", "🌲 Podocarpus", "⛪ El Cisne", "🌼 Guayacanes"].map((tag) => (
+                  <div className="mt-4 pt-3.5 border-t border-white/20 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    {["🪵 Puyango", "🌿 Vilcabamba", "🌲 Podocarpus", "⛪ El Cisne", "🌼 Guayacanes"].map((tag) => (
                       <button
                         key={tag}
                         type="button"
                         onClick={abrirLugares}
                         style={{ color: "#FFFFFF" }}
-                        className="px-3 py-1 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-md border border-white/30 text-[11.5px] font-semibold !text-white transition-all cursor-pointer shadow-2xs"
+                        className="px-2.5 py-1 rounded-lg bg-white/20 hover:bg-white/35 backdrop-blur-md border border-white/30 text-[11px] font-semibold !text-white transition-all cursor-pointer shadow-2xs"
                       >
                         {tag}
                       </button>
@@ -247,21 +247,21 @@ export default function SeccionDecision() {
 
               {/* Bottom Glass Card Container con contraste optimizado */}
               <div className="relative z-10 mt-auto">
-                <div className="p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-black/75 backdrop-blur-2xl border border-white/30 shadow-2xl text-white">
-                  <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/75 backdrop-blur-2xl border border-white/30 shadow-2xl text-white">
+                  <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-4">
                     <div className="min-w-0">
-                      <p className="text-xs uppercase tracking-widest text-[#F2C14E] font-bold mb-1 drop-shadow-xs">
+                      <p className="text-[11px] uppercase tracking-widest text-[#F2C14E] font-bold mb-1 drop-shadow-xs">
                         Planifica tu viaje
                       </p>
                       <h3
                         style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.02em", color: "#FFFFFF" }}
-                        className="text-2xl sm:text-3xl !text-white leading-tight drop-shadow-md"
+                        className="text-xl sm:text-2xl !text-white leading-tight drop-shadow-md"
                       >
                         Qué Hacer en Loja: Rutas e Itinerarios
                       </h3>
                       <p
                         style={{ fontFamily: "var(--font-body)", color: "#E2E8F0" }}
-                        className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-1 font-medium"
+                        className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-2 font-normal"
                       >
                         Rutas de 2 a 3 días con distancias, clima y recomendaciones en tiempo real.
                       </p>
@@ -271,7 +271,7 @@ export default function SeccionDecision() {
                       type="button"
                       onClick={abrirRuta}
                       style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                      className="px-6 py-3.5 rounded-2xl bg-[#2C5E43] text-white hover:bg-[#3d7c5a] transition-all text-xs uppercase tracking-wider shrink-0 shadow-lg flex items-center justify-center gap-2 font-bold cursor-pointer hover:scale-[1.02] active:scale-[0.98] border border-white/20"
+                      className="px-5 py-3 rounded-xl bg-[#2C5E43] text-white hover:bg-[#3d7c5a] transition-all text-xs uppercase tracking-wider shrink-0 shadow-lg flex items-center justify-center gap-2 font-bold cursor-pointer hover:scale-[1.02] active:scale-[0.98] border border-white/20"
                     >
                       <span>Crear mi ruta</span>
                       <span className="text-sm">⚡</span>
@@ -279,18 +279,94 @@ export default function SeccionDecision() {
                   </div>
 
                   {/* Atajos rápidos en vidrio para itinerarios */}
-                  <div className="mt-4 pt-4 border-t border-white/20 flex flex-wrap items-center gap-2">
+                  <div className="mt-4 pt-3.5 border-t border-white/20 flex flex-wrap items-center gap-1.5 sm:gap-2">
                     {ITINERARIOS.map((it) => (
                       <button
                         key={it.titulo}
                         type="button"
                         onClick={() => iniciarAsesorIA(it.prompt)}
                         style={{ color: "#FFFFFF" }}
-                        className="px-3 py-1 rounded-xl bg-white/20 hover:bg-white/35 backdrop-blur-md border border-white/30 text-[11.5px] font-semibold !text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
+                        className="px-2.5 py-1 rounded-lg bg-white/20 hover:bg-white/35 backdrop-blur-md border border-white/30 text-[11px] font-semibold !text-white transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs"
                       >
                         <span>{it.icon}</span>
                         <span>{it.badge} · {it.tiempo}</span>
                       </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ── CARD 3: ¿QUÉ HACER HOY? (Anclada a la sección de Eventos en Vivo) ── */}
+            <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)] md:col-span-2 lg:col-span-1">
+              {/* Imagen de fondo con zoom sutil en hover */}
+              <img
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80"
+                alt="Qué hacer hoy en Loja - Eventos y cultura"
+                className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              {/* Overlay gradiente cinematográfico para contraste perfecto */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/30 pointer-events-none" />
+
+              {/* Top Bar Glass */}
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/55 backdrop-blur-md border border-white/25 text-white text-[11px] font-semibold tracking-wider uppercase">
+                  <span className="size-2 rounded-full bg-[#E63946] animate-ping" />
+                  Cartelera en Vivo
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/25 backdrop-blur-md border border-white/30 text-white text-[11px] font-medium">
+                  16 Cantones
+                </span>
+              </div>
+
+              {/* Bottom Glass Card Container con contraste optimizado */}
+              <div className="relative z-10 mt-auto">
+                <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-black/75 backdrop-blur-2xl border border-white/30 shadow-2xl text-white">
+                  <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-4">
+                    <div className="min-w-0">
+                      <p className="text-[11px] uppercase tracking-widest text-[#7ECB9A] font-bold mb-1 drop-shadow-xs">
+                        Agenda Cultural & Festividades
+                      </p>
+                      <h3
+                        style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.02em", color: "#FFFFFF" }}
+                        className="text-xl sm:text-2xl !text-white leading-tight drop-shadow-md"
+                      >
+                        ¿Qué hacer hoy en Loja?
+                      </h3>
+                      <p
+                        style={{ fontFamily: "var(--font-body)", color: "#E2E8F0" }}
+                        className="text-xs sm:text-sm !text-gray-200 mt-1 line-clamp-2 font-normal"
+                      >
+                        Eventos del día, festivales cantonales, ferias y conciertos de fin de semana.
+                      </p>
+                    </div>
+
+                    <Link
+                      href="#eventos"
+                      style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                      className="px-5 py-3 rounded-xl bg-[#52B788] text-white hover:bg-[#3d966c] transition-all text-xs uppercase tracking-wider shrink-0 shadow-lg flex items-center justify-center gap-2 font-bold cursor-pointer hover:scale-[1.02] active:scale-[0.98] border border-white/20 text-center"
+                    >
+                      <span>Ver Agenda Hoy</span>
+                      <span className="text-sm">↓</span>
+                    </Link>
+                  </div>
+
+                  {/* Acceso directo a cantones en eventos */}
+                  <div className="mt-4 pt-3.5 border-t border-white/20 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                    {[
+                      { nombre: "Loja & Vilca", anchor: "#eventos" },
+                      { nombre: "Saraguro", anchor: "#eventos" },
+                      { nombre: "Catamayo", anchor: "#eventos" },
+                      { nombre: "Zapotillo", anchor: "#eventos" },
+                    ].map((item) => (
+                      <Link
+                        key={item.nombre}
+                        href={item.anchor}
+                        style={{ color: "#FFFFFF" }}
+                        className="px-2.5 py-1 rounded-lg bg-white/20 hover:bg-white/35 backdrop-blur-md border border-white/30 text-[11px] font-semibold !text-white transition-all cursor-pointer shadow-2xs"
+                      >
+                        📍 {item.nombre}
+                      </Link>
                     ))}
                   </div>
                 </div>

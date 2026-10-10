@@ -40,6 +40,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import SeccionDecisionCanton from "@/components/SeccionDecisionCanton";
+import SeccionEventosCanton from "@/components/SeccionEventosCanton";
+
 export default async function CantonPage({ params }: Props) {
   const { slug } = await params;
   const canton = getCanton(slug);
@@ -54,6 +57,7 @@ export default async function CantonPage({ params }: Props) {
         title={canton.nombre}
         lead={canton.descripcion}
         badge={`${canton.emoji} Cantón · Cabecera: ${canton.cabecera}`}
+        backLink={{ href: "/cantones", label: "Volver a Cantones" }}
         imagen={canton.imagen ?? "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80"}
       >
         {canton.atractivo && (
@@ -61,119 +65,26 @@ export default async function CantonPage({ params }: Props) {
             style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
             className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/25 px-4 py-2 text-xs text-white"
           >
-            🏖️ Atración principal: {canton.atractivo}
+            🏖️ Atracción principal: {canton.atractivo}
           </span>
         )}
       </PageHero>
 
-      {/* Atractivos */}
-      <section className="py-20 bg-[#FAFAF8] text-[#17201B]">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
-          <div className="mb-10">
-            <span
-              style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em" }}
-              className="uppercase text-[#2C5E43] block mb-2"
-            >
-              Destinos y Naturaleza
-            </span>
-            <h2
-              style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
-              className="text-2xl sm:text-3xl text-[#17201B]"
-            >
-              Atractivos y lugares clave en {canton.nombre}
-            </h2>
-          </div>
+      {/* ── SECCIÓN 1: DECISIÓN DEL CANTÓN (3 CARDS ADAPTADAS AL CANTÓN) ── */}
+      <SeccionDecisionCanton canton={canton} atractivos={atractivos} />
 
-          {atractivos.length === 0 ? (
-            <div className="rounded-3xl border border-[#E8EAE3] bg-[#17201B] p-8 sm:p-10 text-center max-w-2xl mx-auto overflow-hidden relative">
-              {/* Atractivo del cantón */}
-              {canton.imagen && (
-                <>
-                  <img
-                    src={canton.imagen}
-                    alt={canton.nombre}
-                    className="absolute inset-0 w-full h-full object-cover opacity-20"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#17201B]/95 to-[#17201B]/50" aria-hidden />
-                </>
-              )}
-              <div className="relative z-10">
-                <span className="text-4xl">{canton.emoji}</span>
-                <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700 }} className="text-xl text-white mt-3">
-                  {canton.atractivo ?? `Descubre ${canton.nombre}`}
-                </h3>
-                <p style={{ fontFamily: "var(--font-body)" }} className="text-sm text-white/70 mt-2 leading-relaxed max-w-md mx-auto">
-                  Estamos registrando los atractivos oficiales de {canton.nombre}. ¿Conoces rutas o sitios recomendados?
-                </p>
-                <Link
-                  href="/contacto"
-                  style={{ fontFamily: "var(--font-label)", fontWeight: 600 }}
-                  className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#2C5E43] text-white text-xs hover:bg-[#1f4530] transition-all"
-                >
-                  Recomendar un atractivo ↗
-                </Link>
-              </div>
-            </div>
-          ) : (
-            <div className="grid gap-5 md:grid-cols-2">
-              {atractivos.map((a) => (
-                <div
-                  key={a.slug}
-                  className="group relative overflow-hidden rounded-3xl min-h-[180px] flex flex-col justify-end shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.18)] hover:-translate-y-1 transition-all duration-400"
-                >
-                  {/* Photo or gradient */}
-                  {a.imagen ? (
-                    <img
-                      src={a.imagen}
-                      alt={a.nombre}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-600 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="absolute inset-0" style={{ background: a.gradient }} />
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" aria-hidden />
-                  
-                  <div className="relative z-10 p-5">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span
-                        style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                        className="text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white"
-                      >
-                        {a.emoji} {a.categoria}
-                      </span>
-                      {a.duracion && (
-                        <span className="text-[10px] text-white/70 font-medium">⏱ {a.duracion}</span>
-                      )}
-                    </div>
-                    <h3
-                      style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#FFFFFF" }}
-                      className="text-lg leading-tight"
-                    >
-                      {a.nombre}
-                    </h3>
-                    <p
-                      style={{ fontFamily: "var(--font-body)" }}
-                      className="text-xs text-white/75 mt-1 leading-relaxed line-clamp-2"
-                    >
-                      {a.descripcion}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      {/* ── SECCIÓN 2: EVENTOS EN VIVO DEL CANTÓN CON PARALLAX Y SWIPE ── */}
+      <SeccionEventosCanton canton={canton} />
 
-      {/* Hospedaje */}
+      {/* ── SECCIÓN 3: HOSPEDAJE & ESTADÍA EN EL CANTÓN ── */}
       <section className="py-20 bg-white text-[#17201B] border-t border-[#EEF0EA]">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
           <div className="mb-10">
             <span
               style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em" }}
               className="uppercase text-[#2C5E43] block mb-2"
             >
-              Hospedaje & Estadía
+              Hospedaje & Estadía Verificada
             </span>
             <h2
               style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
@@ -184,35 +95,86 @@ export default async function CantonPage({ params }: Props) {
           </div>
 
           {hoteles.length === 0 ? (
-            <div className="rounded-3xl border border-[#E8EAE3] bg-[#FAFAF8] p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
-              <div>
-                <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700 }} className="text-lg text-[#17201B]">
-                  ¿Tienes un hotel o cabaña en {canton.nombre}?
-                </h3>
-                <p style={{ fontFamily: "var(--font-body)" }} className="text-xs text-[#64746B] mt-1 max-w-xl">
-                  Sé el primer hospedaje verificado en figurar para los viajeros que buscan quedarse en {canton.nombre}.
-                </p>
+            <div>
+              <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+                {[
+                  {
+                    numero: "01",
+                    tipo: "Hotel / Cabaña Principal",
+                    descripcion: "Espacio verificado disponible para el primer hotel o complejo turístico de cabañas en " + canton.nombre + ".",
+                  },
+                  {
+                    numero: "02",
+                    tipo: "Hostería / Glamping",
+                    descripcion: "Plaza abierta para alojamientos campestres, glampings o fincas de descanso certificadas en " + canton.nombre + ".",
+                  },
+                  {
+                    numero: "03",
+                    tipo: "Posada / Hospedaje Local",
+                    descripcion: "Plaza abierta para posadas familiares, hostales y alojamientos de hospitalidad lojana en " + canton.nombre + ".",
+                  },
+                ].map((plaza) => (
+                  <div
+                    key={plaza.numero}
+                    className="p-8 rounded-3xl border-2 border-dashed border-[#D4D7CD] hover:border-[#2C5E43] bg-[#FAFAF8] hover:bg-white transition-all duration-300 flex flex-col items-center text-center justify-between min-h-[340px] shadow-xs hover:shadow-lg group"
+                  >
+                    {/* Badge superior */}
+                    <div className="w-full flex items-center justify-between text-[11px] font-bold text-[#64746B]">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF3ED] text-[#2C5E43] uppercase tracking-wider text-[10px] font-bold">
+                        <span className="size-1.5 rounded-full bg-[#52B788] animate-pulse" />
+                        Plaza Libre
+                      </span>
+                      <span style={{ fontFamily: "var(--font-label)" }}>#{plaza.numero}</span>
+                    </div>
+
+                    {/* Logo grande centrado súper clean */}
+                    <div className="my-auto py-4 flex flex-col items-center">
+                      <div className="size-20 sm:size-24 rounded-3xl bg-white border border-[#E8EAE3] group-hover:border-[#2C5E43]/40 group-hover:scale-105 transition-all duration-300 flex flex-col items-center justify-center shadow-xs text-[#2C5E43] mb-4">
+                        <span className="text-3xl sm:text-4xl">🏨</span>
+                      </div>
+                      <h3
+                        style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+                        className="text-base sm:text-lg text-[#17201B] group-hover:text-[#2C5E43] transition-colors"
+                      >
+                        {plaza.tipo}
+                      </h3>
+                      <p className="text-xs text-[#64746B] mt-2 max-w-xs leading-relaxed">
+                        {plaza.descripcion}
+                      </p>
+                    </div>
+
+                    {/* Botón CTA Postular / Vincular Hospedaje */}
+                    <a
+                      href={`https://wa.me/593963410409?text=${encodeURIComponent(
+                        `Hola, tengo un hospedaje en ${canton.nombre} y deseo postular para ocupar la plaza #${plaza.numero} (${plaza.tipo}) en la Agenda Turística de Loja.`
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                      className="w-full py-3 rounded-2xl bg-white border border-[#E8EAE3] group-hover:bg-[#2C5E43] group-hover:border-[#2C5E43] group-hover:text-white text-[#17201B] text-xs uppercase tracking-wider transition-all duration-200 shadow-xs flex items-center justify-center gap-2"
+                    >
+                      <span>Puesto Abierto · Postular</span>
+                      <span className="text-xs">↗</span>
+                    </a>
+                  </div>
+                ))}
               </div>
-              <div className="flex flex-wrap gap-3 shrink-0">
+
+              {/* Banner informativo de vinculación */}
+              <div className="mt-8 p-6 rounded-2xl bg-[#F4F5F0] border border-[#E8EAE3] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl shrink-0">✨</span>
+                  <p className="text-xs text-[#47554E]">
+                    <strong>¿Eres propietario de un hospedaje en {canton.nombre}?</strong> Los tres primeros alojamientos certificados obtienen verificación directa e integración en el Asesor IA.
+                  </p>
+                </div>
                 <Link
                   href="/para-negocios"
-                  style={{ fontFamily: "var(--font-label)", fontWeight: 600 }}
-                  className="px-5 py-2.5 rounded-full border border-[#E8EAE3] bg-white text-[#17201B] text-xs hover:bg-[#FAFAF8] transition-all"
-                >
-                  Ver planes
-                </Link>
-                <a
-                  href={`https://wa.me/593963410409?text=${encodeURIComponent(
-                    `Hola, tengo un hospedaje en ${canton.nombre} y deseo vincularme a la Agenda Turística de Loja.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                  className="px-5 py-2.5 rounded-full bg-[#2C5E43] text-white text-xs hover:bg-[#224B35] transition-all shadow-xs flex items-center gap-2"
+                  className="px-5 py-2.5 rounded-full bg-[#17201B] hover:bg-[#2C5E43] text-white text-xs whitespace-nowrap transition-all shrink-0"
                 >
-                  <span>💬 WhatsApp</span>
-                  <span className="text-xs">↗</span>
-                </a>
+                  Conocer planes para negocios →
+                </Link>
               </div>
             </div>
           ) : (
@@ -227,7 +189,7 @@ export default async function CantonPage({ params }: Props) {
 
       {/* CTA Institucional GAD */}
       <section className="py-16 bg-[#FAFAF8] border-t border-[#EEF0EA]">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
           <div className="p-6 sm:p-8 rounded-3xl border border-[#E8EAE3] bg-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
             <div>
               <h3 style={{ fontFamily: "var(--font-display)", fontWeight: 700 }} className="text-lg text-[#17201B]">

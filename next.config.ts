@@ -11,6 +11,20 @@ const nextConfig: NextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
   },
+  async redirects() {
+    return [
+      {
+        source: "/descubre-loja",
+        destination: "/guias",
+        permanent: true,
+      },
+      {
+        source: "/descubre-loja/:slug",
+        destination: "/guias/:slug",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

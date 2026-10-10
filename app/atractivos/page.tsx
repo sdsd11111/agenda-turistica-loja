@@ -29,7 +29,7 @@ export default function AtractivosPage() {
       />
 
       <section className="py-16 bg-[#FAFAF8] text-[#17201B]">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
           {/* Section header */}
           <div className="mb-10 flex items-end justify-between flex-wrap gap-4">
             <div>

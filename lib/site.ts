@@ -13,10 +13,15 @@ export const SITE = {
   ],
 } as const;
 
+export const SITE_URL = SITE.url;
+
+
 export const NAV_LINKS = [
   { href: "/cantones", label: "Cantones" },
   { href: "/hospedaje", label: "Hospedaje" },
   { href: "/atractivos", label: "Atractivos" },
-  { href: "/descubre-loja", label: "Guías" },
+  { href: "/guias", label: "Guías" },
+  { href: "/blog", label: "Blog" },
   { href: "/para-negocios", label: "Para negocios" },
 ] as const;
+

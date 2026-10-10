@@ -9,7 +9,7 @@ export default function Footer() {
         className="absolute inset-x-0 top-0 h-[4px]"
         style={{ background: "linear-gradient(90deg, #2C5E43 0%, #5A9E78 50%, #D4A373 100%)" }}
       />
-      <div className="mx-auto w-[min(1180px,100%-40px)]">
+      <div className="mx-auto w-[min(1420px,100%-48px)]">
         <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5 mb-3">
@@ -29,7 +29,7 @@ export default function Footer() {
               style={{ fontFamily: "var(--font-body)" }}
               className="mt-3 max-w-[44ch] text-sm sm:text-base text-[#B2BEB5] leading-relaxed"
             >
-              Descubre Loja. 16 cantones, una provincia completa por recorrer y disfrutar.
+              Guías oficiales y cartelera turística de los 16 cantones de la provincia de Loja, Ecuador.
             </p>
           </div>
 
@@ -43,7 +43,7 @@ export default function Footer() {
             <Link href="/cantones" className="text-[#B2BEB5] hover:text-white transition-colors">Cantones</Link>
             <Link href="/hospedaje" className="text-[#B2BEB5] hover:text-white transition-colors">Hospedaje</Link>
             <Link href="/atractivos" className="text-[#B2BEB5] hover:text-white transition-colors">Atractivos</Link>
-            <Link href="/descubre-loja" className="text-[#B2BEB5] hover:text-white transition-colors">Guías Descubre Loja</Link>
+            <Link href="/guias" className="text-[#B2BEB5] hover:text-white transition-colors">Guías Turísticas</Link>
             <Link href="/auxilio-en-ruta" className="text-[#B2BEB5] hover:text-white transition-colors">Auxilio en ruta</Link>
           </nav>
 

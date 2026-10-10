@@ -39,7 +39,7 @@ export default function NegociosPage() {
       />
 
       <section className="py-20 bg-[#FAFAF8] text-[#17201B]">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
           <div className="mb-12 text-center max-w-xl mx-auto">
             <span
               style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.1em" }}

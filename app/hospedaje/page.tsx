@@ -29,7 +29,7 @@ export default function HospedajePage() {
 
       {/* Stats bar */}
       <div className="bg-[#17201B] text-white">
-        <div className="mx-auto w-[min(1180px,100%-40px)] flex flex-wrap items-center justify-around gap-6 py-6">
+        <div className="mx-auto w-[min(1420px,100%-48px)] flex flex-wrap items-center justify-around gap-6 py-6">
           {[
             { num: `${HOSPEDAJES.length}+`, label: "Establecimientos" },
             { num: "16", label: "Cantones cubiertos" },
@@ -46,7 +46,7 @@ export default function HospedajePage() {
 
       {/* Catálogo */}
       <section className="py-16 bg-[#FAFAF8]">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
           <HospedajeCatalogo hoteles={HOSPEDAJES} />
           <p className="mt-10 text-center text-sm text-[#64746B]">
             Tarjetas de demostración. Precios referenciales: confirma tarifas y disponibilidad con cada establecimiento.

@@ -1,18 +1,22 @@
+import Link from "next/link";
+
 export default function PageHero({
   title,
   lead,
   badge = "Agenda Turística Loja · Ecuador",
   children,
   imagen = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80",
+  backLink,
 }: {
   title: string;
   lead?: string;
   badge?: string;
   children?: React.ReactNode;
   imagen?: string;
+  backLink?: { href: string; label: string };
 }) {
   return (
-    <section className="relative isolate overflow-hidden min-h-[380px] sm:min-h-[440px] flex flex-col justify-center pt-32 pb-16 text-white">
+    <section className="relative isolate overflow-hidden min-h-[440px] sm:min-h-[480px] flex flex-col justify-center pt-36 pb-20 text-white">
       {/* Imagen fotográfica de fondo */}
       <img
         src={imagen}
@@ -23,18 +27,39 @@ export default function PageHero({
       {/* Overlay cinematográfico equilibrado: imagen visible pero texto con máximo contraste */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/55 to-black/30"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/85 via-black/60 to-black/35"
       />
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0a130d]/90 via-transparent to-black/30"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-[#0a130d]/90 via-transparent to-black/40"
       />
 
-      <div className="mx-auto w-[min(1180px,100%-40px)] relative z-10">
-        {/* Badge en vidrio */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold tracking-wider uppercase mb-4 shadow-lg">
-          <span className="size-2 rounded-full bg-[#52B788] animate-pulse" />
-          <span style={{ fontFamily: "var(--font-label)" }}>{badge}</span>
+      <div className="mx-auto w-[min(1420px,100%-48px)] relative z-10">
+        {/* Fila superior: Flecha retroceder + Badge en vidrio */}
+        <div className="flex items-center gap-3 mb-5 flex-wrap">
+          {backLink && (
+            <Link
+              href={backLink.href}
+              style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 text-white text-xs uppercase tracking-wider transition-all duration-200 hover:-translate-x-1 shadow-lg group"
+            >
+              <svg
+                className="size-3.5 transition-transform duration-200 group-hover:-translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              <span>{backLink.label}</span>
+            </Link>
+          )}
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold tracking-wider uppercase shadow-lg">
+            <span className="size-2 rounded-full bg-[#52B788] animate-pulse" />
+            <span style={{ fontFamily: "var(--font-label)" }}>{badge}</span>
+          </div>
         </div>
 
         {/* Título principal en blanco radiante con Text Shadow */}

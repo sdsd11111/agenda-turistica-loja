@@ -18,11 +18,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const g = getGuia(slug);
   if (!g) return {};
   return {
-    title: g.titulo,
-    description: g.resumen,
-    keywords: g.keywords,
-    alternates: { canonical: `/descubre-loja/${g.slug}` },
-    openGraph: { type: "article", title: g.titulo, description: g.resumen, url: `${SITE.url}/descubre-loja/${g.slug}` },
+    title: `${g.titulo} | Guía Turística de Loja`,
+    description: `${g.resumen} Consejos de viaje, duración, senderos, hospedaje y cómo llegar en la provincia de Loja, Ecuador.`,
+    keywords: [...g.keywords, "guia de viaje loja", "turismo loja ecuador", "que hacer en loja"],
+    alternates: { canonical: `/guias/${g.slug}` },
+    openGraph: {
+      type: "article",
+      title: `${g.titulo} | Guía Turística de Loja`,
+      description: g.resumen,
+      url: `${SITE.url}/guias/${g.slug}`,
+      images: g.imagen ? [{ url: g.imagen }] : undefined,
+    },
   };
 }
 
@@ -38,8 +44,8 @@ export default async function GuiaPage({ params }: Props) {
     headline: g.titulo,
     description: g.resumen,
     datePublished: g.fecha,
-    author: { "@type": "Organization", name: "GuIAloja" },
-    mainEntityOfPage: `${SITE.url}/descubre-loja/${g.slug}`,
+    author: { "@type": "Organization", name: "Agenda Turística Loja" },
+    mainEntityOfPage: `${SITE.url}/guias/${g.slug}`,
   };
 
   return (
@@ -48,8 +54,10 @@ export default async function GuiaPage({ params }: Props) {
 
       <PageHero
         title={g.titulo}
-        badge={`📖 ${g.categoria}`}
+        badge={`📖 Guía Turística · ${g.categoria}`}
         lead={g.resumen}
+        backLink={{ href: "/guias", label: "Volver a Guías" }}
+        imagen={g.imagen || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"}
       >
         <div className="flex flex-wrap gap-2">
           {[
@@ -68,8 +76,8 @@ export default async function GuiaPage({ params }: Props) {
       </PageHero>
 
       {/* Article content */}
-      <article className="py-14 bg-[#FAFAF8]">
-        <div className="mx-auto w-[min(720px,100%-40px)]">
+      <article className="py-16 bg-[#FAFAF8]">
+        <div className="mx-auto w-[min(820px,100%-40px)]">
           {g.secciones.map((s) => (
             <section key={s.titulo} className="mb-12">
               <h2
@@ -87,36 +95,36 @@ export default async function GuiaPage({ params }: Props) {
           ))}
 
           {/* CTA panel */}
-          <div className="mt-12 rounded-3xl bg-[#17201B] p-8 border border-[#2C5E43]/30">
+          <div className="mt-14 rounded-3xl bg-[#17201B] p-8 sm:p-10 border border-[#2C5E43]/30 shadow-2xl">
             <span
               style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
               className="text-[11px] uppercase tracking-widest text-[#52B788] block mb-2"
             >
-              ¿Listo para explorar?
+              ¿Listo para tu viaje?
             </span>
             <p
               style={{ fontFamily: "var(--font-display)", fontWeight: 800 }}
-              className="text-xl text-white mb-5"
+              className="text-2xl text-white mb-5"
             >
-              Planea tu viaje a Loja
+              Planifica tu estancia en la provincia de Loja
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/hospedaje"
                 style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                className="inline-flex items-center gap-2 min-h-11 rounded-full bg-[#2C5E43] hover:bg-[#1f4530] px-6 text-sm text-white transition-all duration-200"
+                className="inline-flex items-center gap-2 min-h-11 rounded-full bg-[#2C5E43] hover:bg-[#387856] px-6 text-xs uppercase tracking-wider text-white transition-all duration-200"
               >
                 🏨 Ver hospedaje
               </Link>
               <Link
-                href="/auxilio-en-ruta"
+                href="/cantones"
                 style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                className="inline-flex items-center gap-2 min-h-11 rounded-full border border-white/20 hover:bg-white/10 px-6 text-sm text-white transition-all duration-200"
+                className="inline-flex items-center gap-2 min-h-11 rounded-full border border-white/20 hover:bg-white/10 px-6 text-xs uppercase tracking-wider text-white transition-all duration-200"
               >
-                🚗 Auxilio en ruta
+                🗺️ Explorar cantones
               </Link>
               <WhatsAppButton
-                mensaje={`Hola, leí la guía "${g.titulo}" en agendaturisticaloja.com y quisiera ayuda para planear mi viaje.`}
+                mensaje={`Hola, leí la guía "${g.titulo}" en agendaturisticaloja.com/guias/${g.slug} y quisiera asesoría para planear mi viaje.`}
               >
                 💬 Consultar por WhatsApp
               </WhatsAppButton>
@@ -127,14 +135,22 @@ export default async function GuiaPage({ params }: Props) {
 
       {/* Related guides */}
       {relacionadas.length > 0 && (
-        <section className="pb-20 bg-[#FAFAF8]">
-          <div className="mx-auto w-[min(1180px,100%-40px)]">
-            <h2
-              style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
-              className="mb-6 text-2xl sm:text-3xl text-[#17201B]"
-            >
-              Más guías que te pueden interesar
-            </h2>
+        <section className="py-20 bg-white border-t border-[#EEF0EA]">
+          <div className="mx-auto w-[min(1420px,100%-48px)]">
+            <div className="mb-10">
+              <span
+                style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
+              >
+                Más rutas recomendadas
+              </span>
+              <h2
+                style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
+                className="text-2xl sm:text-3xl text-[#17201B]"
+              >
+                Otras guías turísticas que te pueden interesar
+              </h2>
+            </div>
             <div className="grid gap-6 md:grid-cols-3">
               {relacionadas.map((r) => (
                 <GuideCard key={r.slug} guia={r} />

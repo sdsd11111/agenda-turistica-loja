@@ -27,7 +27,7 @@ export default function CantonesPage() {
         badge="🗺️ Turismo en los 16 Cantones de Loja"
       />
       <section className="py-16">
-        <div className="mx-auto grid w-[min(1180px,100%-40px)] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto grid w-[min(1420px,100%-48px)] grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {CANTONES.map((c) => (
             <CantonCard key={c.slug} canton={c} />
           ))}

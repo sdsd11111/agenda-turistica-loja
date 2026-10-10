@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Sora, DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 import { SITE } from "@/lib/site";
-import { ChatbotTurismo } from "@/components/ChatbotTurismo";
+import { SiteChrome } from "@/components/SiteChrome";
+
 
 /** Títulos principales — geométrica elegante, impactante en bold */
 const sora = Sora({
@@ -94,13 +93,11 @@ export const viewport: Viewport = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+
   return (
     <html lang="es" className={`${sora.variable} ${dmSans.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-[#FAFAF8] text-[#17201B] antialiased selection:bg-[#2C5E43] selection:text-white">
-        <Nav />
-        <main>{children}</main>
-        <Footer />
-        <ChatbotTurismo />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

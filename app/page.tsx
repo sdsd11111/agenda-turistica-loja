@@ -35,7 +35,7 @@ export default function Home() {
           className="absolute inset-0 -z-10 bg-gradient-to-r from-black/55 via-black/30 to-transparent"
         />
 
-        <div className="mx-auto w-[min(1180px,100%-40px)] relative z-10 my-auto">
+        <div className="mx-auto w-[min(1420px,100%-48px)] relative z-10 my-auto">
           <div className="max-w-2xl">
             {/* Badge: Space Grotesk — números y etiquetas compactas */}
             <div
@@ -95,7 +95,7 @@ export default function Home() {
           Mitad sobre la Sección 1 (Hero) y mitad sobre la Sección 2 (Decisión)
       ========================================================================= */}
       <div className="relative z-30 -my-14" aria-label="Buscador turístico provincial">
-        <div className="mx-auto w-[min(1180px,100%-40px)]">
+        <div className="mx-auto w-[min(1420px,100%-48px)]">
           <Buscador items={construirIndice()} />
         </div>
       </div>
@@ -108,11 +108,9 @@ export default function Home() {
       </RevealSection>
 
       {/* =========================================================================
-          SECCIÓN 3: "QUÉ HAY EN LOJA" (Entrada dinámica de lado izquierdo)
+          SECCIÓN 3: "QUÉ HAY EN LOJA" (Con Parallax Real interactivo al scroll)
       ========================================================================= */}
-      <RevealSection delay={80} direction="left">
-        <SeccionQueHayEnLoja />
-      </RevealSection>
+      <SeccionQueHayEnLoja />
 
       {/* =========================================================================
           SECCIÓN 4: LOGOS DE FUNDADORES Y CONVENIOS GAD (Entrada con zoom suave)

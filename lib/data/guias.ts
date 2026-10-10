@@ -206,6 +206,109 @@ export const GUIAS: Guia[] = [
       },
     ],
   },
+  {
+    slug: "quilanga-ruta-cafe-mirador-chiro",
+    titulo: "Quilanga: Ruta del café de especialidad y Mirador de Chiro",
+    resumen: "Valles andinos de altura productores de café de Taza Dorada, senderos campesinos y vistas panorámicas de ensueño.",
+    categoria: "Rutas",
+    duracion: "1 a 2 días",
+    nivel: "Fácil",
+    cantonSlug: "quilanga",
+    fecha: "2026-10-09",
+    imagen: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=800&q=80",
+    gradient: "linear-gradient(135deg,#2d6a4f,#2D6A8B 60%,#1B4332)",
+    keywords: ["turismo quilanga", "cafe de especialidad quilanga", "mirador de chiro", "que hacer en quilanga"],
+    secciones: [
+      {
+        titulo: "El secreto del mejor café del Ecuador",
+        parrafos: [
+          "Quilanga se ha consolidado en el mapa internacional por sus microclimas privilegiados en las estribaciones de la cordillera, cuna de variedades de café arábigo que han ganado múltiples ediciones de Taza Dorada.",
+          "Caminar entre los cafetales de altura bajo sombra permite comprender el proceso minucioso de cosecha manual, despulpado y secado al sol que practican las familias caficultoras.",
+        ],
+      },
+      {
+        titulo: "Mirador de Chiro y senderos andinos",
+        parrafos: [
+          "Desde las alturas del Mirador de Chiro se divisa la cuenca del río Catamayo y los cerros ondulados del sur lojano, siendo un punto privilegiado para la fotografía de atardeceres y avistamiento de aves de montaña.",
+          "El pueblo mantiene un ambiente sereno y seguro, perfecto para desconectarse y saborear una taza recién filtrada en las cafeterías artesanales del parque central.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "zapotillo-guayacanes-bosque-seco",
+    titulo: "Zapotillo: Bosque seco, florecimiento de guayacanes y gastronomía caprina",
+    resumen: "El fenómeno natural más impresionante de la provincia de Loja, Reserva de Biósfera y el tradicional chivo al hueco.",
+    categoria: "Naturaleza",
+    duracion: "2 días",
+    nivel: "Fácil",
+    cantonSlug: "zapotillo",
+    fecha: "2026-10-09",
+    imagen: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&q=80",
+    gradient: "linear-gradient(135deg,#A0522D,#f2c14e 60%,#1B4332)",
+    keywords: ["florecimiento de guayacanes zapotillo", "bosque seco zapotillo", "turismo zapotillo", "chivo al hueco zapotillo"],
+    secciones: [
+      {
+        titulo: "El milagro amarillo del bosque seco",
+        parrafos: [
+          "Con las primeras lluvias de invierno (usualmente entre diciembre y enero), más de 40.000 hectáreas de bosque seco en las parroquias Mangahurco, Bolaspamba y Cazaderos florecen de forma sincronizada, pintando de amarillo intenso todo el horizonte.",
+          "El espectáculo dura entre 4 y 6 días antes de que las flores caigan como una alfombra dorada sobre el suelo, atrayendo a miles de abejas, mariposas y viajeros de todo el mundo.",
+        ],
+      },
+      {
+        titulo: "Gastronomía y tradición fronteriza",
+        parrafos: [
+          "Zapotillo deleita al viajero con su plato insignia: el chivo al hueco, cocinado lentamente bajo tierra con leña de faique y sazón criolla tradicional.",
+          "La Reserva de Biósfera del Bosque Seco alberga cocodrilos de la costa, monos aulladores y aves endémicas de la región tumbesina.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "espindola-lagunas-negras-yacuri",
+    titulo: "Espíndola: Lagunas Negras de Jimbura y Parque Nacional Yacuri",
+    resumen: "Lagunas glaciares a más de 3.400 metros de altura, orquídeas de páramo y leyendas ancestrales en la frontera sur.",
+    categoria: "Aventura",
+    duracion: "1 a 2 días",
+    nivel: "Moderado",
+    cantonSlug: "espindola",
+    fecha: "2026-10-09",
+    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    gradient: "linear-gradient(135deg,#12301f,#2D6A8B 60%,#1B4332)",
+    keywords: ["lagunas negras de jimbura", "parque nacional yacuri", "turismo espindola", "amaluza loja"],
+    secciones: [
+      {
+        titulo: "El páramo místico de Yacuri",
+        parrafos: [
+          "El Parque Nacional Yacuri protege uno de los complejos lacustres de alta montaña más prístinos del Ecuador. Las Lagunas Negras se asientan sobre lechos volcánicos con aguas de un tono azul profundo casi azabache.",
+          "Es un destino soñado para montañistas, observadores de flora alpina y amantes del senderismo que buscan silencio absoluto y aire puro.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "calvas-cariamanga-cerro-ahuaca",
+    titulo: "Calvas: Escalada en el Cerro El Ahuaca y miradores de Cariamanga",
+    resumen: "El monolito de granito más impresionante de los Andes lojanos, rutas de escalada deportiva y gastronomía calvense.",
+    categoria: "Aventura",
+    duracion: "1 día",
+    nivel: "Moderado",
+    cantonSlug: "calvas",
+    fecha: "2026-10-09",
+    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+    gradient: "linear-gradient(135deg,#2d6a4f,#8B7355 60%,#1B4332)",
+    keywords: ["cerro ahuaca cariamanga", "turismo calvas", "escalada cerro ahuaca", "cariamanga loja"],
+    secciones: [
+      {
+        titulo: "El gigante de roca de Cariamanga",
+        parrafos: [
+          "El Cerro El Ahuaca es un macizo granítico que se eleva sobre los 2.470 metros sobre el nivel del mar, visible desde kilómetros a la redonda y hogar de la vizcacha de montaña, especie endémica de la zona.",
+          "Sus paredes verticales cuentan con decenas de vías abiertas para escalada en roca de diversa dificultad, además de un sendero peatonal que conduce hasta su cumbre con una vista de 360 grados de los valles del sur.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const getGuia = (slug: string) => GUIAS.find((g) => g.slug === slug);
+

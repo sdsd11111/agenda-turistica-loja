@@ -68,7 +68,7 @@ export default function GuideCard({ guia }: { guia: Guia }) {
 
         {/* CTA */}
         <Link
-          href={`/descubre-loja/${guia.slug}`}
+          href={`/guias/${guia.slug}`}
           style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
           className="mt-5 inline-flex items-center gap-2 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 px-5 py-2.5 text-sm text-white transition-all duration-300 group-hover:border-white/50 w-fit"
         >

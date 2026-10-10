@@ -86,7 +86,7 @@ export default function SeccionFundadores() {
       id="fundadores"
     >
       {/* Encabezado */}
-      <div className="mx-auto w-[min(1180px,100%-40px)]">
+      <div className="mx-auto w-[min(1420px,100%-48px)]">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-[#EEF0EA] gap-4">
           <div>
             <span
@@ -118,7 +118,7 @@ export default function SeccionFundadores() {
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 bg-gradient-to-l from-[#FAFAF8] to-transparent z-10" />
 
         <div
-          className="marquee-track gap-4 px-4"
+          className="marquee-track gap-5 px-4"
           style={{
             display: "flex",
             width: "max-content",
@@ -126,24 +126,26 @@ export default function SeccionFundadores() {
           }}
         >
           {triple.map((f, idx) => (
-            <div
+            <a
               key={`${f.siglas}-${idx}`}
-              onClick={() => {
-                window.location.href = f.href;
-              }}
-              className="w-[270px] sm:w-[310px] p-5 rounded-3xl border border-[#E8EAE3] bg-white hover:border-[#2C5E43]/50 hover:shadow-md transition-all shadow-[0_2px_12px_rgb(0,0,0,0.03)] shrink-0 group select-none flex flex-col gap-3.5 relative overflow-hidden cursor-pointer"
+              href={`https://wa.me/593963410409?text=${encodeURIComponent(
+                `Hola, deseo información para la vinculación institucional del cantón / operador turístico en la Agenda Turística de Loja (${f.nombre}).`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-[220px] sm:w-[240px] h-[210px] p-6 rounded-3xl border border-[#E8EAE3] bg-white hover:border-[#2C5E43] hover:shadow-xl transition-all duration-300 shrink-0 group select-none flex flex-col items-center justify-between text-center cursor-pointer shadow-xs hover:-translate-y-1"
             >
-              <div className="flex items-center gap-3">
-                {/* Escudo / logo */}
+              {/* Contenedor central de logo/monograma súper clean */}
+              <div className="flex-1 flex flex-col items-center justify-center my-auto">
                 <div
-                  className="w-13 h-13 rounded-2xl flex flex-col items-center justify-center shrink-0 shadow-xs group-hover:scale-105 transition-transform"
-                  style={{ background: f.bg, border: `1.5px solid ${f.color}22` }}
+                  className="size-16 rounded-2xl flex flex-col items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300 mb-2.5"
+                  style={{ background: f.bg, border: `1.5px solid ${f.color}25` }}
                 >
                   <span
                     style={{
                       fontFamily: "var(--font-display)",
                       fontWeight: 800,
-                      fontSize: "1.25rem",
+                      fontSize: "1.5rem",
                       letterSpacing: "-0.04em",
                       color: f.color,
                       lineHeight: 1,
@@ -155,10 +157,10 @@ export default function SeccionFundadores() {
                     style={{
                       fontFamily: "var(--font-label)",
                       fontWeight: 700,
-                      fontSize: "0.45rem",
-                      letterSpacing: "0.12em",
+                      fontSize: "0.48rem",
+                      letterSpacing: "0.14em",
                       color: f.color,
-                      opacity: 0.8,
+                      opacity: 0.85,
                     }}
                     className="uppercase mt-0.5"
                   >
@@ -166,69 +168,32 @@ export default function SeccionFundadores() {
                   </span>
                 </div>
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between gap-1 mb-0.5">
-                    <span
-                      style={{
-                        fontFamily: "var(--font-label)",
-                        fontWeight: 700,
-                        fontSize: "0.6rem",
-                        letterSpacing: "0.06em",
-                        color: f.color,
-                      }}
-                      className="uppercase block truncate"
-                    >
-                      {f.rol}
-                    </span>
-                    <span className="text-[9px] font-semibold text-[#2C5E43] bg-[#EBF3ED] px-2 py-0.5 rounded-full shrink-0">
-                      Abierto
-                    </span>
-                  </div>
-                  <h3
-                    style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.85rem" }}
-                    className="text-[#17201B] leading-tight truncate"
-                  >
-                    {f.nombre}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Descripción */}
-              <p
-                style={{ fontFamily: "var(--font-body)" }}
-                className="text-[11.5px] text-[#47554E] leading-relaxed line-clamp-2"
-              >
-                {f.descripcion}
-              </p>
-
-              {/* Footer de estado con botón llamativo que salta y lleva al WhatsApp 593963410409 */}
-              <div className="pt-3 border-t border-[#EEF0EA] flex items-center justify-between">
-                <a
-                  href={`https://wa.me/593963410409?text=${encodeURIComponent(
-                    `Hola, deseo información para la vinculación institucional del cantón / operador turístico en la Agenda Turística de Loja (${f.nombre}).`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.7rem", letterSpacing: "0.04em" }}
-                  className="animate-badge-bounce inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EBF3ED] hover:bg-[#2C5E43] text-[#2C5E43] hover:text-white transition-all shadow-sm border border-[#2C5E43]/30 uppercase group/btn cursor-pointer"
+                <h3
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.85rem" }}
+                  className="text-[#17201B] leading-tight line-clamp-1 group-hover:text-[#2C5E43] transition-colors"
                 >
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2C5E43] opacity-75 group-hover/btn:bg-white" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2C5E43] group-hover/btn:bg-white" />
-                  </span>
-                  <span>Puesto Abierto · Postular</span>
-                  <span className="text-xs">↗</span>
-                </a>
-                <span className="text-[#2C5E43] text-xs font-bold group-hover:translate-x-1 transition-transform">→</span>
+                  {f.nombre}
+                </h3>
               </div>
-            </div>
+
+              {/* Único texto inferior solicitado: super clean */}
+              <div className="w-full pt-3 border-t border-[#EEF0EA]/80 flex items-center justify-center">
+                <span
+                  style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.05em" }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF3ED] text-[#2C5E43] group-hover:bg-[#2C5E43] group-hover:text-white transition-all uppercase"
+                >
+                  <span className="size-1.5 rounded-full bg-[#2C5E43] group-hover:bg-white animate-pulse" />
+                  <span>Puesto Abierto · Postular</span>
+                  <span className="text-[10px]">↗</span>
+                </span>
+              </div>
+            </a>
           ))}
         </div>
       </div>
 
       {/* Bloque CTA B2G */}
-      <div className="mx-auto w-[min(1180px,100%-40px)] mt-12">
+      <div className="mx-auto w-[min(1420px,100%-48px)] mt-12">
         <div className="p-6 sm:p-8 rounded-3xl border border-[#E8EAE3] bg-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div>
             <h4
