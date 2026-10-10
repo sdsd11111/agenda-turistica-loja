@@ -156,12 +156,13 @@ export default async function BlogIndexPage() {
               Aparece en nuestra agenda y publícate con nosotros para conectar con viajeros y turistas de todo el país.
             </p>
             <Link
-              href="/para-negocios"
+              href="/contacto"
               className="inline-block bg-[#2C5E43] hover:bg-[#224B35] text-white font-bold text-sm px-7 py-3.5 rounded-xl transition shadow-md shadow-[#2C5E43]/20"
             >
-              Publicar mi Negocio / Anuncio
+              Contactar para Publicar mi Negocio
             </Link>
           </div>
+
         </div>
       </div>
     </>

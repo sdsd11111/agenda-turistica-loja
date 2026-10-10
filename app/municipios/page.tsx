@@ -21,7 +21,7 @@ export default function MunicipiosPage() {
         title="Alianzas con GAD Municipales"
         lead="Plazas abiertas para los 16 gobiernos cantonales de la provincia de Loja. Digitalización oficial de tu patrimonio, rutas y entrenamiento directo del Asesor IA."
         badge="Marco Institucional · Convenio Cantonal"
-        imagen="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1600&q=80"
+        imagen="https://mvps.b-cdn.net/agenda-turistica/home/evento-artes-vivas.webp"
       />
       <section className="py-20 bg-[#FAFAF8] text-[#17201B]">
         <div className="mx-auto grid w-[min(1180px,100%-40px)] gap-8 md:grid-cols-2">

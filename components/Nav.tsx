@@ -21,12 +21,16 @@ export default function Nav() {
   // Cierra el menú al cambiar de ruta
   useEffect(() => { setAbierto(false); }, [pathname]);
 
+  // Páginas sin hero oscuro donde el header transparente hace que el texto blanco sea invisible
+  const esPaginaFondoClaro = pathname.startsWith("/blog");
+  const usarEstiloOscuro = scrolled || esPaginaFondoClaro;
+
   return (
     <header
       className={[
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)] border-b border-[#E8EAE3]/60"
+        usarEstiloOscuro
+          ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)] border-b border-[#E8EAE3]/80"
           : "bg-transparent border-b border-transparent",
       ].join(" ")}
     >
@@ -45,19 +49,19 @@ export default function Nav() {
           <div className="flex items-baseline gap-[1px]">
             <span
               style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.1rem" }}
-              className={scrolled ? "text-[#17201B]" : "text-white drop-shadow-xs"}
+              className={usarEstiloOscuro ? "text-[#17201B]" : "text-white drop-shadow-xs"}
             >
               agenda
             </span>
             <span
               style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.1rem" }}
-              className={scrolled ? "text-[#2C5E43]" : "text-[#7ECB9A] drop-shadow-xs"}
+              className={usarEstiloOscuro ? "text-[#2C5E43]" : "text-[#7ECB9A] drop-shadow-xs"}
             >
               turistica
             </span>
             <span
               style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.03em", fontSize: "1.1rem" }}
-              className={scrolled ? "text-[#17201B]" : "text-white drop-shadow-xs"}
+              className={usarEstiloOscuro ? "text-[#17201B]" : "text-white drop-shadow-xs"}
             >
               loja
             </span>
@@ -74,10 +78,10 @@ export default function Nav() {
               className={[
                 "relative px-3.5 py-2 rounded-xl transition-all duration-200",
                 activo(l.href)
-                  ? scrolled
+                  ? usarEstiloOscuro
                     ? "text-[#2C5E43] bg-[#EBF3ED]"
                     : "text-white bg-white/15 backdrop-blur-sm"
-                  : scrolled
+                  : usarEstiloOscuro
                     ? "text-[#47554E] hover:text-[#17201B] hover:bg-[#F4F5F0]"
                     : "text-white/80 hover:text-white hover:bg-white/10",
               ].join(" ")}
@@ -100,7 +104,7 @@ export default function Nav() {
             style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.04em" }}
             className={[
               "inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full transition-all uppercase border shadow-xs",
-              scrolled
+              usarEstiloOscuro
                 ? "text-[#17201B] bg-[#F4F5F0] border-[#2C5E43]/30 hover:bg-[#2C5E43] hover:text-white"
                 : "text-white bg-black/40 border-white/40 backdrop-blur-md hover:bg-white hover:text-[#2C5E43]",
             ].join(" ")}
@@ -115,7 +119,7 @@ export default function Nav() {
             style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.75rem", letterSpacing: "0.04em" }}
             className={[
               "px-4 py-2 rounded-full uppercase transition-all duration-200 shadow-md font-bold",
-              scrolled
+              usarEstiloOscuro
                 ? "bg-[#2C5E43] text-white hover:bg-[#1B4332]"
                 : "bg-white text-[#17201B] hover:bg-[#EBF3ED] border border-white/60",
             ].join(" ")}
@@ -129,7 +133,7 @@ export default function Nav() {
           type="button"
           className={[
             "grid size-9 place-items-center rounded-xl lg:hidden transition-all",
-            scrolled ? "text-[#17201B] hover:bg-[#F4F5F0]" : "text-white hover:bg-white/15",
+            usarEstiloOscuro ? "text-[#17201B] hover:bg-[#F4F5F0]" : "text-white hover:bg-white/15",
           ].join(" ")}
           aria-label={abierto ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={abierto}
@@ -138,9 +142,9 @@ export default function Nav() {
         >
           {/* Ícono hamburger / X animado */}
           <span className="flex flex-col items-center justify-center gap-[5px] w-5">
-            <span className={`h-[1.5px] w-full rounded transition-all duration-300 ${scrolled ? "bg-[#17201B]" : "bg-white"} ${abierto ? "translate-y-[6.5px] rotate-45" : ""}`} />
-            <span className={`h-[1.5px] rounded transition-all duration-200 ${scrolled ? "bg-[#17201B]" : "bg-white"} ${abierto ? "w-0 opacity-0" : "w-full"}`} />
-            <span className={`h-[1.5px] w-full rounded transition-all duration-300 ${scrolled ? "bg-[#17201B]" : "bg-white"} ${abierto ? "-translate-y-[6.5px] -rotate-45" : ""}`} />
+            <span className={`h-[1.5px] w-full rounded transition-all duration-300 ${usarEstiloOscuro ? "bg-[#17201B]" : "bg-white"} ${abierto ? "translate-y-[6.5px] rotate-45" : ""}`} />
+            <span className={`h-[1.5px] rounded transition-all duration-200 ${usarEstiloOscuro ? "bg-[#17201B]" : "bg-white"} ${abierto ? "w-0 opacity-0" : "w-full"}`} />
+            <span className={`h-[1.5px] w-full rounded transition-all duration-300 ${usarEstiloOscuro ? "bg-[#17201B]" : "bg-white"} ${abierto ? "-translate-y-[6.5px] -rotate-45" : ""}`} />
           </span>
         </button>
       </div>

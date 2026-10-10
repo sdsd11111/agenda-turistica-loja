@@ -28,7 +28,7 @@ export default function GuiasPage() {
         title="Guías Turísticas de Loja"
         lead="Itinerarios comprobados, rutas de café, senderismo y patrimonio cultural por los 16 cantones del sur del Ecuador."
         badge="📖 Guías y Rutas Oficiales 2026"
-        imagen="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"
+        imagen="https://mvps.b-cdn.net/agenda-turistica/guias/hero-guias.webp"
       />
 
       {/* Intro strip */}

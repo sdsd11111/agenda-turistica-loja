@@ -54,9 +54,9 @@ export default function Footer() {
             >
               Participar
             </p>
-            <Link href="/para-negocios" className="text-[#B2BEB5] hover:text-white transition-colors">Para negocios</Link>
             <Link href="/municipios" className="text-[#B2BEB5] hover:text-white transition-colors">Municipios (GAD)</Link>
             <Link href="/contacto" className="text-[#B2BEB5] hover:text-white transition-colors">Contacto y sugerencias</Link>
+
           </nav>
         </div>
 

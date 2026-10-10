@@ -12,7 +12,7 @@ const FUNDADORES = [
     color: "#2C5E43",
     bg: "#EBF3ED",
     initial: "L",
-    href: "/cantones/loja",
+    href: "https://mvps.b-cdn.net/agenda-turistica/cantones/loja",
   },
   {
     nombre: "GAD Saraguro",
@@ -22,7 +22,7 @@ const FUNDADORES = [
     color: "#7C4A1E",
     bg: "#FDF0E6",
     initial: "S",
-    href: "/cantones/saraguro",
+    href: "https://mvps.b-cdn.net/agenda-turistica/cantones/saraguro",
   },
   {
     nombre: "GAD Catamayo",
@@ -32,7 +32,7 @@ const FUNDADORES = [
     color: "#1E5A7C",
     bg: "#E6F2FD",
     initial: "C",
-    href: "/cantones/catamayo",
+    href: "https://mvps.b-cdn.net/agenda-turistica/cantones/catamayo",
   },
   {
     nombre: "GAD Calvas",
@@ -42,7 +42,7 @@ const FUNDADORES = [
     color: "#5A1E7C",
     bg: "#F0E6FD",
     initial: "C",
-    href: "/cantones/calvas",
+    href: "https://mvps.b-cdn.net/agenda-turistica/cantones/calvas",
   },
   {
     nombre: "GAD Zapotillo",
@@ -52,7 +52,7 @@ const FUNDADORES = [
     color: "#7C6B1E",
     bg: "#FDF8E6",
     initial: "Z",
-    href: "/cantones/zapotillo",
+    href: "https://mvps.b-cdn.net/agenda-turistica/cantones/zapotillo",
   },
   {
     nombre: "GAD Puyango",
@@ -62,7 +62,7 @@ const FUNDADORES = [
     color: "#1E7C5A",
     bg: "#E6FDF4",
     initial: "P",
-    href: "/cantones/puyango",
+    href: "https://mvps.b-cdn.net/agenda-turistica/cantones/puyango",
   },
   {
     nombre: "Red GuIAloja",
@@ -72,9 +72,10 @@ const FUNDADORES = [
     color: "#2C5E43",
     bg: "#EBF3ED",
     initial: "G",
-    href: "/para-negocios",
+    href: "/contacto",
   },
 ];
+
 
 export default function SeccionFundadores() {
   // Triplicamos para que el loop 33.3334% sea siempre fluido
@@ -228,12 +229,13 @@ export default function SeccionFundadores() {
               Convenio Cantonal GAD
             </Link>
             <Link
-              href="/para-negocios"
+              href="/contacto"
               style={{ fontFamily: "var(--font-label)", fontWeight: 500 }}
               className="px-5 py-2.5 rounded-full border border-[#E8EAE3] text-[#47554E] text-xs hover:bg-[#FAFAF8] transition-all"
             >
-              Para Hoteles y Operadores
+              Contactar por Negocios
             </Link>
+
           </div>
         </div>
       </div>

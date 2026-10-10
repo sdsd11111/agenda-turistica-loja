@@ -24,7 +24,7 @@ export default function HospedajePage() {
         title="Hoteles en Loja y Vilcabamba"
         badge="🏨 Directorio de Hospedaje · Sin comisiones"
         lead="Hoteles en el centro de Loja, hosterías en Vilcabamba y hospedaje en los 16 cantones. Contacto directo por WhatsApp al mejor precio y sin comisiones."
-        imagen="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80"
+        imagen="https://mvps.b-cdn.net/agenda-turistica/hospedaje/hero-hospedaje.webp"
       />
 
       {/* Stats bar */}

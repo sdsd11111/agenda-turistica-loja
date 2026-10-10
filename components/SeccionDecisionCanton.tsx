@@ -78,7 +78,7 @@ export default function SeccionDecisionCanton({ canton, atractivos }: Props) {
             {/* ── CARD 1: ATRACTIVOS DE ESTE CANTÓN ── */}
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)]">
               <img
-                src={canton.imagen || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"}
+                src={canton.imagen || "https://mvps.b-cdn.net/agenda-turistica/cantones/hero-cantones.webp"}
                 alt={`Lugares turísticos de ${canton.nombre}`}
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -152,7 +152,7 @@ export default function SeccionDecisionCanton({ canton, atractivos }: Props) {
             {/* ── CARD 2: ITINERARIOS Y RUTAS IA EN ESTE CANTÓN ── */}
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)]">
               <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"
+                src="https://mvps.b-cdn.net/agenda-turistica/guias/guia-loja-3-dias.webp"
                 alt={`Rutas en ${canton.nombre}`}
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -235,7 +235,7 @@ export default function SeccionDecisionCanton({ canton, atractivos }: Props) {
             {/* ── CARD 3: ¿QUÉ HACER HOY EN ESTE CANTÓN? ── */}
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)] md:col-span-2 lg:col-span-1">
               <img
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+                src="https://mvps.b-cdn.net/agenda-turistica/home/bg-eventos-loja.webp"
                 alt={`Qué hacer hoy en ${canton.nombre}`}
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -371,10 +371,20 @@ export default function SeccionDecisionCanton({ canton, atractivos }: Props) {
                       className="p-5 rounded-2xl bg-[#1A2820] hover:bg-[#23382D] border border-white/20 hover:border-[#52B788] transition-all duration-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-lg group block"
                     >
                       <div className="flex items-start gap-4 min-w-0">
-                        <span className="text-2xl sm:text-3xl shrink-0 p-3 rounded-2xl bg-black/50 border border-white/15">
-                          {a.emoji || "📍"}
-                        </span>
-                        <div className="min-w-0">
+                        {a.imagen ? (
+                          <div className="size-16 sm:size-20 shrink-0 rounded-2xl overflow-hidden border border-white/20 bg-black/40 shadow-inner">
+                            <img
+                              src={a.imagen}
+                              alt={a.nombre}
+                              className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                            />
+                          </div>
+                        ) : (
+                          <div className="size-16 sm:size-20 shrink-0 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-2xl">
+                            📍
+                          </div>
+                        )}
+                        <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2 flex-wrap mb-1.5">
                             <h4
                               style={{ fontFamily: "var(--font-display)", fontWeight: 700, color: "#FFFFFF" }}

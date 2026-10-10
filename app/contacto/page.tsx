@@ -21,7 +21,7 @@ export default function ContactoPage() {
         title="Hablemos"
         badge="💬 Contacto · GuIAloja"
         lead="Cuéntanos qué lugar falta, qué dato está mal, o cómo podemos trabajar juntos para potenciar el turismo de Loja."
-        imagen="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80"
+        imagen="https://mvps.b-cdn.net/agenda-turistica/cantones/canton-loja.webp"
       />
 
       {/* Motivos rápidos */}

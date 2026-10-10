@@ -13,7 +13,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.113,
     lng: -79.178,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/parque-podocarpus.webp",
     gradient: "linear-gradient(135deg,#a9d6e5,#2D6A8B 40%,#12301f)",
   },
   {
@@ -26,7 +26,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 días",
     lat: -4.261,
     lng: -79.2217,
-    imagen: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#f2c14e,#2d6a4f 55%,#12301f)",
   },
   {
@@ -39,7 +39,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.9931,
     lng: -79.2042,
-    imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#1B4332,#8B7355)",
   },
   {
@@ -52,7 +52,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 horas",
     lat: -3.9758,
     lng: -79.2023,
-    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/parque-jipiro.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#f2c14e)",
   },
   {
@@ -65,7 +65,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.8667,
     lng: -79.4167,
-    imagen: "https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/santuario-el-cisne.webp",
     gradient: "linear-gradient(135deg,#8B7355,#2D6A8B)",
   },
 
@@ -80,7 +80,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -3.6213,
     lng: -79.2318,
-    imagen: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#A0522D,#1B4332 60%,#2D6A8B)",
   },
   {
@@ -93,7 +93,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.635,
     lng: -79.245,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#52B788)",
   },
   {
@@ -106,7 +106,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -3.568,
     lng: -79.312,
-    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cerro-de-arcos.webp",
     gradient: "linear-gradient(135deg,#1B4332,#A0522D)",
   },
 
@@ -121,7 +121,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.9889,
     lng: -79.3544,
-    imagen: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#f2c14e)",
   },
   {
@@ -134,7 +134,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 horas",
     lat: -3.982,
     lng: -79.351,
-    imagen: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/mirador-cruz-catamayo.webp",
     gradient: "linear-gradient(135deg,#f2c14e,#2D6A8B)",
   },
   {
@@ -147,7 +147,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -3.995,
     lng: -79.362,
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#0077b6,#52B788)",
   },
 
@@ -162,7 +162,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.3333,
     lng: -79.5567,
-    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cerro-el-ahuaca.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#8B7355)",
   },
   {
@@ -175,7 +175,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.321,
     lng: -79.542,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#52B788,#2D6A8B)",
   },
   {
@@ -188,7 +188,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 horas",
     lat: -4.33,
     lng: -79.558,
-    imagen: "https://images.unsplash.com/photo-1548625149-fc4a29cf7092?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/santuario-el-cisne.webp",
     gradient: "linear-gradient(135deg,#8B7355,#2D6A8B)",
   },
 
@@ -203,7 +203,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 días",
     lat: -4.3833,
     lng: -80.2333,
-    imagen: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/guayacanes-zapotillo.webp",
     gradient: "linear-gradient(135deg,#A0522D,#f2c14e)",
   },
   {
@@ -216,7 +216,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.285,
     lng: -80.31,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/guayacanes-zapotillo.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#f2c14e)",
   },
   {
@@ -229,7 +229,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.386,
     lng: -80.24,
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#0077b6,#f2c14e)",
   },
 
@@ -244,7 +244,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.1,
     lng: -79.9667,
-    imagen: "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#2d6a4f)",
   },
   {
@@ -257,7 +257,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.135,
     lng: -79.982,
-    imagen: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/megalitos-quilluzara-celica.webp",
     gradient: "linear-gradient(135deg,#8B7355,#1B4332)",
   },
   {
@@ -270,7 +270,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.08,
     lng: -79.95,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/parque-podocarpus.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#52B788)",
   },
 
@@ -285,7 +285,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.05,
     lng: -79.6333,
-    imagen: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#8B7355,#A0522D)",
   },
   {
@@ -298,7 +298,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.02,
     lng: -79.67,
-    imagen: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/petroglifos-yamana-paltas.webp",
     gradient: "linear-gradient(135deg,#A0522D,#2D6A8B)",
   },
   {
@@ -311,7 +311,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.07,
     lng: -79.62,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#52B788,#0077b6)",
   },
 
@@ -326,7 +326,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -3.874,
     lng: -80.084,
-    imagen: "https://images.unsplash.com/photo-1547036967-23d11aacaee0?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/bosque-petrificado-puyango.webp",
     gradient: "linear-gradient(135deg,#1B4332,#A0522D)",
   },
   {
@@ -339,7 +339,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 horas",
     lat: -4.033,
     lng: -80.033,
-    imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#8B7355,#2D6A8B)",
   },
   {
@@ -352,7 +352,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.98,
     lng: -80.05,
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#0077b6,#52B788)",
   },
 
@@ -367,7 +367,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.6,
     lng: -79.4333,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/lagunas-negras-jimbura.webp",
     gradient: "linear-gradient(135deg,#12301f,#2D6A8B)",
   },
   {
@@ -380,7 +380,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 días",
     lat: -4.71,
     lng: -79.38,
-    imagen: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/lagunas-negras-jimbura.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#1B4332)",
   },
   {
@@ -393,7 +393,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.62,
     lng: -79.46,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#52B788,#8B7355)",
   },
 
@@ -408,7 +408,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.2167,
     lng: -79.4333,
-    imagen: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#A0522D,#1B4332)",
   },
   {
@@ -421,7 +421,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.225,
     lng: -79.42,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-la-banda-gonzanama.webp",
     gradient: "linear-gradient(135deg,#52B788,#0077b6)",
   },
   {
@@ -434,7 +434,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.24,
     lng: -79.45,
-    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/parque-jipiro.webp",
     gradient: "linear-gradient(135deg,#8B7355,#2D6A8B)",
   },
 
@@ -449,7 +449,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.3167,
     lng: -79.7833,
-    imagen: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#12301f,#8B7355)",
   },
   {
@@ -462,7 +462,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.33,
     lng: -79.79,
-    imagen: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#A0522D,#1B4332)",
   },
   {
@@ -475,7 +475,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.305,
     lng: -79.77,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/reserva-el-tundo-sozoranga.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#52B788)",
   },
 
@@ -490,7 +490,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.8667,
     lng: -79.6333,
-    imagen: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#8B7355,#2d6a4f)",
   },
   {
@@ -503,7 +503,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.85,
     lng: -79.62,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascadas-saraguallas.webp",
     gradient: "linear-gradient(135deg,#0077b6,#52B788)",
   },
   {
@@ -516,7 +516,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -3.87,
     lng: -79.64,
-    imagen: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#8B7355,#1B4332)",
   },
 
@@ -531,7 +531,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.3167,
     lng: -79.4,
-    imagen: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#2D6A8B)",
   },
   {
@@ -544,7 +544,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.34,
     lng: -79.37,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/lagunas-chuquiragua-quilanga.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#52B788)",
   },
   {
@@ -557,7 +557,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 horas",
     lat: -4.31,
     lng: -79.41,
-    imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#8B7355,#1B4332)",
   },
 
@@ -572,7 +572,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.0,
     lng: -79.6667,
-    imagen: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/vilcabamba-mandango.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#8B7355)",
   },
   {
@@ -585,7 +585,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.01,
     lng: -79.65,
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cerro-santa-barbara-olmedo.webp",
     gradient: "linear-gradient(135deg,#52B788,#0077b6)",
   },
   {
@@ -598,7 +598,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "2 horas",
     lat: -3.995,
     lng: -79.66,
-    imagen: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#8B7355,#2D6A8B)",
   },
 
@@ -613,7 +613,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.381,
     lng: -79.944,
-    imagen: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/centro-historico-loja.webp",
     gradient: "linear-gradient(135deg,#A0522D,#2D6A8B)",
   },
   {
@@ -626,7 +626,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.365,
     lng: -79.91,
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/reserva-jorupe-macara.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#52B788)",
   },
   {
@@ -639,7 +639,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.39,
     lng: -79.95,
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cascada-saraguro.webp",
     gradient: "linear-gradient(135deg,#0077b6,#f2c14e)",
   },
 
@@ -654,7 +654,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "1 día",
     lat: -4.1167,
     lng: -80.1167,
-    imagen: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/complejo-lagunas-pindal.webp",
     gradient: "linear-gradient(135deg,#0077b6,#52b788)",
   },
   {
@@ -667,7 +667,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.125,
     lng: -80.11,
-    imagen: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/complejo-lagunas-pindal.webp",
     gradient: "linear-gradient(135deg,#52b788,#d4a373)",
   },
   {
@@ -680,7 +680,7 @@ export const ATRACTIVOS: Atractivo[] = [
     duracion: "Medio día",
     lat: -4.105,
     lng: -80.125,
-    imagen: "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/complejo-lagunas-pindal.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#0077b6)",
   },
 ];

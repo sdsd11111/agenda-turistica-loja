@@ -57,7 +57,7 @@ export default async function GuiaPage({ params }: Props) {
         badge={`📖 Guía Turística · ${g.categoria}`}
         lead={g.resumen}
         backLink={{ href: "/guias", label: "Volver a Guías" }}
-        imagen={g.imagen || "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80"}
+        imagen={g.imagen || "https://mvps.b-cdn.net/agenda-turistica/guias/hero-guias.webp"}
       >
         <div className="flex flex-wrap gap-2">
           {[

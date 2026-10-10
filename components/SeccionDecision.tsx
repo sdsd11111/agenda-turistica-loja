@@ -154,7 +154,7 @@ export default function SeccionDecision() {
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)]">
               {/* Imagen de fondo con zoom sutil en hover */}
               <img
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
+                src="https://mvps.b-cdn.net/agenda-turistica/atractivos/hero-atractivos.webp"
                 alt="Lugares turísticos de Loja"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -227,7 +227,7 @@ export default function SeccionDecision() {
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)]">
               {/* Imagen de fondo con zoom sutil en hover */}
               <img
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80"
+                src="https://mvps.b-cdn.net/agenda-turistica/guias/guia-loja-3-dias.webp"
                 alt="Itinerarios y rutas en Loja"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />
@@ -301,7 +301,7 @@ export default function SeccionDecision() {
             <div className="relative rounded-[32px] overflow-hidden min-h-[480px] sm:min-h-[520px] flex flex-col justify-between p-7 sm:p-9 shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/20 group transition-all duration-300 hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)] md:col-span-2 lg:col-span-1">
               {/* Imagen de fondo con zoom sutil en hover */}
               <img
-                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80"
+                src="https://mvps.b-cdn.net/agenda-turistica/home/evento-artes-vivas.webp"
                 alt="Qué hacer hoy en Loja - Eventos y cultura"
                 className="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
               />

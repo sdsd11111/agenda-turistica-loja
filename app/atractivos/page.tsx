@@ -25,7 +25,7 @@ export default function AtractivosPage() {
         title="Lugares Turísticos de Loja"
         lead="Desde el Bosque Petrificado de Puyango y Vilcabamba hasta el Parque Podocarpus. Naturaleza, senderos milenarios y patrimonio de los 16 cantones de Loja."
         badge="🗺️ Atractivos Turísticos de Loja · Ecuador"
-        imagen="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80"
+        imagen="https://mvps.b-cdn.net/agenda-turistica/atractivos/hero-atractivos.webp"
       />
 
       <section className="py-16 bg-[#FAFAF8] text-[#17201B]">

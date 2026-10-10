@@ -1,14 +1,13 @@
 import type { Evento } from "@/types";
 
-// Imágenes temáticas de Unsplash (gratuitas, sin API key necesaria)
-// Formato: https://images.unsplash.com/photo-{id}?auto=format&fit=crop&w=800&q=75
+// Imágenes locales organizadas por carpeta /home/
 const IMG = {
-  artesVivas:     "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=75",
-  peregrinacion:  "https://images.unsplash.com/photo-1569470451072-68314f596aec?auto=format&fit=crop&w=800&q=75",
-  intiRaymi:      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=800&q=75",
-  feriaGrande:    "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=75",
-  gastronomia:    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=75",
-  guayacanes:     "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=75",
+  artesVivas:    "https://mvps.b-cdn.net/agenda-turistica/home/evento-artes-vivas.webp",
+  peregrinacion: "https://mvps.b-cdn.net/agenda-turistica/home/evento-romeria-cisne.webp",
+  intiRaymi:     "https://mvps.b-cdn.net/agenda-turistica/home/evento-inti-raymi.webp",
+  feriaGrande:   "https://mvps.b-cdn.net/agenda-turistica/home/evento-feria-loja.webp",
+  gastronomia:   "https://mvps.b-cdn.net/agenda-turistica/home/evento-gastronomia-catamayo.webp",
+  guayacanes:    "https://mvps.b-cdn.net/agenda-turistica/home/evento-guayacanes.webp",
 };
 
 export const EVENTOS_DESTACADOS: (Evento & { gratis?: boolean })[] = [

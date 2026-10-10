@@ -10,7 +10,7 @@ export default function CantonCard({ canton }: { canton: Canton }) {
       {/* Imagen real del cantón */}
       <div className="relative h-40 w-full overflow-hidden bg-slate-900">
         <img
-          src={canton.imagen ?? "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80"}
+          src={canton.imagen ?? "https://mvps.b-cdn.net/agenda-turistica/cantones/hero-cantones.webp"}
           alt={canton.nombre}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />

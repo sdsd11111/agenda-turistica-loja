@@ -21,7 +21,7 @@ export default function SeccionEventosCanton({ canton }: Props) {
 
   const imagenFondo =
     canton.imagen ||
-    "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=2000&q=80";
+    "https://mvps.b-cdn.net/agenda-turistica/home/bg-eventos-loja.webp";
 
   return (
     <section

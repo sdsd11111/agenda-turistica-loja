@@ -7,7 +7,7 @@ export const GUIAS: Guia[] = [
     titulo: "Ruta del café en Vilcabamba",
     resumen: "Fincas entre montañas, tazas recién preparadas y un valle donde el ritmo baja solo.",
     categoria: "Rutas", duracion: "2 días", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/guias/guia-ruta-cafe.webp",
     gradient: "linear-gradient(135deg,#8B7355,#A0522D 45%,#2d6a4f)",
     keywords: ["ruta del café vilcabamba", "café en loja", "qué hacer en vilcabamba"],
     secciones: [
@@ -26,7 +26,7 @@ export const GUIAS: Guia[] = [
     titulo: "Saraguro: turismo cultural kichwa",
     resumen: "Un pueblo que conserva su vestimenta, sus textiles y su gastronomía, y la comparte con orgullo.",
     categoria: "Cultura", duracion: "1 día", nivel: "Fácil", cantonSlug: "saraguro", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/guias/guia-saraguro-cultura.webp",
     gradient: "linear-gradient(135deg,#A0522D,#1B4332 60%,#2D6A8B)",
     keywords: ["turismo en saraguro", "cultura kichwa saraguro", "qué hacer en saraguro"],
     secciones: [
@@ -45,7 +45,7 @@ export const GUIAS: Guia[] = [
     titulo: "Parque Podocarpus: senderismo en el bosque de niebla",
     resumen: "Caminatas por bosque cargado de niebla, con una biodiversidad que sorprende en cada sendero.",
     categoria: "Naturaleza", duracion: "1 día", nivel: "Moderado", cantonSlug: "loja", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/guias/guia-senderismo-podocarpus.webp",
     gradient: "linear-gradient(135deg,#a9d6e5,#2D6A8B 40%,#12301f)",
     keywords: ["parque podocarpus", "senderismo loja", "bosque de niebla ecuador"],
     secciones: [
@@ -64,7 +64,7 @@ export const GUIAS: Guia[] = [
     titulo: "Qué hacer en Loja en 3 días",
     resumen: "Ciudad, naturaleza y un valle de descanso: una ruta realista para un fin de semana largo.",
     categoria: "Itinerarios", duracion: "3 días", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1587595431973-160d0d94add1?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/guias/guia-loja-3-dias.webp",
     gradient: "linear-gradient(135deg,#1B4332,#8B7355 60%,#f2c14e)",
     keywords: ["qué hacer en loja ecuador", "itinerario loja 3 días", "descubre loja"],
     secciones: [
@@ -81,7 +81,7 @@ export const GUIAS: Guia[] = [
     titulo: "Cómo llegar a Loja: aeropuerto, bus y carro",
     resumen: "Las formas de llegar a la provincia y lo que conviene saber antes de salir.",
     categoria: "Logística", duracion: "Lectura de 5 min", nivel: "Fácil", cantonSlug: "catamayo", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/guias/guia-como-llegar.webp",
     gradient: "linear-gradient(135deg,#2D6A8B,#a9d6e5 60%,#1B4332)",
     keywords: ["cómo llegar a loja", "aeropuerto catamayo", "bus a loja"],
     secciones: [
@@ -98,7 +98,7 @@ export const GUIAS: Guia[] = [
     titulo: "Hoteles en Vilcabamba: cómo elegir",
     resumen: "Hosterías, casas rurales y hostales: qué mirar antes de escribir para reservar.",
     categoria: "Hospedaje", duracion: "Lectura de 4 min", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/hospedaje/hosteria-vilcabamba.webp",
     gradient: "linear-gradient(135deg,#f2c14e,#2d6a4f 55%,#12301f)",
     keywords: ["hoteles en vilcabamba", "hospedaje vilcabamba", "hosterías vilcabamba"],
     secciones: [
@@ -115,7 +115,7 @@ export const GUIAS: Guia[] = [
     titulo: "Qué hacer en Macará y la frontera",
     resumen: "Una escala distinta en el sur: clima seco, ambiente fronterizo y paso hacia Perú.",
     categoria: "Cantones", duracion: "Medio día", nivel: "Fácil", cantonSlug: "macara", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/reserva-jorupe-macara.webp",
     gradient: "linear-gradient(135deg,#A0522D,#2D6A8B)",
     keywords: ["qué hacer en macará", "frontera ecuador perú macará", "turismo macará"],
     secciones: [
@@ -130,7 +130,7 @@ export const GUIAS: Guia[] = [
     titulo: "Qué hacer si se te daña el carro en la vía",
     resumen: "Pasos de seguridad y cómo encontrar talleres y grúas en la provincia de Loja.",
     categoria: "Auxilio en ruta", duracion: "Lectura de 4 min", nivel: "Fácil", cantonSlug: "loja", fecha: "2026-10-01",
-    imagen: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/guias/guia-auxilio-vial.webp",
     gradient: "linear-gradient(135deg,#5c1010,#C0392B 60%,#2a0808)",
     keywords: ["auxilio mecánico en carretera loja", "grúa loja", "taller mecánico loja"],
     secciones: [
@@ -147,7 +147,7 @@ export const GUIAS: Guia[] = [
     titulo: "Bosque Petrificado de Puyango: Guía de visita, fósiles y cómo llegar",
     resumen: "Uno de los yacimientos de madera petrificada más grandes del planeta, compartido entre Loja y El Oro. Todo para planificar tu visita.",
     categoria: "Naturaleza", duracion: "1 día completo", nivel: "Fácil", cantonSlug: "puyango", fecha: "2026-10-09",
-    imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/bosque-petrificado-puyango.webp",
     gradient: "linear-gradient(135deg,#5c4033,#8B5A2B 50%,#2d6a4f)",
     keywords: ["bosque petrificado puyango", "puyango loja", "fosiles puyango ecuador", "turismo puyango", "como llegar bosque petrificado puyango"],
     secciones: [
@@ -179,7 +179,7 @@ export const GUIAS: Guia[] = [
     titulo: "Romería de la Virgen del Cisne: Fechas, rutas y guía para el peregrino",
     resumen: "La manifestación de fe y turismo religioso más grande del sur de Ecuador. Tramos, fechas de agosto y consejos de viaje.",
     categoria: "Cultura", duracion: "3 días / Romería", nivel: "Moderado", cantonSlug: "loja", fecha: "2026-10-09",
-    imagen: "https://images.unsplash.com/photo-1548625361-16a70e704a43?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/santuario-el-cisne.webp",
     gradient: "linear-gradient(135deg,#1B365D,#4A69BD 50%,#F6B93B)",
     keywords: ["virgen del cisne", "romeria virgen del cisne loja", "santuario el cisne", "fechas romeria loja", "turismo religioso ecuador"],
     secciones: [
@@ -215,7 +215,7 @@ export const GUIAS: Guia[] = [
     nivel: "Fácil",
     cantonSlug: "quilanga",
     fecha: "2026-10-09",
-    imagen: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/lagunas-chuquiragua-quilanga.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#2D6A8B 60%,#1B4332)",
     keywords: ["turismo quilanga", "cafe de especialidad quilanga", "mirador de chiro", "que hacer en quilanga"],
     secciones: [
@@ -244,7 +244,7 @@ export const GUIAS: Guia[] = [
     nivel: "Fácil",
     cantonSlug: "zapotillo",
     fecha: "2026-10-09",
-    imagen: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/guayacanes-zapotillo.webp",
     gradient: "linear-gradient(135deg,#A0522D,#f2c14e 60%,#1B4332)",
     keywords: ["florecimiento de guayacanes zapotillo", "bosque seco zapotillo", "turismo zapotillo", "chivo al hueco zapotillo"],
     secciones: [
@@ -273,7 +273,7 @@ export const GUIAS: Guia[] = [
     nivel: "Moderado",
     cantonSlug: "espindola",
     fecha: "2026-10-09",
-    imagen: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/lagunas-negras-jimbura.webp",
     gradient: "linear-gradient(135deg,#12301f,#2D6A8B 60%,#1B4332)",
     keywords: ["lagunas negras de jimbura", "parque nacional yacuri", "turismo espindola", "amaluza loja"],
     secciones: [
@@ -295,7 +295,7 @@ export const GUIAS: Guia[] = [
     nivel: "Moderado",
     cantonSlug: "calvas",
     fecha: "2026-10-09",
-    imagen: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=80",
+    imagen: "https://mvps.b-cdn.net/agenda-turistica/atractivos/cerro-el-ahuaca.webp",
     gradient: "linear-gradient(135deg,#2d6a4f,#8B7355 60%,#1B4332)",
     keywords: ["cerro ahuaca cariamanga", "turismo calvas", "escalada cerro ahuaca", "cariamanga loja"],
     secciones: [

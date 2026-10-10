@@ -58,7 +58,7 @@ export default async function CantonPage({ params }: Props) {
         lead={canton.descripcion}
         badge={`${canton.emoji} Cantón · Cabecera: ${canton.cabecera}`}
         backLink={{ href: "/cantones", label: "Volver a Cantones" }}
-        imagen={canton.imagen ?? "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1600&q=80"}
+        imagen={canton.imagen ?? "https://mvps.b-cdn.net/agenda-turistica/cantones/hero-cantones.webp"}
       >
         {canton.atractivo && (
           <span
@@ -169,12 +169,13 @@ export default async function CantonPage({ params }: Props) {
                   </p>
                 </div>
                 <Link
-                  href="/para-negocios"
+                  href="/contacto"
                   style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
                   className="px-5 py-2.5 rounded-full bg-[#17201B] hover:bg-[#2C5E43] text-white text-xs whitespace-nowrap transition-all shrink-0"
                 >
-                  Conocer planes para negocios →
+                  Registrar mi hospedaje →
                 </Link>
+
               </div>
             </div>
           ) : (

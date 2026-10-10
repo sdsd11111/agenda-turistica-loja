@@ -61,7 +61,7 @@ export default async function HospedajeFicha({ params }: Props) {
         badge={`🏨 ${h.tipo} · ${cantonNombre(h.cantonSlug)}`}
         lead={h.zona}
         backLink={{ href: "/hospedaje", label: "Volver a Hospedaje" }}
-        imagen="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80"
+        imagen={h.imagen ?? "https://mvps.b-cdn.net/agenda-turistica/hospedaje/hero-hospedaje.webp"}
       >
         <span
           style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}

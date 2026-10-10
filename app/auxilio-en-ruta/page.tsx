@@ -24,7 +24,7 @@ export default function AuxilioPage() {
       >
         {/* Fondo fotográfico */}
         <img
-          src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1600&q=80"
+          src="https://mvps.b-cdn.net/agenda-turistica/guias/guia-auxilio-vial.webp"
           alt="Carretera en la provincia de Loja"
           className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
         />

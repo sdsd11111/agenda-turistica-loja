@@ -5,7 +5,7 @@ export default function PageHero({
   lead,
   badge = "Agenda Turística Loja · Ecuador",
   children,
-  imagen = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80",
+  imagen = "https://mvps.b-cdn.net/agenda-turistica/cantones/hero-cantones.webp",
   backLink,
 }: {
   title: string;

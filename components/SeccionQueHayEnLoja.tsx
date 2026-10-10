@@ -42,7 +42,7 @@ export default function SeccionQueHayEnLoja() {
           <div
             className="absolute -top-[20%] -bottom-[20%] left-0 right-0 bg-cover bg-center bg-no-repeat bg-fixed filter brightness-[0.75] contrast-[1.08] transition-transform duration-75"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=2000&q=80')`,
+              backgroundImage: `url('https://mvps.b-cdn.net/agenda-turistica/home/bg-eventos-loja.webp')`,
             }}
           />
         </div>
@@ -55,7 +55,7 @@ export default function SeccionQueHayEnLoja() {
           <div
             className="absolute -top-[15%] -bottom-[15%] left-0 right-0 bg-cover bg-center bg-no-repeat bg-fixed filter brightness-90 contrast-[1.05]"
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=2000&q=80')`,
+              backgroundImage: `url('https://mvps.b-cdn.net/agenda-turistica/home/bg-eventos-loja.webp')`,
             }}
           />
         </div>
