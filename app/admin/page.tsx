@@ -575,7 +575,7 @@ export default function AdminPage() {
                 </div>
 
                 {form.imagen && (
-                  <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 pt-2">
+                  <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 pt-2 bg-white p-3 rounded-2xl border border-[#E8EAE3]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={form.imagen}
@@ -589,9 +589,16 @@ export default function AdminPage() {
                         value={form.imagen_alt}
                         onChange={(e) => setForm((prev) => ({ ...prev, imagen_alt: e.target.value }))}
                         placeholder="Descripción visual con palabras clave para Google Imágenes"
-                        className="w-full bg-white border border-[#E8EAE3] rounded-xl px-3 py-2 text-[#17201B] text-xs focus:outline-none focus:ring-2 focus:ring-[#2C5E43]"
+                        className="w-full bg-[#FAFAF8] border border-[#E8EAE3] rounded-xl px-3 py-2 text-[#17201B] text-xs focus:outline-none focus:ring-2 focus:ring-[#2C5E43]"
                       />
                     </div>
+                    <button
+                      type="button"
+                      onClick={() => setForm((prev) => ({ ...prev, imagen: '', imagen_alt: '' }))}
+                      className="bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-xs font-bold px-4 py-2.5 rounded-xl transition shrink-0"
+                    >
+                      🗑️ Quitar Imagen
+                    </button>
                   </div>
                 )}
               </div>
@@ -626,18 +633,26 @@ export default function AdminPage() {
                         value={form.video_url || ''}
                         onChange={(e) => {
                           const val = e.target.value;
-                          setForm((prev) => ({
-                            ...prev,
-                            video_url: val,
-                            // Si el contenido aún tiene el bloque mockup o el marcador, lo reemplazamos limpiamente
-                            contenido: val.trim()
-                              ? prev.contenido
+                          const prevVideo = form.video_url?.trim();
+                          setForm((prev) => {
+                            let nuevoContenido = prev.contenido;
+                            if (val.trim()) {
+                              if (prevVideo && nuevoContenido.includes(prevVideo)) {
+                                nuevoContenido = nuevoContenido.replaceAll(prevVideo, val.trim());
+                              } else {
+                                nuevoContenido = nuevoContenido
                                   .replace(/<!-- BLOQUE DESTACADO DE VIDEO -->[\s\S]*?<\/div>\s*<\/div>/i, `\n\n${val.trim()}\n\n`)
-                                  .replace('[VIDEO PRINCIPAL DEL ARTÍCULO: insertar aquí]', `\n\n${val.trim()}\n\n`)
-                              : prev.contenido,
-                          }));
+                                  .replace('[VIDEO PRINCIPAL DEL ARTÍCULO: insertar aquí]', `\n\n${val.trim()}\n\n`);
+                              }
+                            }
+                            return {
+                              ...prev,
+                              video_url: val,
+                              contenido: nuevoContenido,
+                            };
+                          });
                         }}
-                        placeholder="Ejemplo: https://www.youtube.com/watch?v=TuVideo o https://youtu.be/..."
+                        placeholder="Ejemplo: https://www.youtube.com/watch?v=... o https://.../video.mp4"
                         className="w-full bg-white border-2 border-[#2C5E43]/30 rounded-2xl px-4 py-3 text-sm text-[#17201B] placeholder-[#94A39A] focus:outline-none focus:ring-2 focus:ring-[#2C5E43] font-medium shadow-inner"
                       />
                     </div>

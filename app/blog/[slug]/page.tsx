@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getPostBySlug, getPublishedPosts } from '@/lib/blog';
 import { SITE_URL } from '@/lib/site';
 import { renderContent, getVideoEmbedHtml } from '@/lib/markdown';
+import { ArticleMedia } from '@/components/ArticleMedia';
 
 
 interface PageProps {
@@ -161,29 +162,32 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
 
 
-          {/* Imagen Principal de Portada */}
-          {post.imagen ? (
-            <div className="mb-10 rounded-3xl overflow-hidden border border-[#E8EAE3] shadow-md bg-[#F4F5F0]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={post.imagen}
-                alt={post.imagen_alt || post.titulo}
-                className="w-full h-auto max-h-[520px] object-cover"
-              />
-              {post.imagen_alt && (
-                <div className="p-3 text-center text-xs text-[#64746B] bg-white border-t border-[#E8EAE3] italic">
-                  {post.imagen_alt}
-                </div>
-              )}
-            </div>
-          ) : null}
+          {/* Multimedia del Artículo: Foto, Video o Slide si ambos existen */}
+          <ArticleMedia
+            image={post.imagen}
+            imageAlt={post.imagen_alt}
+            videoUrl={post.video_url}
+            title={post.titulo}
+          />
 
           {/* Contenido del Artículo con Diseño Editorial */}
-          <div
-            className="blog-content-body max-w-none break-words overflow-hidden [overflow-wrap:anywhere]"
-            dangerouslySetInnerHTML={{ __html: renderContent(post.contenido).trim() }}
-            suppressHydrationWarning
-          />{post.etiquetas && post.etiquetas.length > 0 ? (
+          {(() => {
+            // Limpiar cualquier residuo de etiquetas <video> o <iframe> rotas que hayan quedado en el texto guardado
+            let cleanContent = post.contenido
+              .replace(/<div[^>]*aspect-video[\s\S]*?<\/div>/gi, '')
+              .replace(/<div[^>]*class="my-8[^>]*>[\s\S]*?<\/div>/gi, '')
+              .replace(/<video[\s\S]*?<\/video>/gi, '')
+              .replace(/https?:\/\/redessociales\.b-cdn\.net\/uploads\/[^\s<>"']+/gi, '')
+              .replace(/https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/)|youtu\.be\/)[a-zA-Z0-9_-]{11}/gi, '');
+
+            return (
+              <div
+                className="blog-content-body max-w-none break-words overflow-hidden [overflow-wrap:anywhere]"
+                dangerouslySetInnerHTML={{ __html: renderContent(cleanContent).trim() }}
+                suppressHydrationWarning
+              />
+            );
+          })()}{post.etiquetas && post.etiquetas.length > 0 ? (
             <div className="mt-12 pt-6 border-t border-[#E8EAE3]" suppressHydrationWarning>
               <h3 className="text-xs uppercase tracking-wider text-[#64746B] font-bold mb-3" style={{ fontFamily: 'var(--font-mono)' }}>
                 Temas relacionados:
