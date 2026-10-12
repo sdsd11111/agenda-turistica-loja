@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { renderContent } from '@/lib/markdown';
+import { renderContent, getVideoEmbedHtml } from '@/lib/markdown';
 
 
 export default function AdminPage() {
@@ -25,6 +25,7 @@ export default function AdminPage() {
     contenido: '',
     imagen: '',
     imagen_alt: '',
+    video_url: '',
     categoria: 'Turismo',
     etiquetas: '',
     canton_slug: '',
@@ -135,6 +136,7 @@ export default function AdminPage() {
       contenido: '',
       imagen: '',
       imagen_alt: '',
+      video_url: '',
       categoria: 'Turismo',
       etiquetas: '',
       canton_slug: '',
@@ -155,6 +157,7 @@ export default function AdminPage() {
       contenido: post.contenido,
       imagen: post.imagen || '',
       imagen_alt: post.imagen_alt || '',
+      video_url: post.video_url || '',
       categoria: post.categoria || 'Turismo',
       etiquetas: Array.isArray(post.etiquetas) ? post.etiquetas.join(', ') : post.etiquetas || '',
       canton_slug: post.canton_slug || '',
@@ -593,23 +596,97 @@ export default function AdminPage() {
                 )}
               </div>
 
-              {/* Contenido (Cuerpo del artículo en Markdown o texto normal) */}
-              <div className="md:col-span-2">
-                <label className="block text-xs font-bold text-[#17201B] uppercase tracking-wider mb-2 flex flex-wrap justify-between items-center gap-2" style={{ fontFamily: 'var(--font-mono)' }}>
-                  <span>Cuerpo del Artículo (Formato Markdown o Texto Normal) *</span>
-                  <span className="text-[#2C5E43] font-semibold text-xs bg-[#EBF3ED] px-2.5 py-0.5 rounded-md">
-                    Soporta: ## Título, **Negrita**, - Listas, [Enlaces](url)
-                  </span>
-                </label>
-                <textarea
-                  rows={14}
-                  value={form.contenido}
-                  onChange={(e) => setForm((prev) => ({ ...prev, contenido: e.target.value }))}
-                  placeholder={`## Descubre los mejores atractivos de Loja\n\nPuedes escribir en texto normal o usar formato Markdown:\n\n- Usa **negritas** para destacar palabras clave\n- Usa ## o ### para subtítulos (óptimo para SEO y Google)\n- Usa listas con guiones para organizar consejos`}
-                  required
-                  className="w-full bg-[#FAFAF8] border border-[#E8EAE3] rounded-2xl p-4 text-[#17201B] focus:outline-none focus:ring-2 focus:ring-[#2C5E43] font-mono text-sm leading-relaxed"
-                />
-              </div>
+                {/* CAMPO DEDICADO PARA VIDEO PRINCIPAL */}
+                <div className="md:col-span-2 bg-[#EBF3ED] p-6 rounded-3xl border-2 border-[#2C5E43]/40 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className="size-11 rounded-2xl bg-[#2C5E43] text-white flex items-center justify-center text-xl font-bold shadow-md">
+                        🎬
+                      </div>
+                      <div>
+                        <h4 className="text-base font-extrabold text-[#17201B]">
+                          Video Principal del Artículo (YouTube, Vimeo o MP4)
+                        </h4>
+                        <p className="text-xs text-[#64746B]">
+                          Pega aquí directamente el link de tu video. Aparecerá automáticamente como reproductor funcional en el blog.
+                        </p>
+                      </div>
+                    </div>
+                    {form.video_url && (
+                      <span className="bg-[#2C5E43] text-white text-[11px] font-bold px-3 py-1 rounded-full shrink-0 shadow-sm">
+                        ✓ Video Configurado
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <div className="flex-1 relative">
+                      <input
+                        type="url"
+                        value={form.video_url || ''}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setForm((prev) => ({
+                            ...prev,
+                            video_url: val,
+                            // Si el contenido aún tiene el bloque mockup o el marcador, lo reemplazamos limpiamente
+                            contenido: val.trim()
+                              ? prev.contenido
+                                  .replace(/<!-- BLOQUE DESTACADO DE VIDEO -->[\s\S]*?<\/div>\s*<\/div>/i, `\n\n${val.trim()}\n\n`)
+                                  .replace('[VIDEO PRINCIPAL DEL ARTÍCULO: insertar aquí]', `\n\n${val.trim()}\n\n`)
+                              : prev.contenido,
+                          }));
+                        }}
+                        placeholder="Ejemplo: https://www.youtube.com/watch?v=TuVideo o https://youtu.be/..."
+                        className="w-full bg-white border-2 border-[#2C5E43]/30 rounded-2xl px-4 py-3 text-sm text-[#17201B] placeholder-[#94A39A] focus:outline-none focus:ring-2 focus:ring-[#2C5E43] font-medium shadow-inner"
+                      />
+                    </div>
+                    {form.video_url && (
+                      <button
+                        type="button"
+                        onClick={() => setForm((prev) => ({ ...prev, video_url: '' }))}
+                        className="bg-white hover:bg-red-50 text-red-600 border border-red-200 text-xs font-bold px-4 py-3 rounded-2xl transition shrink-0"
+                      >
+                        Quitar Video
+                      </button>
+                    )}
+                  </div>
+
+                  {form.video_url && (
+                    <div
+                      className="rounded-2xl overflow-hidden border border-[#2C5E43]/20 shadow-md aspect-video max-w-xl bg-black"
+                      dangerouslySetInnerHTML={{ __html: getVideoEmbedHtml(form.video_url) }}
+                    />
+                  )}
+                </div>
+
+                {/* Contenido (Cuerpo del artículo en Markdown o texto normal) */}
+                <div className="md:col-span-2">
+                  <div className="flex flex-wrap justify-between items-center gap-2 mb-2">
+                    <label className="block text-xs font-bold text-[#17201B] uppercase tracking-wider" style={{ fontFamily: 'var(--font-mono)' }}>
+                      Cuerpo del Artículo (Markdown, Videos y Multimedia) *
+                    </label>
+                    <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
+                      <span className="text-[#2C5E43] font-semibold bg-[#EBF3ED] px-2 py-0.5 rounded-md">
+                        🎥 Videos YouTube / Vimeo / MP4 directos
+                      </span>
+                      <span className="text-[#2C5E43] font-semibold bg-[#EBF3ED] px-2 py-0.5 rounded-md">
+                        🖼️ Markdown & HTML
+                      </span>
+                    </div>
+                  </div>
+                  <textarea
+                    rows={14}
+                    value={form.contenido}
+                    onChange={(e) => setForm((prev) => ({ ...prev, contenido: e.target.value }))}
+                    placeholder={`## Descubre los mejores atractivos de Loja\n\n- Pega directamente enlaces de YouTube o Vimeo en una línea propia y se convertirán en video.\n- Usa **negritas** para destacar palabras clave\n- Usa ## o ### para subtítulos (óptimo para SEO y Google)\n- Puedes insertar imágenes con ![descripción](url) o bloques HTML personalizados.`}
+                    required
+                    className="w-full bg-[#FAFAF8] border border-[#E8EAE3] rounded-2xl p-4 text-[#17201B] focus:outline-none focus:ring-2 focus:ring-[#2C5E43] font-mono text-sm leading-relaxed"
+                  />
+                  <p className="text-[11px] text-[#64746B] mt-1.5">
+                    💡 <strong>Tip de Videos:</strong> Simplemente pega la URL del video de YouTube (ej. <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-800">https://www.youtube.com/watch?v=...</code>) en su propia línea y el sistema lo incrustará automáticamente de forma responsiva.
+                  </p>
+                </div>
 
 
               {/* Etiquetas / Tags */}
@@ -795,15 +872,8 @@ export default function AdminPage() {
               )}
 
               <div
-                className="prose prose-slate max-w-none text-[#17201B] text-base leading-relaxed break-words overflow-hidden [overflow-wrap:anywhere]
-                  prose-headings:font-bold prose-headings:text-[#17201B] prose-headings:tracking-tight prose-headings:break-words
-                  prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-h2:border-b prose-h2:border-[#E8EAE3] prose-h2:pb-2
-                  prose-h3:text-xl prose-h3:mt-6 prose-h3:mb-3
-                  prose-p:text-[#17201B] prose-p:leading-relaxed prose-p:mb-4 prose-p:break-words
-                  prose-ul:text-[#17201B] prose-ul:my-4 prose-li:my-1
-                  prose-strong:text-[#17201B] prose-strong:font-bold
-                  prose-a:text-[#2C5E43] prose-a:font-semibold hover:prose-a:underline"
-                dangerouslySetInnerHTML={{ __html: renderContent(showPreviewModal.contenido) || '<p className="text-gray-400">Sin contenido...</p>' }}
+                className="blog-content-body max-w-none break-words overflow-hidden [overflow-wrap:anywhere]"
+                dangerouslySetInnerHTML={{ __html: renderContent(showPreviewModal.contenido) || '<p class="text-gray-400">Sin contenido...</p>' }}
               />
 
 

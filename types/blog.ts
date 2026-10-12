@@ -7,6 +7,7 @@ export type BlogPost = {
   contenido: string;             // HTML o markdown del cuerpo
   imagen: string;                // URL de imagen destacada
   imagen_alt: string;            // alt text SEO de la imagen
+  video_url?: string;            // URL de video principal (YouTube, Vimeo, etc.)
   categoria: string;             // tag principal p.ej. "Turismo", "Naturaleza", "Gastronomía"
   etiquetas: string[];           // tags adicionales
   canton_slug?: string;          // cantón relacionado

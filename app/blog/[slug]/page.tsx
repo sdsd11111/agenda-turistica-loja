@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getPostBySlug, getPublishedPosts } from '@/lib/blog';
 import { SITE_URL } from '@/lib/site';
-import { renderContent } from '@/lib/markdown';
+import { renderContent, getVideoEmbedHtml } from '@/lib/markdown';
 
 
 interface PageProps {
@@ -64,7 +64,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
@@ -134,8 +135,8 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span className="text-xs text-[#64746B]">📅 {post.fecha_publicacion}</span>
               <span className="text-xs text-[#64746B]">•</span>
               <span className="text-xs text-[#64746B]">⏱️ {post.tiempo_lectura || 5} min de lectura</span>
-              {post.canton_slug && (
-                <>
+              {post.canton_slug ? (
+                <span className="inline-flex items-center gap-1">
                   <span className="text-xs text-[#64746B]">•</span>
                   <Link
                     href={`/cantones/${post.canton_slug}`}
@@ -143,8 +144,8 @@ export default async function BlogPostPage({ params }: PageProps) {
                   >
                     📍 Cantón {post.canton_slug}
                   </Link>
-                </>
-              )}
+                </span>
+              ) : null}
             </div>
 
             <h1
@@ -160,8 +161,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           </header>
 
 
-          {/* Imagen Principal */}
-          {post.imagen && (
+          {/* Imagen Principal de Portada */}
+          {post.imagen ? (
             <div className="mb-10 rounded-3xl overflow-hidden border border-[#E8EAE3] shadow-md bg-[#F4F5F0]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -175,26 +176,15 @@ export default async function BlogPostPage({ params }: PageProps) {
                 </div>
               )}
             </div>
-          )}
+          ) : null}
 
-          {/* Contenido del Artículo */}
+          {/* Contenido del Artículo con Diseño Editorial */}
           <div
-            className="prose prose-slate max-w-none text-[#17201B] leading-relaxed text-base break-words overflow-hidden [overflow-wrap:anywhere]
-              prose-headings:font-bold prose-headings:text-[#17201B] prose-headings:tracking-tight prose-headings:break-words
-              prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h2:border-b prose-h2:border-[#E8EAE3] prose-h2:pb-3
-              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-              prose-p:text-[#17201B] prose-p:leading-relaxed prose-p:mb-5 prose-p:break-words
-              prose-ul:text-[#17201B] prose-ul:my-4 prose-li:my-1.5
-              prose-strong:text-[#17201B] prose-strong:font-bold
-              prose-a:text-[#2C5E43] prose-a:font-semibold hover:prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: renderContent(post.contenido) }}
-          />
-
-
-
-          {/* Tags */}
-          {post.etiquetas && post.etiquetas.length > 0 && (
-            <div className="mt-12 pt-6 border-t border-[#E8EAE3]">
+            className="blog-content-body max-w-none break-words overflow-hidden [overflow-wrap:anywhere]"
+            dangerouslySetInnerHTML={{ __html: renderContent(post.contenido).trim() }}
+            suppressHydrationWarning
+          />{post.etiquetas && post.etiquetas.length > 0 ? (
+            <div className="mt-12 pt-6 border-t border-[#E8EAE3]" suppressHydrationWarning>
               <h3 className="text-xs uppercase tracking-wider text-[#64746B] font-bold mb-3" style={{ fontFamily: 'var(--font-mono)' }}>
                 Temas relacionados:
               </h3>
@@ -209,7 +199,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 ))}
               </div>
             </div>
-          )}
+          ) : null}
 
           {/* Autor Card */}
           <div className="mt-8 bg-white border border-[#E8EAE3] rounded-3xl p-6 flex items-center gap-4 shadow-sm">

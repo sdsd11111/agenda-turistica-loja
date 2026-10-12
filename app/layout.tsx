@@ -95,7 +95,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 
   return (
-    <html lang="es" className={`${sora.variable} ${dmSans.variable} ${spaceGrotesk.variable}`}>
+    <html lang="es" data-scroll-behavior="smooth" className={`${sora.variable} ${dmSans.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-[#FAFAF8] text-[#17201B] antialiased selection:bg-[#2C5E43] selection:text-white">
         <SiteChrome>{children}</SiteChrome>
       </body>

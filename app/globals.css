@@ -163,9 +163,135 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   REDUCED MOTION
+   ESTILOS EDITORIALES DEL BLOG
 ═══════════════════════════════════════════════════════════ */
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+.blog-content-body {
+  font-size: 1.0625rem;
+  line-height: 1.85;
+  color: #2D3748;
 }
+
+.blog-content-body h2 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #17201B;
+  letter-spacing: -0.02em;
+  margin-top: 2.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #EBF3ED;
+  position: relative;
+}
+
+.blog-content-body h2::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #2C5E43;
+}
+
+.blog-content-body h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: inherit;
+  margin-top: 2rem;
+  margin-bottom: 0.85rem;
+}
+
+.blog-content-body p {
+  margin-bottom: 1.35rem;
+  color: inherit;
+}
+
+.blog-content-body strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+/* Forzar contraste nítido en tarjetas oscuras (Caso Práctico / CTA) */
+.blog-content-body [class*="text-white"],
+.blog-content-body [class*="bg-[#17201B]"],
+.blog-content-body [class*="from-[#17201B]"] {
+  color: #FFFFFF !important;
+}
+
+.blog-content-body [class*="text-white"] p,
+.blog-content-body [class*="bg-[#17201B]"] p,
+.blog-content-body [class*="from-[#17201B]"] p {
+  color: #E2E8F0 !important;
+}
+
+.blog-content-body [class*="text-white"] h3,
+.blog-content-body [class*="bg-[#17201B]"] h3,
+.blog-content-body [class*="from-[#17201B]"] h3 {
+  color: #FFFFFF !important;
+}
+
+.blog-content-body a {
+  color: #2C5E43;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(44, 94, 67, 0.3);
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+.blog-content-body a:hover {
+  color: #1B3C2A;
+  text-decoration-color: #2C5E43;
+}
+
+.blog-content-body ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-content-body ul > li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.blog-content-body ul > li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #2C5E43;
+  font-weight: bold;
+}
+
+.blog-content-body ol {
+  padding-left: 1.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-content-body ol > li {
+  margin-bottom: 0.65rem;
+  padding-left: 0.5rem;
+}
+
+.blog-content-body blockquote {
+  border-left: 4px solid #2C5E43;
+  padding: 1rem 1.5rem;
+  margin: 1.75rem 0;
+  background: #F4F5F0;
+  border-radius: 0 1rem 1rem 0;
+  font-style: italic;
+  color: #4A5568;
+}
+
+.blog-content-body hr {
+  border: 0;
+  height: 1px;
+  background: #E8EAE3;
+  margin: 3rem 0;
+}
+

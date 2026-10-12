@@ -43,6 +43,7 @@ export async function POST(request: Request) {
       contenido,
       imagen,
       imagen_alt,
+      video_url,
       categoria,
       etiquetas,
       canton_slug,
@@ -63,8 +64,8 @@ export async function POST(request: Request) {
 
     const insertQuery = `
       INSERT INTO blog_posts 
-      (slug, titulo, resumen, contenido, imagen, imagen_alt, categoria, etiquetas, canton_slug, autor, publicado, tiempo_lectura)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      (slug, titulo, resumen, contenido, imagen, imagen_alt, video_url, categoria, etiquetas, canton_slug, autor, publicado, tiempo_lectura)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const [result]: any = await db.query(insertQuery, [
@@ -74,6 +75,7 @@ export async function POST(request: Request) {
       contenido,
       imagen || '',
       imagen_alt || titulo,
+      video_url || null,
       categoria || 'Turismo',
       tagsJson,
       canton_slug || null,
