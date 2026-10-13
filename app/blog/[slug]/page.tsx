@@ -45,22 +45,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       publishedTime: post.fecha_publicacion,
       authors: [post.autor || 'Agenda Turística Loja'],
       tags: post.etiquetas,
-      images: post.imagen
-        ? [
-            {
-              url: post.imagen,
-              alt: post.imagen_alt || post.titulo,
-              width: 1200,
-              height: 630,
-            },
-          ]
-        : undefined,
+      images: [
+        {
+          url: post.imagen && post.imagen.startsWith('http')
+            ? post.imagen
+            : `${SITE_URL}/logo-horizontal-1200x375.png`,
+          alt: post.imagen_alt || post.titulo,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.titulo,
       description: post.resumen,
-      images: post.imagen ? [post.imagen] : undefined,
+      images: [
+        post.imagen && post.imagen.startsWith('http')
+          ? post.imagen
+          : `${SITE_URL}/logo-horizontal-1200x375.png`,
+      ],
     },
   };
 }
