@@ -180,13 +180,13 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Contenido del Artículo con Diseño Editorial */}
           {(() => {
-            // Limpiar cualquier residuo de etiquetas <video> o <iframe> rotas que hayan quedado en el texto guardado
+            // Limpiar cualquier residuo de etiquetas rotas o del video antiguo de Mac Miller que haya quedado en el texto guardado
             let cleanContent = post.contenido
               .replace(/<div[^>]*aspect-video[\s\S]*?<\/div>/gi, '')
               .replace(/<div[^>]*class="my-8[^>]*>[\s\S]*?<\/div>/gi, '')
               .replace(/<video[\s\S]*?<\/video>/gi, '')
-              .replace(/https?:\/\/redessociales\.b-cdn\.net\/uploads\/[^\s<>"']+/gi, '')
-              .replace(/https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/)|youtu\.be\/)[a-zA-Z0-9_-]{11}/gi, '');
+              .replace(/https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/)|youtu\.be\/)SsKT0s5J8ko[^\s<>"']*/gi, '')
+              .replace(/SsKT0s5J8ko/gi, '');
 
             return (
               <div

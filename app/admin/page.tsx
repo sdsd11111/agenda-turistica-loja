@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { renderContent, getVideoEmbedHtml } from '@/lib/markdown';
 
@@ -16,6 +16,12 @@ export default function AdminPage() {
   const [view, setView] = useState<'list' | 'editor'>('list');
   const [editingId, setEditingId] = useState<number | null>(null);
   const [showPreviewModal, setShowPreviewModal] = useState<any | null>(null);
+
+  // Estado para modal de insertar video en el contenido
+  const [showVideoInsertModal, setShowVideoInsertModal] = useState(false);
+  const [videoToInsert, setVideoToInsert] = useState('');
+  const [editorTab, setEditorTab] = useState<'edit' | 'preview'>('edit');
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Formulario de artículo
   const [form, setForm] = useState({
@@ -52,6 +58,37 @@ export default function AdminPage() {
             .replace(/[^a-z0-9]+/g, '-')
             .replace(/^-+|-+$/g, ''),
     }));
+  };
+  // Insertar texto o video en la posición actual del cursor
+  const insertAtCursor = (textToInsert: string) => {
+    const textarea = textareaRef.current;
+    if (!textarea) {
+      setForm((prev) => ({ ...prev, contenido: prev.contenido + '\n\n' + textToInsert }));
+      return;
+    }
+
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const currentVal = textarea.value;
+
+    const before = currentVal.substring(0, start);
+    const after = currentVal.substring(end);
+    const newVal = before + textToInsert + after;
+
+    setForm((prev) => ({ ...prev, contenido: newVal }));
+
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + textToInsert.length, start + textToInsert.length);
+    }, 50);
+  };
+
+  const handleConfirmVideoInsert = () => {
+    const url = videoToInsert.trim();
+    if (!url) return;
+    insertAtCursor(`\n\n${url}\n\n`);
+    setVideoToInsert('');
+    setShowVideoInsertModal(false);
   };
 
   // Convertir imagen a Base64
@@ -150,11 +187,19 @@ export default function AdminPage() {
 
   const editPost = (post: any) => {
     setEditingId(post.id);
+    // Limpiar cualquier residuo del video antiguo de Mac Miller de YouTube en el contenido
+    let cleanedContent = post.contenido || '';
+    if (post.video_url && post.video_url.trim()) {
+      cleanedContent = cleanedContent
+        .replace(/https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/)|youtu\.be\/)SsKT0s5J8ko[^\s<>"']*/gi, '')
+        .replace(/<div[^>]*aspect-video[\s\S]*?<\/div>/gi, '');
+    }
+
     setForm({
       titulo: post.titulo,
       slug: post.slug,
       resumen: post.resumen,
-      contenido: post.contenido,
+      contenido: cleanedContent,
       imagen: post.imagen || '',
       imagen_alt: post.imagen_alt || '',
       video_url: post.video_url || '',
@@ -675,32 +720,146 @@ export default function AdminPage() {
                   )}
                 </div>
 
-                {/* Contenido (Cuerpo del artículo en Markdown o texto normal) */}
-                <div className="md:col-span-2">
-                  <div className="flex flex-wrap justify-between items-center gap-2 mb-2">
+                {/* Contenido (Cuerpo del artículo en texto normal con herramientas visuales) */}
+                <div className="md:col-span-2 space-y-3">
+                  <div className="flex flex-wrap justify-between items-center gap-2">
                     <label className="block text-xs font-bold text-[#17201B] uppercase tracking-wider" style={{ fontFamily: 'var(--font-mono)' }}>
-                      Cuerpo del Artículo (Markdown, Videos y Multimedia) *
+                      Cuerpo del Artículo (Texto Normal & Videos) *
                     </label>
-                    <div className="flex flex-wrap items-center gap-1.5 text-[11px]">
-                      <span className="text-[#2C5E43] font-semibold bg-[#EBF3ED] px-2 py-0.5 rounded-md">
-                        🎥 Videos YouTube / Vimeo / MP4 directos
-                      </span>
-                      <span className="text-[#2C5E43] font-semibold bg-[#EBF3ED] px-2 py-0.5 rounded-md">
-                        🖼️ Markdown & HTML
-                      </span>
+                    <div className="flex items-center gap-1 bg-[#F4F5F0] p-1 rounded-xl border border-[#E8EAE3]">
+                      <button
+                        type="button"
+                        onClick={() => setEditorTab('edit')}
+                        className={`text-xs font-bold px-3 py-1.5 rounded-lg transition ${
+                          editorTab === 'edit'
+                            ? 'bg-[#2C5E43] text-white shadow-sm'
+                            : 'text-[#64746B] hover:text-[#17201B]'
+                        }`}
+                      >
+                        ✍️ Escribir (Texto)
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setEditorTab('preview')}
+                        className={`text-xs font-bold px-3 py-1.5 rounded-lg transition ${
+                          editorTab === 'preview'
+                            ? 'bg-[#2C5E43] text-white shadow-sm'
+                            : 'text-[#64746B] hover:text-[#17201B]'
+                        }`}
+                      >
+                        👁️ Vista Previa en Vivo
+                      </button>
                     </div>
                   </div>
-                  <textarea
-                    rows={14}
-                    value={form.contenido}
-                    onChange={(e) => setForm((prev) => ({ ...prev, contenido: e.target.value }))}
-                    placeholder={`## Descubre los mejores atractivos de Loja\n\n- Pega directamente enlaces de YouTube o Vimeo en una línea propia y se convertirán en video.\n- Usa **negritas** para destacar palabras clave\n- Usa ## o ### para subtítulos (óptimo para SEO y Google)\n- Puedes insertar imágenes con ![descripción](url) o bloques HTML personalizados.`}
-                    required
-                    className="w-full bg-[#FAFAF8] border border-[#E8EAE3] rounded-2xl p-4 text-[#17201B] focus:outline-none focus:ring-2 focus:ring-[#2C5E43] font-mono text-sm leading-relaxed"
-                  />
-                  <p className="text-[11px] text-[#64746B] mt-1.5">
-                    💡 <strong>Tip de Videos:</strong> Simplemente pega la URL del video de YouTube (ej. <code className="bg-gray-100 px-1 py-0.5 rounded text-gray-800">https://www.youtube.com/watch?v=...</code>) en su propia línea y el sistema lo incrustará automáticamente de forma responsiva.
-                  </p>
+
+                  {/* Barra de herramientas para formatear texto y colocar videos */}
+                  <div className="flex flex-wrap items-center gap-2 p-2 bg-[#F4F5F0] rounded-2xl border border-[#E8EAE3]">
+                    <button
+                      type="button"
+                      onClick={() => setShowVideoInsertModal(true)}
+                      className="flex items-center gap-1.5 bg-[#2C5E43] hover:bg-[#224B35] text-white text-xs font-extrabold px-3.5 py-2 rounded-xl transition shadow-sm"
+                    >
+                      <span>🎬</span>
+                      <span>Insertar Video Aquí</span>
+                    </button>
+
+                    <div className="h-5 w-px bg-[#E8EAE3] mx-1 hidden sm:block" />
+
+                    <button
+                      type="button"
+                      onClick={() => insertAtCursor('**Texto en negrita**')}
+                      className="px-3 py-1.5 bg-white hover:bg-gray-50 border border-[#E8EAE3] rounded-xl text-xs font-bold text-[#17201B] transition"
+                      title="Negrita"
+                    >
+                      <strong>B</strong> Negrita
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertAtCursor('\n\n## Título de Sección\n\n')}
+                      className="px-3 py-1.5 bg-white hover:bg-gray-50 border border-[#E8EAE3] rounded-xl text-xs font-bold text-[#17201B] transition"
+                      title="Título principal de sección"
+                    >
+                      H2 Título
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertAtCursor('\n\n### Subtítulo\n\n')}
+                      className="px-3 py-1.5 bg-white hover:bg-gray-50 border border-[#E8EAE3] rounded-xl text-xs font-bold text-[#17201B] transition"
+                      title="Subtítulo"
+                    >
+                      H3 Subtítulo
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertAtCursor('\n\n- Punto clave 1\n- Punto clave 2\n- Punto clave 3\n\n')}
+                      className="px-3 py-1.5 bg-white hover:bg-gray-50 border border-[#E8EAE3] rounded-xl text-xs font-bold text-[#17201B] transition"
+                      title="Lista con viñetas"
+                    >
+                      • Lista
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => insertAtCursor('\n\n> Cita o frase destacada importante\n\n')}
+                      className="px-3 py-1.5 bg-white hover:bg-gray-50 border border-[#E8EAE3] rounded-xl text-xs font-bold text-[#17201B] transition"
+                      title="Cita o texto destacado"
+                    >
+                      “ Cita
+                    </button>
+                  </div>
+
+                  {/* Área del editor: Modo Texto Normal o Modo Vista Previa */}
+                  {editorTab === 'edit' ? (
+                    <div>
+                      <textarea
+                        ref={textareaRef}
+                        rows={16}
+                        value={form.contenido}
+                        onChange={(e) => setForm((prev) => ({ ...prev, contenido: e.target.value }))}
+                        placeholder="Escribe tu artículo aquí de manera natural como en un documento..."
+                        required
+                        className="w-full bg-white border-2 border-[#E8EAE3] focus:border-[#2C5E43] rounded-2xl p-5 text-[#17201B] focus:outline-none text-base leading-relaxed font-sans shadow-sm"
+                        style={{ fontFamily: 'var(--font-body)' }}
+                      />
+                      <p className="text-xs text-[#64746B] mt-1.5 flex items-center gap-1.5">
+                        <span>💡</span>
+                        <span>Para colocar un video donde quieras, pon el cursor en el texto y haz clic en <strong>"🎬 Insertar Video Aquí"</strong>.</span>
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="bg-white border-2 border-[#E8EAE3] rounded-2xl p-6 sm:p-8 min-h-[350px] shadow-sm space-y-4">
+                      <div className="flex items-center justify-between border-b border-[#E8EAE3] pb-3">
+                        <span className="text-xs uppercase tracking-wider text-[#64746B] font-bold">
+                          Vista previa interactiva del artículo:
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditorTab('edit');
+                            setShowVideoInsertModal(true);
+                          }}
+                          className="bg-[#2C5E43] hover:bg-[#224B35] text-white text-xs font-bold px-3 py-1.5 rounded-xl transition shadow-sm"
+                        >
+                          + Insertar Video en una Sección
+                        </button>
+                      </div>
+
+                      <div
+                        className="blog-content-body max-w-none break-words"
+                        dangerouslySetInnerHTML={{
+                          __html: renderContent(
+                            form.contenido.replace(
+                              /https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?.*?v=|embed\/|shorts\/)|youtu\.be\/)SsKT0s5J8ko[^\s<>"']*/gi,
+                              form.video_url || ''
+                            )
+                          ),
+                        }}
+                      />
+                    </div>
+                  )}
                 </div>
 
 
@@ -900,6 +1059,71 @@ export default function AdminPage() {
                 className="bg-[#2C5E43] hover:bg-[#224B35] text-white font-semibold text-sm px-6 py-2.5 rounded-xl transition shadow-sm"
               >
                 Cerrar Vista Previa
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL PARA INSERTAR VIDEO EN EL CURSOR DEL ARTÍCULO */}
+      {showVideoInsertModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-lg w-full border border-[#E8EAE3] shadow-2xl p-6 sm:p-8 space-y-5">
+            <div className="flex items-center justify-between border-b border-[#E8EAE3] pb-4">
+              <div className="flex items-center gap-3">
+                <div className="size-10 rounded-2xl bg-[#EBF3ED] text-[#2C5E43] flex items-center justify-center text-xl font-bold">
+                  🎬
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-[#17201B]">
+                    Insertar Video en el Texto
+                  </h3>
+                  <p className="text-xs text-[#64746B]">
+                    Se insertará exactamente donde dejaste el cursor
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowVideoInsertModal(false)}
+                className="text-[#64746B] hover:text-[#17201B] size-8 rounded-full bg-[#F4F5F0] flex items-center justify-center font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div>
+              <label className="block text-xs font-bold text-[#17201B] uppercase tracking-wider mb-2">
+                Enlace del Video (BunnyCDN .mp4, YouTube o Vimeo) *
+              </label>
+              <input
+                type="url"
+                value={videoToInsert}
+                onChange={(e) => setVideoToInsert(e.target.value)}
+                placeholder="Ejemplo: https://redessociales.b-cdn.net/uploads/...mp4"
+                autoFocus
+                className="w-full bg-[#FAFAF8] border-2 border-[#2C5E43]/30 rounded-xl px-4 py-3 text-sm text-[#17201B] placeholder-[#94A39A] focus:outline-none focus:ring-2 focus:ring-[#2C5E43]"
+              />
+              <p className="text-[11px] text-[#64746B] mt-2">
+                Acepta archivos directos <code>.mp4</code> de tu BunnyCDN, enlaces de YouTube o videos de Vimeo. El sistema lo convierte en un reproductor funcional responsivo automáticamente.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowVideoInsertModal(false)}
+                className="px-4 py-2.5 rounded-xl text-[#64746B] hover:text-[#17201B] text-xs font-semibold"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                onClick={handleConfirmVideoInsert}
+                disabled={!videoToInsert.trim()}
+                className="bg-[#2C5E43] hover:bg-[#224B35] disabled:opacity-50 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition shadow-md shadow-[#2C5E43]/20"
+              >
+                ✓ Insertar en el Artículo
               </button>
             </div>
           </div>
