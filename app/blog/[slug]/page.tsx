@@ -47,8 +47,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       tags: post.etiquetas,
       images: [
         {
-          url: post.imagen && post.imagen.startsWith('http')
-            ? post.imagen
+          url: post.imagen
+            ? (post.imagen.startsWith('http')
+                ? post.imagen
+                : `${SITE_URL}/api/blog/${post.slug}/image`)
             : `${SITE_URL}/logo-horizontal-1200x375.png`,
           alt: post.imagen_alt || post.titulo,
           width: 1200,
@@ -61,8 +63,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: post.titulo,
       description: post.resumen,
       images: [
-        post.imagen && post.imagen.startsWith('http')
-          ? post.imagen
+        post.imagen
+          ? (post.imagen.startsWith('http')
+              ? post.imagen
+              : `${SITE_URL}/api/blog/${post.slug}/image`)
           : `${SITE_URL}/logo-horizontal-1200x375.png`,
       ],
     },
