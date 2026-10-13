@@ -7,7 +7,6 @@ export const SITE = {
   descripcion:
     "Directorio turístico verificado de los 16 cantones de la provincia de Loja, Ecuador: hospedaje, atractivos, guías y auxilio en carretera. Contacto directo por WhatsApp, sin comisiones.",
   ecosistema: [
-    { label: "guialoja.com", href: "https://guialoja.com" },
     { label: "agendaculturalloja.com", href: "https://agendaculturalloja.com" },
     { label: "quecomerenloja.com", href: "https://quecomerenloja.com" },
   ],
