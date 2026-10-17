@@ -77,9 +77,53 @@ const FUNDADORES = [
 ];
 
 
-export default function SeccionFundadores() {
-  // Triplicamos para que el loop 33.3334% sea siempre fluido
-  const triple = [...FUNDADORES, ...FUNDADORES, ...FUNDADORES];
+export interface ItemCarruselAliado {
+  nombre: string;
+  rol?: string;
+  siglas?: string;
+  descripcion?: string;
+  color?: string;
+  bg?: string;
+  initial?: string;
+  href?: string;
+  imagenUrl?: string | null;
+  telefono?: string | null;
+}
+
+export default function SeccionFundadores({ aliadosDb = [] }: { aliadosDb?: any[] }) {
+  // Si hay aliados reales desde TURISTICA_DB_URL, los convertimos para el carrusel
+  const itemsMostrar: ItemCarruselAliado[] = aliadosDb && aliadosDb.length > 0
+    ? aliadosDb.map((a, i) => {
+        const siglas = (a.nombre || "AL")
+          .split(" ")
+          .map((w: string) => w[0])
+          .slice(0, 3)
+          .join("")
+          .toUpperCase();
+        const colors = [
+          { color: "#2C5E43", bg: "#EBF3ED" },
+          { color: "#7C4A1E", bg: "#FDF0E6" },
+          { color: "#1E5A7C", bg: "#E6F2FD" },
+          { color: "#5A1E7C", bg: "#F0E6FD" },
+        ];
+        const theme = colors[i % colors.length];
+        return {
+          nombre: a.nombre,
+          rol: a.tipo || "Hospedaje Aliado",
+          siglas,
+          descripcion: a.descripcion || a.ubicacion || "Aliado oficial verificado.",
+          color: theme.color,
+          bg: theme.bg,
+          initial: (a.nombre || "A")[0].toUpperCase(),
+          href: a.slug ? `/hospedaje/${a.slug}` : "/hospedaje",
+          imagenUrl: a.imagen || a.imagenUrl || null,
+          telefono: a.telefono || "593963410409",
+        };
+      })
+    : FUNDADORES;
+
+  // Triplicamos para que el loop marquee sea siempre infinito y fluido
+  const triple = [...itemsMostrar, ...itemsMostrar, ...itemsMostrar];
 
   return (
     <section
@@ -100,14 +144,14 @@ export default function SeccionFundadores() {
               style={{ fontFamily: "var(--font-display)", fontWeight: 700, letterSpacing: "-0.025em" }}
               className="text-2xl sm:text-3xl text-[#17201B]"
             >
-              Municipios Aliados y Plazas de Vinculación
+              Nuestros Aliados y Plazas de Vinculación
             </h2>
           </div>
           <p
             style={{ fontFamily: "var(--font-body)" }}
             className="text-xs sm:text-sm text-[#47554E] max-w-sm"
           >
-            Puestos abiertos y en fase de integración para los 16 GADs cantonales y operadores turísticos certificados de la provincia de Loja.
+            Establecimientos y operadores turísticos certificados de la provincia de Loja conectados directamente a nuestra red.
           </p>
         </div>
       </div>
@@ -126,72 +170,88 @@ export default function SeccionFundadores() {
             animation: "marquee-loop 35s linear infinite",
           }}
         >
-          {triple.map((f, idx) => (
-            <a
-              key={`${f.siglas}-${idx}`}
-              href={`https://wa.me/593963410409?text=${encodeURIComponent(
-                `Hola, deseo información para la vinculación institucional del cantón / operador turístico en la Agenda Turística de Loja (${f.nombre}).`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-[220px] sm:w-[240px] h-[210px] p-6 rounded-3xl border border-[#E8EAE3] bg-white hover:border-[#2C5E43] hover:shadow-xl transition-all duration-300 shrink-0 group select-none flex flex-col items-center justify-between text-center cursor-pointer shadow-xs hover:-translate-y-1"
-            >
-              {/* Contenedor central de logo/monograma súper clean */}
-              <div className="flex-1 flex flex-col items-center justify-center my-auto">
-                <div
-                  className="size-16 rounded-2xl flex flex-col items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300 mb-2.5"
-                  style={{ background: f.bg, border: `1.5px solid ${f.color}25` }}
-                >
-                  <span
-                    style={{
-                      fontFamily: "var(--font-display)",
-                      fontWeight: 800,
-                      fontSize: "1.5rem",
-                      letterSpacing: "-0.04em",
-                      color: f.color,
-                      lineHeight: 1,
-                    }}
+          {triple.map((f, idx) => {
+            const enlaceWa = f.telefono
+              ? `https://wa.me/${f.telefono.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+                  `Hola, vi a "${f.nombre}" en la Agenda Turística de Loja y quisiera más información.`
+                )}`
+              : `https://wa.me/593963410409?text=${encodeURIComponent(
+                  `Hola, deseo información sobre la vinculación de "${f.nombre}" en la Agenda Turística de Loja.`
+                )}`;
+
+            return (
+              <a
+                key={`${f.siglas || f.nombre}-${idx}`}
+                href={f.href?.startsWith("/hospedaje") ? f.href : enlaceWa}
+                className="w-[220px] sm:w-[240px] h-[210px] p-6 rounded-3xl border border-[#E8EAE3] bg-white hover:border-[#2C5E43] hover:shadow-xl transition-all duration-300 shrink-0 group select-none flex flex-col items-center justify-between text-center cursor-pointer shadow-xs hover:-translate-y-1"
+              >
+                {/* Contenedor central de logo/monograma súper clean */}
+                <div className="flex-1 flex flex-col items-center justify-center my-auto">
+                  {f.imagenUrl ? (
+                    <div className="size-16 rounded-2xl overflow-hidden shadow-xs group-hover:scale-110 transition-transform duration-300 mb-2.5 border border-[#E8EAE3]">
+                      <img src={f.imagenUrl} alt={f.nombre} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div
+                      className="size-16 rounded-2xl flex flex-col items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300 mb-2.5"
+                      style={{ background: f.bg || "#EBF3ED", border: `1.5px solid ${f.color || "#2C5E43"}25` }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontWeight: 800,
+                          fontSize: "1.5rem",
+                          letterSpacing: "-0.04em",
+                          color: f.color || "#2C5E43",
+                          lineHeight: 1,
+                        }}
+                      >
+                        {f.initial || "🏨"}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-label)",
+                          fontWeight: 700,
+                          fontSize: "0.48rem",
+                          letterSpacing: "0.14em",
+                          color: f.color || "#2C5E43",
+                          opacity: 0.85,
+                        }}
+                        className="uppercase mt-0.5"
+                      >
+                        {f.siglas}
+                      </span>
+                    </div>
+                  )}
+
+                  <h3
+                    style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.85rem" }}
+                    className="text-[#17201B] leading-tight line-clamp-1 group-hover:text-[#2C5E43] transition-colors"
                   >
-                    {f.initial}
-                  </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-label)",
-                      fontWeight: 700,
-                      fontSize: "0.48rem",
-                      letterSpacing: "0.14em",
-                      color: f.color,
-                      opacity: 0.85,
-                    }}
-                    className="uppercase mt-0.5"
-                  >
-                    {f.siglas}
-                  </span>
+                    {f.nombre}
+                  </h3>
+                  <p className="text-[10px] text-[#64746B] mt-0.5 line-clamp-1">
+                    {f.rol || "Aliado Verificado"}
+                  </p>
                 </div>
 
-                <h3
-                  style={{ fontFamily: "var(--font-display)", fontWeight: 700, fontSize: "0.85rem" }}
-                  className="text-[#17201B] leading-tight line-clamp-1 group-hover:text-[#2C5E43] transition-colors"
-                >
-                  {f.nombre}
-                </h3>
-              </div>
-
-              {/* Único texto inferior solicitado: super clean */}
-              <div className="w-full pt-3 border-t border-[#EEF0EA]/80 flex items-center justify-center">
-                <span
-                  style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.05em" }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF3ED] text-[#2C5E43] group-hover:bg-[#2C5E43] group-hover:text-white transition-all uppercase"
-                >
-                  <span className="size-1.5 rounded-full bg-[#2C5E43] group-hover:bg-white animate-pulse" />
-                  <span>Puesto Abierto · Postular</span>
-                  <span className="text-[10px]">↗</span>
-                </span>
-              </div>
-            </a>
-          ))}
+                {/* Texto inferior */}
+                <div className="w-full pt-3 border-t border-[#EEF0EA]/80 flex items-center justify-center">
+                  <span
+                    style={{ fontFamily: "var(--font-label)", fontWeight: 700, fontSize: "0.68rem", letterSpacing: "0.05em" }}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF3ED] text-[#2C5E43] group-hover:bg-[#2C5E43] group-hover:text-white transition-all uppercase"
+                  >
+                    <span className="size-1.5 rounded-full bg-[#2C5E43] group-hover:bg-white animate-pulse" />
+                    <span>Ver Aliado</span>
+                    <span className="text-[10px]">↗</span>
+                  </span>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </div>
+
 
       {/* Bloque CTA B2G */}
       <div className="mx-auto w-[min(1420px,100%-48px)] mt-12">

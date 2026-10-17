@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import HospedajeCatalogo from "@/components/HospedajeCatalogo";
 import PageHero from "@/components/PageHero";
 import { HOSPEDAJES } from "@/lib/data/hospedaje";
+import { getHospedajesDinamicos } from "@/lib/aliados-service";
+
+export const revalidate = 60; // ISR: revalidar cada 60 segundos automáticamente
 
 export const metadata: Metadata = {
   title: "Hoteles en Loja y Vilcabamba: Hosterías y Hospedaje Directo sin Comisiones",
@@ -17,7 +20,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/hospedaje" },
 };
 
-export default function HospedajePage() {
+export default async function HospedajePage() {
+  const aliadosDb = await getHospedajesDinamicos();
+  
+  // Unir aliados reales de TURISTICA_DB con el catálogo base (dando prioridad a los reales de la base de datos)
+  const hotelesMostrar = [
+    ...aliadosDb,
+    ...HOSPEDAJES.filter((h) => !aliadosDb.some((db) => db.nombre.toLowerCase().trim() === h.nombre.toLowerCase().trim())),
+  ];
+
   return (
     <>
       <PageHero
@@ -31,7 +42,7 @@ export default function HospedajePage() {
       <div className="bg-[#17201B] text-white">
         <div className="mx-auto w-[min(1420px,100%-48px)] flex flex-wrap items-center justify-around gap-6 py-6">
           {[
-            { num: `${HOSPEDAJES.length}+`, label: "Establecimientos" },
+            { num: `${hotelesMostrar.length}+`, label: "Establecimientos" },
             { num: "16", label: "Cantones cubiertos" },
             { num: "$0", label: "Comisión de reserva" },
             { num: "24/7", label: "Contacto directo" },
@@ -47,9 +58,9 @@ export default function HospedajePage() {
       {/* Catálogo */}
       <section className="py-16 bg-[#FAFAF8]">
         <div className="mx-auto w-[min(1420px,100%-48px)]">
-          <HospedajeCatalogo hoteles={HOSPEDAJES} />
+          <HospedajeCatalogo hoteles={hotelesMostrar} />
           <p className="mt-10 text-center text-sm text-[#64746B]">
-            Tarjetas de demostración. Precios referenciales: confirma tarifas y disponibilidad con cada establecimiento.
+            Establecimientos verificados y aliados locales. Precios referenciales: confirma tarifas y disponibilidad directamente con cada hospedaje.
           </p>
         </div>
       </section>
@@ -71,7 +82,7 @@ export default function HospedajePage() {
           Catálogo verificado de hoteles, hosterías y hostales en la provincia de Loja con reserva directa por WhatsApp:
         </p>
         <ul>
-          {HOSPEDAJES.map((h) => (
+          {hotelesMostrar.map((h) => (
             <li key={h.slug}>
               <h3>{h.nombre}</h3>
               <p>Tipo: {h.tipo}</p>

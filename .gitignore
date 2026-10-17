@@ -8,3 +8,5 @@ next-env.d.ts
 .DS_Store
 gsc-key.json
 *.key.json
+
+blog-migrar/

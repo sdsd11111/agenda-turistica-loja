@@ -5,6 +5,7 @@ type Props = {
   children: React.ReactNode;
   variante?: "wa" | "gold" | "forest" | "ghost";
   className?: string;
+  telefono?: string | null;
 };
 
 const ESTILOS = {
@@ -14,10 +15,10 @@ const ESTILOS = {
   ghost: "border border-white/60 text-white bg-white/10 hover:bg-white/20",
 } as const;
 
-export default function WhatsAppButton({ mensaje, children, variante = "wa", className = "" }: Props) {
+export default function WhatsAppButton({ mensaje, children, variante = "wa", className = "", telefono }: Props) {
   return (
     <a
-      href={waLink(mensaje)}
+      href={waLink(mensaje, telefono || undefined)}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-[.95rem] font-semibold transition-colors ${ESTILOS[variante]} ${className}`}

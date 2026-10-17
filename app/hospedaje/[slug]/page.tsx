@@ -7,16 +7,45 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import { HOSPEDAJES, getHospedaje } from "@/lib/data/hospedaje";
 import { cantonNombre } from "@/lib/data/cantones";
 import { mensajeConsulta } from "@/lib/whatsapp";
+import { getHospedajesDinamicos, getAliadoById, adaptarAliadoAHospedaje } from "@/lib/aliados-service";
+
+export const revalidate = 60;
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return HOSPEDAJES.map((h) => ({ slug: h.slug }));
+export async function generateStaticParams() {
+  const estaticos = HOSPEDAJES.map((h) => ({ slug: h.slug }));
+  try {
+    const dinamicos = await getHospedajesDinamicos();
+    return [...estaticos, ...dinamicos.map((d) => ({ slug: d.slug }))];
+  } catch {
+    return estaticos;
+  }
+}
+
+async function resolverHospedaje(slug: string) {
+  // 1. Probar en estáticos
+  const estatico = getHospedaje(slug);
+  if (estatico) return estatico;
+
+  // 2. Si tiene formato aliado-ID-...
+  const match = slug.match(/^aliado-(\d+)/);
+  if (match) {
+    const id = parseInt(match[1], 10);
+    const aliado = await getAliadoById(id);
+    if (aliado && Boolean(aliado.activo)) {
+      return adaptarAliadoAHospedaje(aliado);
+    }
+  }
+
+  // 3. Buscar en todos los dinámicos
+  const dinamicos = await getHospedajesDinamicos();
+  return dinamicos.find((d) => d.slug === slug) || null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const h = getHospedaje(slug);
+  const h = await resolverHospedaje(slug);
   if (!h) return {};
   const cNombre = cantonNombre(h.cantonSlug);
   return {
@@ -40,17 +69,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function HospedajeFicha({ params }: Props) {
   const { slug } = await params;
-  const h = getHospedaje(slug);
+  const h = await resolverHospedaje(slug);
   if (!h) notFound();
 
+  const cNombre = cantonNombre(h.cantonSlug);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
     name: h.nombre,
     description: h.descripcion,
-    address: { "@type": "PostalAddress", addressLocality: cantonNombre(h.cantonSlug), addressCountry: "EC" },
+    address: { "@type": "PostalAddress", addressLocality: cNombre, addressCountry: "EC" },
     geo: { "@type": "GeoCoordinates", latitude: h.lat, longitude: h.lng },
   };
+
+  const habitaciones = (h as any).habitaciones || [];
 
   return (
     <>
@@ -58,7 +90,7 @@ export default async function HospedajeFicha({ params }: Props) {
 
       <PageHero
         title={h.nombre}
-        badge={`🏨 ${h.tipo} · ${cantonNombre(h.cantonSlug)}`}
+        badge={`🏨 ${h.tipo} · ${cNombre}`}
         lead={h.zona}
         backLink={{ href: "/hospedaje", label: "Volver a Hospedaje" }}
         imagen={h.imagen ?? "https://mvps.b-cdn.net/agenda-turistica/hospedaje/hero-hospedaje.webp"}
@@ -101,6 +133,42 @@ export default async function HospedajeFicha({ params }: Props) {
               </p>
             </div>
 
+            {/* Habitaciones / Opciones de Alojamiento si existen */}
+            {habitaciones.length > 0 && (
+              <div className="mt-10">
+                <span
+                  style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
+                  className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
+                >
+                  Opciones disponibles
+                </span>
+                <h3
+                  style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
+                  className="text-2xl text-[#17201B] mb-4"
+                >
+                  Habitaciones y Tarifas
+                </h3>
+                <div className="grid gap-4">
+                  {habitaciones.map((hab: any) => (
+                    <div
+                      key={hab.id || hab.nombre}
+                      className="p-5 rounded-2xl bg-white border border-[#E8EAE3] shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                    >
+                      <div>
+                        <h4 className="font-bold text-[#17201B] text-base">{hab.nombre}</h4>
+                        {hab.caracteristicas && (
+                          <p className="text-xs text-[#64746B] mt-1 max-w-md">{hab.caracteristicas}</p>
+                        )}
+                      </div>
+                      <div className="text-right sm:border-l sm:border-[#EEF0EA] sm:pl-4">
+                        <span className="text-lg font-extrabold text-[#2C5E43]">{hab.precio || 'Consultar'}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-8">
               <h3
                 style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}
@@ -109,7 +177,7 @@ export default async function HospedajeFicha({ params }: Props) {
                 Servicios incluidos
               </h3>
               <ul className="flex flex-wrap gap-2">
-                {h.servicios.map((s) => (
+                {h.servicios.map((s: string) => (
                   <li
                     key={s}
                     style={{ fontFamily: "var(--font-label)", fontWeight: 600 }}
@@ -140,7 +208,11 @@ export default async function HospedajeFicha({ params }: Props) {
             </p>
 
             <div className="mt-6 flex flex-col gap-3">
-              <WhatsAppButton mensaje={mensajeConsulta(h.nombre)} className="w-full justify-center">
+              <WhatsAppButton
+                telefono={h.telefono}
+                mensaje={mensajeConsulta(h.nombre)}
+                className="w-full justify-center"
+              >
                 💬 Reservar por WhatsApp
               </WhatsAppButton>
               <p style={{ fontFamily: "var(--font-body)" }} className="text-[11px] text-[#64746B] text-center">Sin intermediarios ni comisiones.</p>
@@ -152,7 +224,7 @@ export default async function HospedajeFicha({ params }: Props) {
                 style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
                 className="flex items-center gap-2 text-sm text-[#2C5E43] hover:text-[#17201B] transition-colors"
               >
-                🗺️ Más sobre {cantonNombre(h.cantonSlug)}
+                🗺️ Más sobre {cNombre}
                 <span>→</span>
               </Link>
             </div>

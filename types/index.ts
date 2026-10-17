@@ -30,6 +30,10 @@ export type Hospedaje = {
   gradient: string;
   imagen?: string;
   destacado?: boolean;
+  telefono?: string;
+  websiteUrl?: string;
+  mapaUrl?: string;
+  habitaciones?: any[];
 };
 
 export type CategoriaAtractivo = "Naturaleza" | "Cultura" | "Patrimonio" | "Religioso" | "Parque" | "Aventura";

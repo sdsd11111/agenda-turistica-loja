@@ -43,12 +43,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 import SeccionDecisionCanton from "@/components/SeccionDecisionCanton";
 import SeccionEventosCanton from "@/components/SeccionEventosCanton";
 
+import { getHospedajesDinamicos } from "@/lib/aliados-service";
+
+export const revalidate = 60;
+
 export default async function CantonPage({ params }: Props) {
   const { slug } = await params;
   const canton = getCanton(slug);
   if (!canton) notFound();
 
-  const hoteles = HOSPEDAJES.filter((h) => h.cantonSlug === slug);
+  const aliadosDb = await getHospedajesDinamicos();
+  const todosHoteles = [
+    ...aliadosDb,
+    ...HOSPEDAJES.filter((h) => !aliadosDb.some((db) => db.nombre.toLowerCase().trim() === h.nombre.toLowerCase().trim())),
+  ];
+
+  const hoteles = todosHoteles.filter((h) => h.cantonSlug === slug);
   const atractivos = ATRACTIVOS.filter((a) => a.cantonSlug === slug);
 
   return (

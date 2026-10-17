@@ -60,7 +60,11 @@ export default function HotelCard({ hotel }: { hotel: Hospedaje }) {
         </div>
 
         <div className="mt-4 pt-3 border-t border-[#EEF0EA] flex flex-col gap-2">
-          <WhatsAppButton mensaje={mensajeConsulta(hotel.nombre)} className="w-full justify-center">
+          <WhatsAppButton
+            telefono={(hotel as any).telefono}
+            mensaje={mensajeConsulta(hotel.nombre)}
+            className="w-full justify-center"
+          >
             💬 Escribir por WhatsApp
           </WhatsAppButton>
           <Link

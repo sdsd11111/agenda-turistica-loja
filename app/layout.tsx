@@ -3,6 +3,7 @@ import { Sora, DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import { SiteChrome } from "@/components/SiteChrome";
+import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 
 
 /** Títulos principales — geométrica elegante, impactante en bold */
@@ -97,7 +98,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" data-scroll-behavior="smooth" className={`${sora.variable} ${dmSans.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-[#FAFAF8] text-[#17201B] antialiased selection:bg-[#2C5E43] selection:text-white">
+        <LanguageProvider>
         <SiteChrome>{children}</SiteChrome>
+      </LanguageProvider>
       </body>
     </html>
   );

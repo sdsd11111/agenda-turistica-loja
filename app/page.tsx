@@ -6,8 +6,11 @@ import SeccionQueHayEnLoja from "@/components/SeccionQueHayEnLoja";
 import SeccionFundadores from "@/components/SeccionFundadores";
 import RevealSection from "@/components/RevealSection";
 import { construirIndice } from "@/lib/data/indice";
+import { getHospedajesDinamicos } from "@/lib/aliados-service";
 
-export default function Home() {
+export default async function Home() {
+  const aliadosDb = await getHospedajesDinamicos();
+
   return (
     <>
       {/* =========================================================================
@@ -116,8 +119,9 @@ export default function Home() {
           SECCIÓN 4: LOGOS DE FUNDADORES Y CONVENIOS GAD (Entrada con zoom suave)
       ========================================================================= */}
       <RevealSection delay={80} direction="zoom">
-        <SeccionFundadores />
+        <SeccionFundadores aliadosDb={aliadosDb} />
       </RevealSection>
+
 
       {/* =========================================================================
           🧠 CONTENIDO ESTRUCTURADO SERVER-SIDE PARA CRAWLERS Y LLMs (GEO & SEO)

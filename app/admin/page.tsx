@@ -3,13 +3,16 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { renderContent, getVideoEmbedHtml } from '@/lib/markdown';
-
+import AdminAliadosTab from '@/components/AdminAliadosTab';
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Selector de Sección Principal: 'blog' o 'aliados'
+  const [mainSection, setMainSection] = useState<'blog' | 'aliados'>('aliados');
 
   // Estados del CRUD
   const [posts, setPosts] = useState<any[]>([]);
@@ -356,13 +359,39 @@ export default function AdminPage() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            {/* Tabs principales del Panel */}
+            <div className="flex items-center bg-[#F4F5F0] p-1 rounded-2xl border border-[#E8EAE3]">
+              <button
+                type="button"
+                onClick={() => setMainSection('aliados')}
+                className={`text-xs font-bold px-3.5 py-1.5 rounded-xl transition ${
+                  mainSection === 'aliados'
+                    ? 'bg-[#2C5E43] text-white shadow-sm'
+                    : 'text-[#64746B] hover:text-[#17201B]'
+                }`}
+              >
+                🏨 Aliados & Hospedaje
+              </button>
+              <button
+                type="button"
+                onClick={() => setMainSection('blog')}
+                className={`text-xs font-bold px-3.5 py-1.5 rounded-xl transition ${
+                  mainSection === 'blog'
+                    ? 'bg-[#2C5E43] text-white shadow-sm'
+                    : 'text-[#64746B] hover:text-[#17201B]'
+                }`}
+              >
+                📰 Blog Posts
+              </button>
+            </div>
+
             <Link
-              href="/blog"
+              href="/hospedaje"
               target="_blank"
               className="text-xs font-medium bg-[#EBF3ED] hover:bg-[#2C5E43] text-[#2C5E43] hover:text-white px-3.5 py-2 rounded-xl border border-[#2C5E43]/30 transition flex items-center gap-1.5"
             >
-              <span>Ver Blog</span>
+              <span>Ver Web</span>
               <span>↗</span>
             </Link>
             <button
@@ -376,6 +405,12 @@ export default function AdminPage() {
       </header>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* SECCIÓN 1: ALIADOS Y HOSPEDAJE */}
+        {mainSection === 'aliados' && <AdminAliadosTab />}
+
+        {/* SECCIÓN 2: GESTIÓN DE BLOG */}
+        {mainSection === 'blog' && (
+          <>
         {/* Barra de Título y Botón Nuevo */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div>
@@ -982,6 +1017,8 @@ export default function AdminPage() {
               </button>
             </div>
           </form>
+        )}
+          </>
         )}
       </div>
 
