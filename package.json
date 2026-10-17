@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "postinstall": "prisma generate --schema=prisma/schema.prisma && prisma generate --schema=prisma/schema-bot.prisma",
+    "build": "prisma generate --schema=prisma/schema.prisma && prisma generate --schema=prisma/schema-bot.prisma && next build",
     "start": "next start",
     "typecheck": "tsc --noEmit"
+
   },
   "dependencies": {
     "@prisma/adapter-mariadb": "^7.10.1",
