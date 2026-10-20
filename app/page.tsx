@@ -7,9 +7,15 @@ import SeccionFundadores from "@/components/SeccionFundadores";
 import RevealSection from "@/components/RevealSection";
 import { construirIndice } from "@/lib/data/indice";
 import { getHospedajesDinamicos } from "@/lib/aliados-service";
+import { getEventosCanton } from "@/lib/services/eventosCultura";
+
+export const revalidate = 60;
 
 export default async function Home() {
-  const aliadosDb = await getHospedajesDinamicos();
+  const [aliadosDb, eventosRes] = await Promise.all([
+    getHospedajesDinamicos(),
+    getEventosCanton("todos"),
+  ]);
 
   return (
     <>
@@ -111,9 +117,12 @@ export default async function Home() {
       </RevealSection>
 
       {/* =========================================================================
-          SECCIÓN 3: "QUÉ HAY EN LOJA" (Con Parallax Real interactivo al scroll)
+          SECCIÓN 3: "QUÉ HAY EN LOJA" (Con Parallax Real y Eventos en Vivo)
       ========================================================================= */}
-      <SeccionQueHayEnLoja />
+      <SeccionQueHayEnLoja
+        eventosIniciales={eventosRes.eventos}
+        conteoPorCanton={eventosRes.conteoPorCanton}
+      />
 
       {/* =========================================================================
           SECCIÓN 4: LOGOS DE FUNDADORES Y CONVENIOS GAD (Entrada con zoom suave)

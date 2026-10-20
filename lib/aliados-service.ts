@@ -1,4 +1,8 @@
 import { getTurismoDbPool } from './db-turismo';
+import { runMigrations } from './db-migrations';
+
+// Ejecutar migraciones al cargar el módulo (idempotente)
+runMigrations().catch(() => {});
 
 export interface HabitacionRow {
   id: number;
@@ -32,6 +36,8 @@ export interface AliadoRow {
   ubicacionLng: number | null;
   estrellas: number | null;
   numeroCuartos: number | null;
+  /** Slug explícito del cantón (ej: 'paltas', 'loja'). NULL si no fue asignado manualmente. */
+  canton: string | null;
   habitaciones?: HabitacionRow[];
 }
 
@@ -127,6 +133,8 @@ export async function createAliado(data: {
   ubicacionLng?: number | null;
   estrellas?: number | null;
   numeroCuartos?: number | null;
+  /** Slug explícito del cantón (ej: 'paltas', 'loja'). Si se omite, se detecta por texto. */
+  canton?: string | null;
   habitaciones?: Array<{
     nombre: string;
     precio?: string | null;
@@ -146,8 +154,8 @@ export async function createAliado(data: {
         nombre, tipo, imagenUrl, servicios, telefono,
         destacado, activo, createdAt, cuartos, descripcion,
         mapaUrl, rangoPrecio, redesUrl, ubicacion, websiteUrl,
-        ubicacionLat, ubicacionLng, estrellas, numeroCuartos
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ubicacionLat, ubicacionLng, estrellas, numeroCuartos, canton
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, NOW(), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     const values = [
@@ -169,6 +177,7 @@ export async function createAliado(data: {
       data.ubicacionLng ?? null,
       data.estrellas ?? null,
       data.numeroCuartos ?? null,
+      data.canton || null,
     ];
 
     const [result]: any = await conn.query(insertQuery, values);
@@ -226,6 +235,8 @@ export async function updateAliado(
     ubicacionLng?: number | null;
     estrellas?: number | null;
     numeroCuartos?: number | null;
+    /** Slug explícito del cantón (ej: 'paltas', 'loja'). */
+    canton?: string | null;
     habitaciones?: Array<{
       id?: number;
       nombre: string;
@@ -261,7 +272,8 @@ export async function updateAliado(
         ubicacionLat = ?,
         ubicacionLng = ?,
         estrellas = ?,
-        numeroCuartos = ?
+        numeroCuartos = ?,
+        canton = ?
       WHERE id = ?
     `;
 
@@ -284,6 +296,7 @@ export async function updateAliado(
       data.ubicacionLng ?? null,
       data.estrellas ?? null,
       data.numeroCuartos ?? null,
+      data.canton || null,
       id,
     ];
 
@@ -368,13 +381,14 @@ function detectarCantonSlug(ubicacion: string, descripcion: string): string {
 
   for (const c of cantones) {
     if (c.keywords.some((k) => texto.includes(k))) {
-      // Si dice vilcabamba, pertenece administrativamente al cantón loja en la web
+      // Vilcabamba pertenece administrativamente al cantón Loja en la web
       if (c.slug === 'vilcabamba') return 'loja';
       return c.slug;
     }
   }
   return 'loja';
 }
+
 
 /**
  * Convierte un AliadoRow en la estructura Hospedaje consumida por el frontend
@@ -410,12 +424,16 @@ export function adaptarAliadoAHospedaje(aliado: AliadoRow) {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')}`;
 
+  // Prioridad: campo `canton` explícito → detección automática por texto
+  const cantonSlug = aliado.canton ||
+    detectarCantonSlug(aliado.ubicacion || '', aliado.descripcion || '');
+
   return {
     id: aliado.id,
     slug,
     nombre: aliado.nombre,
     tipo: tipoFormateado,
-    cantonSlug: detectarCantonSlug(aliado.ubicacion, aliado.descripcion),
+    cantonSlug,
     zona: aliado.ubicacion || 'Loja, Ecuador',
     descripcion: aliado.descripcion || 'Establecimiento aliado verificado de Agenda Turística Loja.',
     desde: menorPrecio,

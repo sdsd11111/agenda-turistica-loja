@@ -28,6 +28,8 @@ export interface AliadoForm {
   ubicacionLng: string | number;
   estrellas: string | number;
   numeroCuartos: string | number;
+  /** Slug del cantón de Loja (ej: 'paltas', 'loja'). Vacío = detección automática. */
+  canton: string;
   habitaciones: HabitacionForm[];
 }
 
@@ -49,19 +51,40 @@ const INITIAL_FORM: AliadoForm = {
   ubicacionLng: '',
   estrellas: '3',
   numeroCuartos: '10',
+  canton: '',
   habitaciones: [],
 };
 
 const TIPOS_ALIADO = [
   { value: 'HOSPEDAJE', label: '🏨 Hospedaje (Hotel, Hostería, Hostal)' },
   { value: 'GASTRONOMIA', label: '🍽️ Gastronomía & Restaurante' },
-  { value: 'CAFETERIA', label: '☕ Cafetería de Especialidad' },
+  { value: 'CAFETERIA', label: '☕ Cafetera de Especialidad' },
   { value: 'EXPERIENCIA', label: '🎒 Tour & Experiencia' },
   { value: 'TRANSPORTE', label: '🚐 Transporte & Movilidad' },
   { value: 'CANTON_GAD', label: '🏛️ GAD / Institución Turística' },
   { value: 'CULTURA_ARTE', label: '🎭 Cultura & Arte' },
   { value: 'COMERCIO', label: '🛍️ Comercio Local' },
   { value: 'OTRO', label: '✨ Otro' },
+];
+
+const CANTONES_LOJA = [
+  { value: '', label: '— Auto-detectar por ubicación —' },
+  { value: 'loja', label: 'Loja' },
+  { value: 'catamayo', label: 'Catamayo' },
+  { value: 'calvas', label: 'Calvas (Cariamanga)' },
+  { value: 'celica', label: 'Celica' },
+  { value: 'chaguarpamba', label: 'Chaguarpamba' },
+  { value: 'espindola', label: 'Espíndola (Amaluza)' },
+  { value: 'gonzanama', label: 'Gonzanamá' },
+  { value: 'macara', label: 'Macará' },
+  { value: 'olmedo', label: 'Olmedo' },
+  { value: 'paltas', label: 'Paltas (Catacocha)' },
+  { value: 'pindal', label: 'Pindal' },
+  { value: 'puyango', label: 'Puyango (Alamor)' },
+  { value: 'quilanga', label: 'Quilanga' },
+  { value: 'saraguro', label: 'Saraguro' },
+  { value: 'sozoranga', label: 'Sozoranga' },
+  { value: 'zapotillo', label: 'Zapotillo' },
 ];
 
 export default function AdminAliadosTab() {
@@ -121,6 +144,7 @@ export default function AdminAliadosTab() {
       ubicacionLng: aliado.ubicacionLng ?? '',
       estrellas: aliado.estrellas ?? '',
       numeroCuartos: aliado.numeroCuartos ?? '',
+      canton: aliado.canton || '',
       habitaciones: Array.isArray(aliado.habitaciones)
         ? aliado.habitaciones.map((h: any) => ({
             id: h.id,
@@ -482,6 +506,23 @@ export default function AdminAliadosTab() {
                   {TIPOS_ALIADO.map((t) => (
                     <option key={t.value} value={t.value}>
                       {t.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-[#17201B] uppercase tracking-wider mb-2">
+                  Cantón de la Provincia de Loja
+                </label>
+                <select
+                  value={form.canton}
+                  onChange={(e) => setForm({ ...form, canton: e.target.value })}
+                  className="w-full bg-[#FAFAF8] border border-[#E8EAE3] rounded-xl px-4 py-2.5 text-sm text-[#17201B] focus:outline-none focus:ring-2 focus:ring-[#2C5E43]"
+                >
+                  {CANTONES_LOJA.map((c) => (
+                    <option key={c.value} value={c.value}>
+                      {c.label}
                     </option>
                   ))}
                 </select>

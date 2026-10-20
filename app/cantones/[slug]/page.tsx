@@ -44,6 +44,7 @@ import SeccionDecisionCanton from "@/components/SeccionDecisionCanton";
 import SeccionEventosCanton from "@/components/SeccionEventosCanton";
 
 import { getHospedajesDinamicos } from "@/lib/aliados-service";
+import { getEventosCanton } from "@/lib/services/eventosCultura";
 
 export const revalidate = 60;
 
@@ -52,7 +53,12 @@ export default async function CantonPage({ params }: Props) {
   const canton = getCanton(slug);
   if (!canton) notFound();
 
-  const aliadosDb = await getHospedajesDinamicos();
+  // Consultar en paralelo aliados y eventos culturales en vivo de este cantón
+  const [aliadosDb, eventosRes] = await Promise.all([
+    getHospedajesDinamicos(),
+    getEventosCanton(slug),
+  ]);
+
   const todosHoteles = [
     ...aliadosDb,
     ...HOSPEDAJES.filter((h) => !aliadosDb.some((db) => db.nombre.toLowerCase().trim() === h.nombre.toLowerCase().trim())),
@@ -84,7 +90,7 @@ export default async function CantonPage({ params }: Props) {
       <SeccionDecisionCanton canton={canton} atractivos={atractivos} />
 
       {/* ── SECCIÓN 2: EVENTOS EN VIVO DEL CANTÓN CON PARALLAX Y SWIPE ── */}
-      <SeccionEventosCanton canton={canton} />
+      <SeccionEventosCanton canton={canton} eventosIniciales={eventosRes.eventos} />
 
       {/* ── SECCIÓN 3: HOSPEDAJE & ESTADÍA EN EL CANTÓN ── */}
       <section className="py-20 bg-white text-[#17201B] border-t border-[#EEF0EA]">

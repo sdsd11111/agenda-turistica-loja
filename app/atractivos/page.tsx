@@ -53,8 +53,10 @@ export default function AtractivosPage() {
               <article
                 id={a.slug}
                 key={a.slug}
-                className="group relative flex flex-col overflow-hidden rounded-3xl min-h-[360px] shadow-[0_4px_24px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:-translate-y-1.5 transition-all duration-500"
+                className="group relative flex flex-col overflow-hidden rounded-3xl min-h-[360px] shadow-[0_4px_24px_rgba(0,0,0,0.1)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.2)] hover:-translate-y-1.5 transition-all duration-500 cursor-pointer"
               >
+                {/* Overlay link invisible que hace toda la card clickeable */}
+                <Link href={`/atractivos/${a.slug}`} className="absolute inset-0 z-20" aria-label={`Ver ${a.nombre}`} />
                 {/* Real photo or gradient fallback */}
                 {a.imagen ? (
                   <img
@@ -111,11 +113,11 @@ export default function AtractivosPage() {
                     </p>
 
                     <Link
-                      href={`/cantones/${a.cantonSlug}`}
+                      href={`/atractivos/${a.slug}`}
                       style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
-                      className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 px-4 py-2 text-xs text-white transition-all duration-300"
+                      className="relative z-30 mt-4 inline-flex items-center gap-1.5 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 px-4 py-2 text-xs text-white transition-all duration-300"
                     >
-                      Ver cantón →
+                      Ver atractivo →
                     </Link>
                   </div>
                 </div>

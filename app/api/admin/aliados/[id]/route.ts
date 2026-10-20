@@ -67,6 +67,7 @@ export async function PUT(
       ubicacionLng: data.ubicacionLng ? Number(data.ubicacionLng) : null,
       estrellas: data.estrellas ? Number(data.estrellas) : null,
       numeroCuartos: data.numeroCuartos ? Number(data.numeroCuartos) : null,
+      canton: data.canton ? String(data.canton).trim().toLowerCase() : null,
       habitaciones: data.habitaciones,
     });
 

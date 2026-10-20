@@ -57,6 +57,7 @@ export async function POST(request: Request) {
       ubicacionLng,
       estrellas,
       numeroCuartos,
+      canton,
       habitaciones,
     } = data;
 
@@ -83,6 +84,7 @@ export async function POST(request: Request) {
       ubicacionLng: ubicacionLng ? Number(ubicacionLng) : null,
       estrellas: estrellas ? Number(estrellas) : null,
       numeroCuartos: numeroCuartos ? Number(numeroCuartos) : null,
+      canton: canton ? String(canton).trim().toLowerCase() : null,
       habitaciones: Array.isArray(habitaciones) ? habitaciones : [],
     });
 
