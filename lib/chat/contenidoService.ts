@@ -15,7 +15,7 @@
  */
 
 import { prisma } from "@/lib/prisma";
-import { getAliados, getAliadoById } from "@/lib/aliados-service";
+import { prismaBot } from "@/lib/prisma-bot";
 
 export interface EventoItem {
   id: number;
@@ -53,8 +53,8 @@ export interface AliadoItem {
   ubicacionLng: number | null;
   estrellas: number | null;
   numeroCuartos: number | null;
-  aliado_habitaciones?: HabitacionItem[];
-  habitaciones?: HabitacionItem[]; // alias para compatibilidad con route.ts y skills
+  canton?: string | null;
+  habitaciones?: HabitacionItem[];
   distanciaKm?: number | null;
   distanciaTexto?: string;
 }
@@ -80,7 +80,7 @@ export const eventosService = {
    */
   async obtenerPorIds(ids: number[]): Promise<EventoItem[]> {
     if (!ids || ids.length === 0) return [];
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: { id: { in: ids }, estado: "APROBADO" },
       select: {
         id: true,
@@ -98,7 +98,7 @@ export const eventosService = {
    * Búsqueda para planificación de visita
    */
   async obtenerParaPlanVisita(desde: Date, hasta?: Date, limite = 4): Promise<EventoItem[]> {
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: {
         estado: "APROBADO",
         fecha: hasta ? { gte: desde, lte: hasta } : { gte: desde },
@@ -121,7 +121,7 @@ export const eventosService = {
    * Búsqueda por rango de fechas
    */
   async obtenerPorRango(desde: Date, hasta: Date, limite = 8): Promise<EventoItem[]> {
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: {
         estado: "APROBADO",
         fecha: { gte: desde, lte: hasta },
@@ -155,7 +155,7 @@ export const eventosService = {
       { lugar: { contains: palabra } },
     ]);
 
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: {
         estado: "APROBADO",
         ...(desde && hasta
@@ -192,7 +192,7 @@ export const eventosService = {
           ])
         : undefined;
 
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: {
         estado: "APROBADO",
         fecha: { lt: antesDe },
@@ -216,7 +216,7 @@ export const eventosService = {
    * Cartelera general de próximos eventos
    */
   async obtenerProximos(desde: Date, limite = 6): Promise<EventoItem[]> {
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: {
         estado: "APROBADO",
         fecha: { gte: desde },
@@ -239,7 +239,7 @@ export const eventosService = {
    * Candidatos para resolver preguntas referenciales ("¿de qué se trata eso?")
    */
   async obtenerCandidatosReferenciales(limite = 30): Promise<EventoItem[]> {
-    return prisma.eventos.findMany({
+    return prisma.evento.findMany({
       where: { estado: "APROBADO" },
       orderBy: { fecha: "asc" },
       take: limite,
@@ -257,14 +257,15 @@ export const eventosService = {
 };
 
 // ─────────────────────────────────────────────────────────────
-// 2. SERVICIO DE GASTRONOMÍA (Fuente simulada: DB Qué Comer en Loja)
+// 2. SERVICIO DE GASTRONOMÍA (Fuente: DB Botempresas / QueComerEnLoja)
 // ─────────────────────────────────────────────────────────────
 export const gastronomiaService = {
   /**
    * Carga restaurantes y cafeterías activas con sus especialidades/platos
+   * MIENTRAS TANTO: Se leen desde la base de datos central de Botempresas (CHATBOT_DB_URL).
    */
   async obtenerRestaurantesYCafes(limite = 20): Promise<AliadoItem[]> {
-    return prisma.aliados.findMany({
+    return prismaBot.aliados.findMany({
       where: {
         activo: true,
         tipo: { in: ["GASTRONOMIA", "CAFETERIA"] },
@@ -276,15 +277,20 @@ export const gastronomiaService = {
           orderBy: [{ orden: "asc" }, { id: "asc" }],
         },
       },
-    }) as unknown as Promise<AliadoItem[]>;
+    }).then((lista) =>
+      lista.map((item) => ({
+        ...item,
+        habitaciones: item.aliado_habitaciones,
+      }))
+    ) as unknown as Promise<AliadoItem[]>;
   },
 
   /**
-   * Obtiene restaurantes o cafeterías por lista de IDs
+   * Obtiene restaurantes o cafeterías por lista de IDs desde Botempresas
    */
   async obtenerPorIds(ids: number[]): Promise<AliadoItem[]> {
     if (!ids || ids.length === 0) return [];
-    return prisma.aliados.findMany({
+    return prismaBot.aliados.findMany({
       where: {
         id: { in: ids },
         activo: true,
@@ -295,140 +301,80 @@ export const gastronomiaService = {
           orderBy: [{ orden: "asc" }, { id: "asc" }],
         },
       },
-    }) as unknown as Promise<AliadoItem[]>;
+    }).then((lista) =>
+      lista.map((item) => ({
+        ...item,
+        habitaciones: item.aliado_habitaciones,
+      }))
+    ) as unknown as Promise<AliadoItem[]>;
   },
 };
 
 // ─────────────────────────────────────────────────────────────
-// 3. SERVICIO DE HOSPEDAJE Y TURISMO (Fuente simulada: DB Agenda Turística Loja)
+// 3. SERVICIO DE HOSPEDAJE Y TURISMO (Fuente: DB Botempresas / AgendaTuristicaLoja)
 // ─────────────────────────────────────────────────────────────
 export const turismoService = {
   /**
-   * Carga hoteles, hosterías y hostales con sus habitaciones y tarifas directamente desde TURISTICA_DB_URL
+   * Carga hoteles, hosterías y hostales con sus habitaciones y tarifas
+   * MIENTRAS TANTO: Se leen desde la base de datos central de Botempresas (CHATBOT_DB_URL).
    */
-  async obtenerHoteles(limite = 20): Promise<AliadoItem[]> {
-    try {
-      const aliados = await getAliados({ tipo: "HOSPEDAJE", soloActivos: true });
-      return aliados.slice(0, limite).map((a) => ({
-        id: a.id,
-        nombre: a.nombre,
-        tipo: a.tipo,
-        imagenUrl: a.imagenUrl,
-        servicios: a.servicios,
-        telefono: a.telefono,
-        destacado: Boolean(a.destacado),
-        activo: Boolean(a.activo),
-        descripcion: a.descripcion,
-        mapaUrl: a.mapaUrl,
-        rangoPrecio: a.rangoPrecio,
-        redesUrl: a.redesUrl,
-        ubicacion: a.ubicacion,
-        websiteUrl: a.websiteUrl,
-        ubicacionLat: a.ubicacionLat,
-        ubicacionLng: a.ubicacionLng,
-        estrellas: a.estrellas,
-        numeroCuartos: a.numeroCuartos,
-        aliado_habitaciones: a.habitaciones?.map((h) => ({
-          nombre: h.nombre,
-          precio: h.precio,
-          caracteristicas: h.caracteristicas,
-          orden: h.orden,
-        })),
-        habitaciones: a.habitaciones?.map((h) => ({
-          nombre: h.nombre,
-          precio: h.precio,
-          caracteristicas: h.caracteristicas,
-          orden: h.orden,
-        })),
-      })) as unknown as AliadoItem[];
-    } catch (err) {
-      console.warn("Fallo lectura directa de TURISTICA_DB, recurriendo a fallback prisma:", err);
-      return prisma.aliados.findMany({
-        where: {
-          activo: true,
-          tipo: "HOSPEDAJE",
-        },
-        orderBy: [{ destacado: "desc" }, { createdAt: "desc" }],
-        take: limite,
-        include: {
-          aliado_habitaciones: {
-            orderBy: [{ orden: "asc" }, { id: "asc" }],
-          },
-        },
-      }) as unknown as Promise<AliadoItem[]>;
+  async obtenerHoteles(limite = 20, canton?: string): Promise<AliadoItem[]> {
+    const whereClause: any = {
+      activo: true,
+      tipo: "HOSPEDAJE",
+    };
+
+    if (canton && canton.trim()) {
+      whereClause.OR = [
+        { canton: { equals: canton.trim() } },
+        { ubicacion: { contains: canton.trim() } },
+        { descripcion: { contains: canton.trim() } },
+      ];
     }
+
+    return prismaBot.aliados.findMany({
+      where: whereClause,
+      orderBy: [{ destacado: "desc" }, { createdAt: "desc" }],
+      take: limite,
+      include: {
+        aliado_habitaciones: {
+          orderBy: [{ orden: "asc" }, { id: "asc" }],
+        },
+      },
+    }).then((lista) =>
+      lista.map((item) => ({
+        ...item,
+        habitaciones: item.aliado_habitaciones,
+      }))
+    ) as unknown as Promise<AliadoItem[]>;
   },
 
   /**
-   * Obtiene atractivos cantonales, rutas y naturaleza
+   * Obtiene atractivos cantonales, rutas y naturaleza desde Botempresas
    */
   async obtenerAtractivos(limite = 6): Promise<AtractivoItem[]> {
-    return prisma.atractivos_cantonales.findMany({
+    return prismaBot.atractivos_cantonales.findMany({
       where: { activo: true },
       take: limite,
     }) as unknown as Promise<AtractivoItem[]>;
   },
 
   /**
-   * Obtiene atractivos por lista de IDs
+   * Obtiene atractivos por lista de IDs desde Botempresas
    */
   async obtenerAtractivosPorIds(ids: number[]): Promise<AtractivoItem[]> {
     if (!ids || ids.length === 0) return [];
-    return prisma.atractivos_cantonales.findMany({
+    return prismaBot.atractivos_cantonales.findMany({
       where: { id: { in: ids }, activo: true },
     }) as unknown as Promise<AtractivoItem[]>;
   },
 
   /**
-   * Obtiene hoteles por lista de IDs consultando TURISTICA_DB_URL
+   * Obtiene hoteles por lista de IDs desde Botempresas
    */
   async obtenerHotelesPorIds(ids: number[]): Promise<AliadoItem[]> {
     if (!ids || ids.length === 0) return [];
-    try {
-      const items: AliadoItem[] = [];
-      for (const id of ids) {
-        const a = await getAliadoById(id);
-        if (a && a.activo) {
-          items.push({
-            id: a.id,
-            nombre: a.nombre,
-            tipo: a.tipo,
-            imagenUrl: a.imagenUrl,
-            servicios: a.servicios,
-            telefono: a.telefono,
-            destacado: Boolean(a.destacado),
-            activo: Boolean(a.activo),
-            descripcion: a.descripcion,
-            mapaUrl: a.mapaUrl,
-            rangoPrecio: a.rangoPrecio,
-            redesUrl: a.redesUrl,
-            ubicacion: a.ubicacion,
-            websiteUrl: a.websiteUrl,
-            ubicacionLat: a.ubicacionLat,
-            ubicacionLng: a.ubicacionLng,
-            estrellas: a.estrellas,
-            numeroCuartos: a.numeroCuartos,
-            aliado_habitaciones: a.habitaciones?.map((h) => ({
-              nombre: h.nombre,
-              precio: h.precio,
-              caracteristicas: h.caracteristicas,
-              orden: h.orden,
-            })),
-            habitaciones: a.habitaciones?.map((h) => ({
-              nombre: h.nombre,
-              precio: h.precio,
-              caracteristicas: h.caracteristicas,
-              orden: h.orden,
-            })),
-          } as unknown as AliadoItem);
-        }
-      }
-      if (items.length > 0) return items;
-    } catch (err) {
-      console.warn("Fallback a prisma en obtenerHotelesPorIds:", err);
-    }
-
-    return prisma.aliados.findMany({
+    return prismaBot.aliados.findMany({
       where: {
         id: { in: ids },
         activo: true,
@@ -439,7 +385,12 @@ export const turismoService = {
           orderBy: [{ orden: "asc" }, { id: "asc" }],
         },
       },
-    }) as unknown as Promise<AliadoItem[]>;
+    }).then((lista) =>
+      lista.map((item) => ({
+        ...item,
+        habitaciones: item.aliado_habitaciones,
+      }))
+    ) as unknown as Promise<AliadoItem[]>;
   },
 };
 
