@@ -80,7 +80,7 @@ export const eventosService = {
    */
   async obtenerPorIds(ids: number[]): Promise<EventoItem[]> {
     if (!ids || ids.length === 0) return [];
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: { id: { in: ids }, estado: "APROBADO" },
       select: {
         id: true,
@@ -98,7 +98,7 @@ export const eventosService = {
    * Búsqueda para planificación de visita
    */
   async obtenerParaPlanVisita(desde: Date, hasta?: Date, limite = 4): Promise<EventoItem[]> {
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: {
         estado: "APROBADO",
         fecha: hasta ? { gte: desde, lte: hasta } : { gte: desde },
@@ -121,7 +121,7 @@ export const eventosService = {
    * Búsqueda por rango de fechas
    */
   async obtenerPorRango(desde: Date, hasta: Date, limite = 8): Promise<EventoItem[]> {
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: {
         estado: "APROBADO",
         fecha: { gte: desde, lte: hasta },
@@ -155,7 +155,7 @@ export const eventosService = {
       { lugar: { contains: palabra } },
     ]);
 
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: {
         estado: "APROBADO",
         ...(desde && hasta
@@ -192,7 +192,7 @@ export const eventosService = {
           ])
         : undefined;
 
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: {
         estado: "APROBADO",
         fecha: { lt: antesDe },
@@ -216,7 +216,7 @@ export const eventosService = {
    * Cartelera general de próximos eventos
    */
   async obtenerProximos(desde: Date, limite = 6): Promise<EventoItem[]> {
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: {
         estado: "APROBADO",
         fecha: { gte: desde },
@@ -239,7 +239,7 @@ export const eventosService = {
    * Candidatos para resolver preguntas referenciales ("¿de qué se trata eso?")
    */
   async obtenerCandidatosReferenciales(limite = 30): Promise<EventoItem[]> {
-    return prisma.evento.findMany({
+    return prisma.eventos.findMany({
       where: { estado: "APROBADO" },
       orderBy: { fecha: "asc" },
       take: limite,
