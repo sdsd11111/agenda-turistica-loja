@@ -7,7 +7,7 @@ import SectionHead from "@/components/SectionHead";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { CANTONES, getCanton } from "@/lib/data/cantones";
 import { HOSPEDAJES } from "@/lib/data/hospedaje";
-import { ATRACTIVOS } from "@/lib/data/atractivos";
+import { getAtractivosByCanton } from "@/lib/services/turismoService";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -53,10 +53,11 @@ export default async function CantonPage({ params }: Props) {
   const canton = getCanton(slug);
   if (!canton) notFound();
 
-  // Consultar en paralelo aliados y eventos culturales en vivo de este cantón
-  const [aliadosDb, eventosRes] = await Promise.all([
+  // Consultar en paralelo aliados, eventos culturales y atractivos de la DB de este cantón
+  const [aliadosDb, eventosRes, atractivos] = await Promise.all([
     getHospedajesDinamicos(),
     getEventosCanton(slug),
+    getAtractivosByCanton(slug),
   ]);
 
   const todosHoteles = [
@@ -65,10 +66,36 @@ export default async function CantonPage({ params }: Props) {
   ];
 
   const hoteles = todosHoteles.filter((h) => h.cantonSlug === slug);
-  const atractivos = ATRACTIVOS.filter((a) => a.cantonSlug === slug);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    name: `Cantón ${canton.nombre}`,
+    description: canton.descripcion,
+    image: canton.imagen ?? "https://mvps.b-cdn.net/agenda-turistica/cantones/hero-cantones.webp",
+    url: `https://www.agendaturisticaloja.com/cantones/${canton.slug}`,
+    containedInPlace: {
+      "@type": "AdministrativeArea",
+      name: "Provincia de Loja",
+      containedInPlace: {
+        "@type": "Country",
+        name: "Ecuador",
+      },
+    },
+    includesAttraction: atractivos.slice(0, 5).map((a) => ({
+      "@type": "TouristAttraction",
+      name: a.nombre,
+      url: `https://www.agendaturisticaloja.com/atractivos/${a.slug}`,
+    })),
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <PageHero
         title={canton.nombre}
         lead={canton.descripcion}

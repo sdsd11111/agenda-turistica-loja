@@ -1,0 +1,461 @@
+[
+  {
+    "rawNombre": "Puerta de la Ciudad",
+    "tipo": "Atractivo turístico",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Operación y horarios no confirmados."
+  },
+  {
+    "rawNombre": "Central Eólica Villonaco",
+    "tipo": "Atractivo / sitio de interés",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja / cerro Villonaco",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf); [Prefectura](https://prefecturaloja.gob.ec/turismo/lugares-turisticos-de-la-provincia-de-loja/)",
+    "estado": "Atractivo corroborado por varias fuentes",
+    "dudas": "Las fuentes usan “Central” y “Parque”; no se confirma acceso turístico."
+  },
+  {
+    "rawNombre": "Museo de la Cultura Lojana",
+    "tipo": "Museo / atractivo cultural",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Horario impreso en el mapa no se trata como vigente."
+  },
+  {
+    "rawNombre": "Museo de Arqueología y Lojanidad",
+    "tipo": "Museo / atractivo cultural",
+    "canton": "Loja",
+    "parroquia": "San Cayetano Alto",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Adscripción institucional y operación actual no revisadas."
+  },
+  {
+    "rawNombre": "Museo de la Música",
+    "tipo": "Museo / atractivo cultural",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Horario actual no confirmado."
+  },
+  {
+    "rawNombre": "Museo Matilde Hidalgo de Prócel y Sala de Exposición del Archivo Histórico",
+    "tipo": "Museo / sala",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "El nombre largo debe conservarse hasta validación editorial."
+  },
+  {
+    "rawNombre": "Museo de Arte Religioso de las Madres Concepcionistas",
+    "tipo": "Museo / atractivo cultural",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Precio impreso no se considera vigente."
+  },
+  {
+    "rawNombre": "Museo San Juan de El Valle",
+    "tipo": "Museo / atractivo cultural",
+    "canton": "Loja",
+    "parroquia": "El Valle",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Horario y costo impresos requieren reconfirmación."
+  },
+  {
+    "rawNombre": "Parque Recreacional Jipiro",
+    "tipo": "Parque recreacional",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "El mapa menciona equipamientos, pero no confirma su estado actual."
+  },
+  {
+    "rawNombre": "Parque Recreacional Orillas del Zamora",
+    "tipo": "Parque recreacional",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "“Vivero, zoológico y karting” son servicios/equipamientos descritos en el mapa; no se verificaron."
+  },
+  {
+    "rawNombre": "Parque Lineal La Tebaida",
+    "tipo": "Parque lineal",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Operación actual no confirmada."
+  },
+  {
+    "rawNombre": "Parque Recreacional Daniel Álvarez Burneo",
+    "tipo": "Parque recreacional",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Operación actual no confirmada."
+  },
+  {
+    "rawNombre": "Parque Pucará",
+    "tipo": "Parque",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Operación actual no confirmada."
+  },
+  {
+    "rawNombre": "Parque Zamora Huayco",
+    "tipo": "Parque",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Operación actual no confirmada."
+  },
+  {
+    "rawNombre": "Mirador El Pedestal",
+    "tipo": "Mirador",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Coordenadas y acceso no documentados."
+  },
+  {
+    "rawNombre": "Mirador Las Tapillas",
+    "tipo": "Mirador",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Coordenadas y acceso no documentados."
+  },
+  {
+    "rawNombre": "Mirador del Churo",
+    "tipo": "Mirador",
+    "canton": "Loja",
+    "parroquia": "Ciudad de Loja",
+    "fuente": "[Mapa municipal](https://www.loja.gob.ec/files/image/dependencias/Turismo/mapa_turistico_loja.pdf)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Coordenadas y acceso no documentados."
+  },
+  {
+    "rawNombre": "Valle de Vilcabamba / Vilcabamba",
+    "tipo": "Valle / destino de salud, según la ficha",
+    "canton": "Loja",
+    "parroquia": "Vilcabamba",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/vilcabamba)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Las afirmaciones sobre longevidad y propiedades curativas del agua son promocionales/históricas y no se dan por confirmadas."
+  },
+  {
+    "rawNombre": "Cerro Mandango",
+    "tipo": "Geoforma / cerro",
+    "canton": "Loja",
+    "parroquia": "Vilcabamba; también mencionado desde San Pedro de Vilcabamba",
+    "fuente": "[Vilcabamba](https://www.loja.gob.ec/contenido/vilcabamba); [San Pedro](https://www.loja.gob.ec/contenido/san-pedro-de-vilcabamba)",
+    "estado": "Atractivo corroborado por varias fuentes",
+    "dudas": "La ficha de San Pedro también lo menciona; la adscripción exacta de acceso desde cada parroquia requiere mapa/límite."
+  },
+  {
+    "rawNombre": "Parque Recreacional Yamburara",
+    "tipo": "Parque recreacional",
+    "canton": "Loja",
+    "parroquia": "Vilcabamba",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/vilcabamba)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Extensión y equipamientos impresos no se consideran vigentes sin confirmación."
+  },
+  {
+    "rawNombre": "Reserva El Bosque",
+    "tipo": "Reserva / área natural",
+    "canton": "Loja",
+    "parroquia": "San Pedro de Vilcabamba",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/san-pedro-de-vilcabamba)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "**La fuente dice que al momento no está abierta al turista.** No convertir en producto operativo."
+  },
+  {
+    "rawNombre": "Urna del Señor de la Caída",
+    "tipo": "Sitio religioso",
+    "canton": "Loja",
+    "parroquia": "San Pedro de Vilcabamba",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/san-pedro-de-vilcabamba)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Leyenda y acceso actual no documentados."
+  },
+  {
+    "rawNombre": "Valle de Malacatos",
+    "tipo": "Valle / paisaje cultural-productivo",
+    "canton": "Loja",
+    "parroquia": "Malacatos",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/malacatos)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "La ficha lo llama atractivo, pero no aporta ficha operativa."
+  },
+  {
+    "rawNombre": "Santuario Diocesano El Señor de la Caridad",
+    "tipo": "Santuario / patrimonio religioso",
+    "canton": "Loja",
+    "parroquia": "Malacatos",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/malacatos)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Estado actual y visitas no confirmados."
+  },
+  {
+    "rawNombre": "Centro recreacional (sin nombre)",
+    "tipo": "Centro recreacional",
+    "canton": "Loja",
+    "parroquia": "Malacatos",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/malacatos)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "No crear nombre ni asumir operación; la fuente dice que se abre principalmente fines de semana y feriados, pero no fecha de vigencia."
+  },
+  {
+    "rawNombre": "Río Palmira",
+    "tipo": "Río / atractivo natural",
+    "canton": "Loja",
+    "parroquia": "Quinara",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/quinara)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Camping y cabañas son menciones de uso; estado actual no confirmado."
+  },
+  {
+    "rawNombre": "Siete Huanos / siete guandos",
+    "tipo": "Sitio asociado a leyenda",
+    "canton": "Loja",
+    "parroquia": "Quinara",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/quinara)",
+    "estado": "Fuentes en conflicto",
+    "dudas": "La ficha usa “Siete Huanos” y también “siete guandos”; se requiere fuente patrimonial o cartográfica directa."
+  },
+  {
+    "rawNombre": "Catedral de Zuro",
+    "tipo": "Formación geológica",
+    "canton": "Loja",
+    "parroquia": "Yangana",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/yangana)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Recorrido y acceso descritos en una ficha sin fecha de actualización."
+  },
+  {
+    "rawNombre": "Ruinas de Taranza",
+    "tipo": "Vestigios arqueológicos",
+    "canton": "Loja",
+    "parroquia": "Yangana",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/yangana)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Requiere corroboración arqueológica y jurisdiccional."
+  },
+  {
+    "rawNombre": "Paisaje y cerros de Chantaco",
+    "tipo": "Paisaje / recurso natural",
+    "canton": "Loja",
+    "parroquia": "Chantaco",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/chantaco)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "No se nombran cerros individualmente como atractivos en esa sección."
+  },
+  {
+    "rawNombre": "Cerro Santa Bárbara",
+    "tipo": "Cerro / paisaje cultural",
+    "canton": "Loja",
+    "parroquia": "Chuquiribamba",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/chuquiribamba)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "La ficha también lo relaciona con uso histórico como adoratorio; no se valida el uso actual."
+  },
+  {
+    "rawNombre": "Bandas del pueblo",
+    "tipo": "Manifestación cultural",
+    "canton": "Loja",
+    "parroquia": "Chuquiribamba",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/chuquiribamba)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Es una manifestación cultural, no un sitio físico; conviene separar en una tabla de eventos/manifestaciones."
+  },
+  {
+    "rawNombre": "Ruinas de Ciudadela",
+    "tipo": "Centro arqueológico",
+    "canton": "Loja",
+    "parroquia": "San Lucas",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/san-lucas)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "El estudio original de Max Uhle no fue revisado; la ficha no prueba conservación ni apertura."
+  },
+  {
+    "rawNombre": "Río San Lucas",
+    "tipo": "Río / atractivo natural",
+    "canton": "Loja",
+    "parroquia": "San Lucas",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/san-lucas)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "No se documenta punto de acceso turístico."
+  },
+  {
+    "rawNombre": "Bosque de Sayo",
+    "tipo": "Bosque protector / recurso natural",
+    "canton": "Loja",
+    "parroquia": "Santiago",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/santiago)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Se requiere corroborar la declaratoria y sus límites."
+  },
+  {
+    "rawNombre": "Aguas sulfurosas de Sayo",
+    "tipo": "Recurso natural",
+    "canton": "Loja",
+    "parroquia": "Santiago",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/santiago)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "No inferir propiedades terapéuticas ni acceso."
+  },
+  {
+    "rawNombre": "Bosque Tambo Blanco",
+    "tipo": "Bosque / recurso natural",
+    "canton": "Pendiente: entre Loja y Zamora según la ficha",
+    "parroquia": "Jimbilla / límite interprovincial pendiente",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/jimbilla)",
+    "estado": "Jurisdicción o ubicación pendiente",
+    "dudas": "No incluir como atractivo exclusivo de Loja hasta revisar límites y cartografía oficial."
+  },
+  {
+    "rawNombre": "Basílica / Santuario de la Virgen del Cisne",
+    "tipo": "Basílica / santuario religioso",
+    "canton": "Loja",
+    "parroquia": "El Cisne",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/el-cisne)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Historia y operación actual son asuntos distintos; horarios, tarifas y acceso no documentados."
+  },
+  {
+    "rawNombre": "Torre del Reloj",
+    "tipo": "Torre / infraestructura religiosa",
+    "canton": "Loja",
+    "parroquia": "El Cisne",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/el-cisne)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "No se confirma visita pública."
+  },
+  {
+    "rawNombre": "Museo de Nuestra Señora del Cisne",
+    "tipo": "Museo religioso",
+    "canton": "Loja",
+    "parroquia": "El Cisne",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/el-cisne)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Horario, precio y permiso de imágenes no documentados."
+  },
+  {
+    "rawNombre": "Casa del Peregrino",
+    "tipo": "Infraestructura de acogida",
+    "canton": "Loja",
+    "parroquia": "El Cisne",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/el-cisne)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "**No debe mezclarse con la base de atractivos:** es infraestructura/hospedaje según la descripción."
+  },
+  {
+    "rawNombre": "Paisaje y arquitectura de Gualel",
+    "tipo": "Paisaje / arquitectura",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "La fuente no individualiza un sitio ni confirma acceso."
+  },
+  {
+    "rawNombre": "Yanacocha",
+    "tipo": "Laguna",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "El nombre aparece fuera de la sección principal de atractivos."
+  },
+  {
+    "rawNombre": "Surihuiña",
+    "tipo": "Laguna",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "Requiere ubicación y evidencia directa."
+  },
+  {
+    "rawNombre": "Tigrilla",
+    "tipo": "Laguna",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "Requiere ubicación y evidencia directa."
+  },
+  {
+    "rawNombre": "Piedra Bola",
+    "tipo": "Sitio/mirador natural",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "Requiere aclarar si es laguna, formación o mirador; la ficha no lo clasifica claramente."
+  },
+  {
+    "rawNombre": "Cascada Gallibón",
+    "tipo": "Cascada",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "La ficha también usa “Gallivón” en otros contextos; posible variación toponímica."
+  },
+  {
+    "rawNombre": "Nudo de Guagarhuma",
+    "tipo": "Nudo / mirador natural",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "Hay variación ortográfica entre Guagrahuma y Guagarhuma."
+  },
+  {
+    "rawNombre": "Plan de Kerosene",
+    "tipo": "Mirador o sitio natural, sin categoría explícita",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "La fuente no define el tipo de sitio."
+  },
+  {
+    "rawNombre": "Ciudad encantada de Ganazhapa",
+    "tipo": "Sitio natural/legendario",
+    "canton": "Loja",
+    "parroquia": "Gualel",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/gualel)",
+    "estado": "Mención encontrada; falta revisar evidencia directa",
+    "dudas": "Requiere verificación de ubicación y naturaleza del sitio."
+  },
+  {
+    "rawNombre": "Artesanía de la comunidad de Cera",
+    "tipo": "Artesanía / manifestación cultural",
+    "canton": "Loja",
+    "parroquia": "Taquil, comunidad de Cera",
+    "fuente": "[Ficha municipal](https://www.loja.gob.ec/contenido/taquil)",
+    "estado": "Atractivo identificado en fuente oficial",
+    "dudas": "Es una práctica cultural y productiva, no necesariamente un establecimiento visitable."
+  }
+]

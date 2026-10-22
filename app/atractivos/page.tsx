@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import { ATRACTIVOS } from "@/lib/data/atractivos";
+import { getAtractivosDinamicos } from "@/lib/services/turismoService";
 import { cantonNombre } from "@/lib/data/cantones";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Lugares Turísticos de Loja: 16 Cantones, Bosque Puyango, Vilcabamba y Podocarpus",
@@ -18,9 +20,30 @@ export const metadata: Metadata = {
   alternates: { canonical: "/atractivos" },
 };
 
-export default function AtractivosPage() {
+export default async function AtractivosPage() {
+  const atractivos = await getAtractivosDinamicos();
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Lugares y Atractivos Turísticos de Loja, Ecuador",
+    description: "Catálogo oficial de lugares turísticos, patrimonio, naturaleza y senderos en la provincia de Loja.",
+    numberOfItems: atractivos.length,
+    itemListElement: atractivos.map((a, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: a.nombre,
+      url: `https://www.agendaturisticaloja.com/atractivos/${a.slug}`,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+
       <PageHero
         title="Lugares Turísticos de Loja"
         lead="Desde el Bosque Petrificado de Puyango y Vilcabamba hasta el Parque Podocarpus. Naturaleza, senderos milenarios y patrimonio de los 16 cantones de Loja."
@@ -37,7 +60,7 @@ export default function AtractivosPage() {
                 style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
                 className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
               >
-                {ATRACTIVOS.length} atractivos disponibles en la provincia
+                {atractivos.length} atractivos disponibles en la provincia
               </span>
               <h2
                 style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
@@ -49,7 +72,7 @@ export default function AtractivosPage() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {ATRACTIVOS.map((a) => (
+            {atractivos.map((a) => (
               <article
                 id={a.slug}
                 key={a.slug}

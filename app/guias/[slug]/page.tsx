@@ -4,23 +4,27 @@ import { notFound } from "next/navigation";
 import GuideCard from "@/components/GuideCard";
 import PageHero from "@/components/PageHero";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import { GUIAS, getGuia } from "@/lib/data/guias";
 import { SITE } from "@/lib/site";
+import {
+  getGuiaDinamicaBySlug,
+  getGuiasDinamicas,
+} from "@/lib/services/turismoService";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return GUIAS.map((g) => ({ slug: g.slug }));
+export async function generateStaticParams() {
+  const guias = await getGuiasDinamicas();
+  return guias.map((g) => ({ slug: g.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const g = getGuia(slug);
+  const g = await getGuiaDinamicaBySlug(slug);
   if (!g) return {};
   return {
     title: `${g.titulo} | Guía Turística de Loja`,
     description: `${g.resumen} Consejos de viaje, duración, senderos, hospedaje y cómo llegar en la provincia de Loja, Ecuador.`,
-    keywords: [...g.keywords, "guia de viaje loja", "turismo loja ecuador", "que hacer en loja"],
+    keywords: [...(g.keywords || []), "guia de viaje loja", "turismo loja ecuador", "que hacer en loja"],
     alternates: { canonical: `/guias/${g.slug}` },
     openGraph: {
       type: "article",
@@ -34,10 +38,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function GuiaPage({ params }: Props) {
   const { slug } = await params;
-  const g = getGuia(slug);
+  const g = await getGuiaDinamicaBySlug(slug);
   if (!g) notFound();
 
-  const relacionadas = GUIAS.filter((x) => x.slug !== g.slug).slice(0, 3);
+  // Guías relacionadas desde la DB (excluir la actual)
+  const todasGuias = await getGuiasDinamicas();
+  const relacionadas = todasGuias.filter((x) => x.slug !== g.slug).slice(0, 3);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",

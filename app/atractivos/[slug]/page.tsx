@@ -2,20 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import PageHero from "@/components/PageHero";
-import { ATRACTIVOS } from "@/lib/data/atractivos";
 import { getCanton } from "@/lib/data/cantones";
 import { getEventosCanton } from "@/lib/services/eventosCultura";
+import {
+  getAtractivoDinamicoBySlug,
+  getAtractivosByCanton,
+  getAtractivosDinamicos,
+} from "@/lib/services/turismoService";
 import SeccionEventosCanton from "@/components/SeccionEventosCanton";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return ATRACTIVOS.map((a) => ({ slug: a.slug }));
+export async function generateStaticParams() {
+  const atractivos = await getAtractivosDinamicos();
+  return atractivos.map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const atractivo = ATRACTIVOS.find((a) => a.slug === slug);
+  const atractivo = await getAtractivoDinamicoBySlug(slug);
   if (!atractivo) return {};
   const canton = getCanton(atractivo.cantonSlug);
 
@@ -41,15 +46,14 @@ export const revalidate = 3600;
 
 export default async function AtractivoPage({ params }: Props) {
   const { slug } = await params;
-  const atractivo = ATRACTIVOS.find((a) => a.slug === slug);
+  const atractivo = await getAtractivoDinamicoBySlug(slug);
   if (!atractivo) notFound();
 
   const canton = getCanton(atractivo.cantonSlug);
 
-  // Atractivos relacionados del mismo cantón (excluir el actual)
-  const relacionados = ATRACTIVOS.filter(
-    (a) => a.cantonSlug === atractivo.cantonSlug && a.slug !== atractivo.slug
-  ).slice(0, 3);
+  // Atractivos relacionados del mismo cantón desde la DB (excluir el actual)
+  const todosDelCanton = await getAtractivosByCanton(atractivo.cantonSlug);
+  const relacionados = todosDelCanton.filter((a) => a.slug !== atractivo.slug).slice(0, 3);
 
   // Eventos culturales del cantón
   const eventosRes = await getEventosCanton(atractivo.cantonSlug);
@@ -255,6 +259,18 @@ export default async function AtractivoPage({ params }: Props) {
                     <div>
                       <dt className="text-[10px] uppercase tracking-wider font-bold text-[#2C5E43]">Cabecera cantonal</dt>
                       <dd className="text-sm text-[#3D4F45] font-medium mt-0.5">🏘 {canton.cabecera}</dd>
+                    </div>
+                  )}
+                  {atractivo.distancia && (
+                    <div>
+                      <dt className="text-[10px] uppercase tracking-wider font-bold text-[#2C5E43]">Distancia desde Loja</dt>
+                      <dd className="text-sm text-[#3D4F45] font-medium mt-0.5">📏 {atractivo.distancia}</dd>
+                    </div>
+                  )}
+                  {atractivo.ruta && (
+                    <div>
+                      <dt className="text-[10px] uppercase tracking-wider font-bold text-[#2C5E43]">Cómo llegar</dt>
+                      <dd className="text-sm text-[#3D4F45] font-medium mt-0.5">🗺️ {atractivo.ruta}</dd>
                     </div>
                   )}
                 </dl>

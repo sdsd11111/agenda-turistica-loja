@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import GuideCard from "@/components/GuideCard";
 import PageHero from "@/components/PageHero";
-import { GUIAS } from "@/lib/data/guias";
+import { getGuiasDinamicas } from "@/lib/services/turismoService";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Guías Turísticas de Loja: Rutas, Itinerarios y Senderismo en los 16 Cantones",
@@ -21,9 +23,30 @@ export const metadata: Metadata = {
   },
 };
 
-export default function GuiasPage() {
+export default async function GuiasPage() {
+  const guias = await getGuiasDinamicas();
+
+  const itemListJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Guías Turísticas, Senderismo y Rutas de Loja",
+    description: "Itinerarios comprobados, rutas de café, senderismo y patrimonio cultural por la provincia de Loja, Ecuador.",
+    numberOfItems: guias.length,
+    itemListElement: guias.map((g, idx) => ({
+      "@type": "ListItem",
+      position: idx + 1,
+      name: g.titulo,
+      url: `https://www.agendaturisticaloja.com/guias/${g.slug}`,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
+
       <PageHero
         title="Guías Turísticas de Loja"
         lead="Itinerarios comprobados, rutas de café, senderismo y patrimonio cultural por los 16 cantones del sur del Ecuador."
@@ -53,7 +76,7 @@ export default function GuiasPage() {
                 style={{ fontFamily: "var(--font-label)", fontWeight: 700 }}
                 className="text-[11px] uppercase tracking-widest text-[#2C5E43] block mb-2"
               >
-                {GUIAS.length} guías turísticas disponibles
+                {guias.length} guías turísticas disponibles
               </span>
               <h2
                 style={{ fontFamily: "var(--font-display)", fontWeight: 800, letterSpacing: "-0.025em" }}
@@ -65,7 +88,7 @@ export default function GuiasPage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {GUIAS.map((g) => (
+            {guias.map((g) => (
               <GuideCard key={g.slug} guia={g} />
             ))}
           </div>
